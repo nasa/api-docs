@@ -7,9 +7,6 @@ language_tabs:
 toc_footers:
   - <a href='https://api.data.gov/signup'>Sign Up for a Developer Key</a>
 
-includes:
-  - errors
-
 search: true
 ---
 
@@ -66,16 +63,23 @@ Currently, we only support the Landsat 8 sensor.  To be explicit, the resource s
 
 ## Imagery
 
-> The JSON response is structured.
+> Example JSON response
 
 ```json
-{
-  "date": "2014-07-01T09:01:36.000",
-  "url": "goog.le/img.html"
-}
+[
+  {
+    "date": "2014-07-01T09:01:36.000",
+    "url": "goog.le/img.html",
+    "clouds": 0.01
+  }
+]
 ```
+> Example image at returned URL
 
-This endpoint retrieves the link to the the image at the supplied location, date, and resource.
+> ![](../images/earth.png)
+
+
+This endpoint retrieves the link to the the image at the supplied location, date, and resource.  The response will include the date and URL to the image that is closest to the supplied date.    The requested resource may not be available for the *exact* date in the request. The parameters in bold are required, all others are optional.  
 
 ### HTTP Request
 
@@ -83,16 +87,25 @@ This endpoint retrieves the link to the the image at the supplied location, date
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-date | current | date of imagery to extract
-resource | L8_TOA | resource indicators
-lat | None | Latitude
-lon | None | Longitude
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**lat** | **float** | n/a | **Latitude**
+**lon** | **float** | n/a | **Longitude**
+width | integer | 1000 | width in meters of returned image
+height | integer | 1000 | height in meters of returned image
+bandwidth | integer | 30 | number of days on either side of returned 
+date | YYYY-MM-DD | None | date of image; if `None` supplied, then the most recent image is returned
+resource | string | L8_TOA | resource indicators
+cloud_calculation | bool | False | calculate the percentage of the image covered by clouds
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+
+<aside class="notice">
+Note that the returned object may not match the supplied date exactly.
+</aside>
 
 ## Available resources
 
-> The JSON response is structured.
+> Example JSON response
 
 ```json
 [
@@ -111,7 +124,7 @@ lon | None | Longitude
 ]
 ```
 
-This endpoint retrieves all dates of NASA earth imagery for the given resource and location.  Currently, the only 
+This endpoint retrieves all dates of NASA earth imagery for the given resource and location.  The endpoint is helpful to determine available imagery, which can be queried in a spearate request to the [`imagery`](/#imagery) endpoint.
 
 ### HTTP Request
 
@@ -119,60 +132,153 @@ This endpoint retrieves all dates of NASA earth imagery for the given resource a
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-resource | L8_TOA | The resource string
-lat | None | Latitude
-lon | None | Longitude
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**lat** | **float** | n/a | **Latitude**
+**lon** | **float** | n/a | **Longitude**
+resource | string | L8_TOA | resource indicators
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
-<!-- <aside class="success">
-  The first r
-</aside>
- -->
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
+# Mars
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+NASA's Mars Exploration Rover Mission (MER) is an ongoing robotic space mission involving two rovers, Spirit (MER-A) and Opportunity (MER-B) exploring the planet Mars. It began in 2003 with the sending of the two rovers to explore the Martian surface and geology.  Likewise, Curiosity is a car-sized robotic rover exploring Gale Crater on Mars as part of NASA's Mars Science Laboratory mission (MSL).  What sort of imagery is retrieved from these three rovers?  This endpoint provides RESTful access to the images, so that you can explore the Martian landscape.
 
-```python
-import kittn
+## Imagery
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+This endpoint returns images (or specifically the URLs of images) for the supplied date, rover, and instrument taken on Mars.  Images are only returned if the instrument exists on the specified rover. 
 
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
+> Example JSON response
 
 ```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+[
+  {
+    "date": "2014-07-01T09:01:36.000",
+    "url": "goog.le/img.html",
+    "clouds": 0.01
+  }
+]
 ```
+> Example image at returned URL
 
-This endpoint retrieves a specific kitten.
+> ![](../images/mars.jpg)
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://api.nasa.gov/mars/imagery`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**date** | **POSIX date** | n/a | **Retrieve all imagery from this day for the supplied rover.**
+rover | string | msl | The rover
+instrument | string | mastcam_right | 
+joke | bool | False | Include the single joke image with Marvin the Martian in one, random Mars image
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
+<aside class="success">
+If you find the image with Marvin the Martian contact the NASA open data team with the Image ID and we'll give you supreme praise.
+</aside>
+
+
+# APOD
+
+One of the most popular websites at NASA is the [Astronomy Picture of the Day](http://apod.nasa.gov/apod/astropix.html). In fact, this website is one of the [most popular websites](https://analytics.usa.gov/demo/) across all federal agencies.  This endpoint structures the APOD images so that they can be repurposed for other applications.  In addition, it adds the ability to process the APOD explanation into core concepts using natural language processing and cross-referencing the text with large, online databases.  
+
+> Example JSON response
+
+```json
+{
+  "concept_tags": true,
+  "title": "Interior View",
+  "url": "http://apod.nasa.gov/apod/image/1501/15618296264_21bc1e368e_o1024.jpg",
+  "explanation": "Some prefer windows, and these are the best available on board the International Space Station. Taken on January 4, this snapshot from inside the station's large, seven-window Cupola module also shows off a workstation for controlling Canadarm2. Used to grapple visiting cargo vehicles and assist astronauts during spacewalks, the robotic arm is just outside the window at the right. The Cupola itself is attached to the Earth-facing or nadir port of the station's Tranquility module, offering dynamic panoramas of our fair planet. Seen from the station's 90 minute long, 400 kilometer high orbit, Earth's bright limb is in view above center.",
+  "concepts": [
+    "International Space Station",
+    "Mir",
+    "Extra-vehicular activity",
+    "STS-130",
+    "Unity",
+    "Planet",
+    "Window",
+    "Earth"
+  ],
+  "date": 2015-01-23
+}
+```
+> Example image at returned URL
+
+> ![](../images/apod.jpg)
+
+
+### HTTP Request
+
+`GET http://api.nasa.gov/apod`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+date | YYYY-MM-DD | *today* | The date of the APOD image to retrieve
+concept_tags | bool | False | Return an ordered dictionary of concepts from the APOD explanation
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+
+
+# Patents
+
+The NASA patent portfolio is available to benefit US citizens. Through partnerships and licensing agreements with industry, these patents ensure that NASA's investments in pioneering research find secondary uses that benefit the economy, create jobs, and improve quality of life.  This endpoint provides structured, searchable developer access to NASA's patents.
+
+**Acceptable patent categories**
+
+- materials_and_coatings
+- sensors
+- aeronautics
+- health_medicine_biotechnology
+- information_technology_software
+- robotics_automation_control
+- mechanical_fluid_systems
+- electrical_electronics
+- instrumentation
+- optics
+- power_generation_storage
+- propulsion
+- communications
+- manufacturing
+- environment
+
+> Example JSON response
+
+```json
+{
+  "count": 106,
+  "results": [
+    {
+      "name": "Dan Hammer"
+    },
+
+    {
+      "name": "Dan Hammer"
+    }
+  ]
+}
+```
+
+
+### HTTP Request
+
+`GET http://api.nasa.gov/patents`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**category** | **string** | n/a | **Patent category**
+q | string | None | Search text to filter results
+concept_tags | bool | False | Return an ordered dictionary of concepts from the patent abstract
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+
+<aside class="notice">
+The patent category must be from the acceptable category list or no results will be returned.
+</aside>
