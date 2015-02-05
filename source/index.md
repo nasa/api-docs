@@ -282,3 +282,59 @@ api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 <aside class="notice">
 The patent category must be from the acceptable category list or no results will be returned.
 </aside>
+
+# Surface temperature
+
+
+> Example JSON response
+
+```json
+{
+  "count": 5,
+  "results": {
+    "2010": 0.966000021,
+    "2011": 1.236700058,
+    "2012": 1.936300039,
+    "2013": 0.373100013,
+    "2014": -0.219600007
+  }
+}
+```
+
+## Address
+
+
+### HTTP Request
+
+`GET http://api.nasa.gov/temperature/address`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+
+## Coordinate point
+
+### HTTP Request
+
+`GET http://api.nasa.gov/temperature/coordinate`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+
+
+# Sounds
+
+### HTTP Request
+
+`GET http://api.nasa.gov/sounds`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
