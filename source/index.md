@@ -66,24 +66,31 @@ Currently, we only support the Landsat 8 sensor.  To be explicit, the resource s
 > Example JSON response
 
 ```json
-[
-  {
-    "date": "2014-07-01T09:01:36.000",
-    "url": "goog.le/img.html",
-    "clouds": 0.01
-  }
-]
+{
+  "resource": {
+    "planet": "earth",
+    "dataset": "LC8_L1T_TOA"
+  },
+  "date": "2015-02-07T03:28:54",
+  "cloud_score": 0.056768,
+  "url": "http://goo.gl/6sdgCt",
+  "id": "LC8_L1T_TOA/LC81270592015038LGN00"
+}
 ```
 > Example image at returned URL
 
 > ![](../images/earth.png)
 
 
-This endpoint retrieves the link to the the image at the supplied location, date, and resource.  The response will include the date and URL to the image that is closest to the supplied date.    The requested resource may not be available for the *exact* date in the request. The parameters in bold are required, all others are optional.  
+This endpoint retrieves the Landsat 8 image for the supplied location and
+date.  The response will include the date and URL to the image that is closest
+to the supplied date. The requested resource may not be available for the
+*exact* date in the request. The parameters in bold are required, all others
+are optional.
 
 ### HTTP Request
 
-`GET http://api.nasa.gov/earth/imagery`
+`GET https://api.data.gov/nasa/planetary/earth/imagery`
 
 ### Query Parameters
 
@@ -91,13 +98,10 @@ Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
 **lat** | **float** | n/a | **Latitude**
 **lon** | **float** | n/a | **Longitude**
-width | integer | 1000 | width in meters of returned image
-height | integer | 1000 | height in meters of returned image
-bandwidth | integer | 30 | number of days on either side of returned 
-date | YYYY-MM-DD | None | date of image; if `None` supplied, then the most recent image is returned
-resource | string | L8_TOA | resource indicators
-cloud_calculation | bool | False | calculate the percentage of the image covered by clouds
-api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+dim | float | 0.025 | width and height of image in degrees
+date | YYYY-MM-DD | ((today)) | date of image; if `None` supplied, then the most recent image is returned
+cloud_score | bool | False | calculate the percentage of the image covered by clouds
+**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
 
 <aside class="notice">
 Note that the returned object may not match the supplied date exactly.
@@ -108,27 +112,33 @@ Note that the returned object may not match the supplied date exactly.
 > Example JSON response
 
 ```json
-[
-  {
-    "date": "2014-07-01T09:01:36.000",
-    "resource": "Landsat8"
-  },
-  {
-    "date": "2014-07-15T15:46:12.000",
-    "resource": "Landsat8"
-  },
-  {
-    "date": "2014-08-01T08:23:32.000",
-    "resource": "Landsat8"
-  }
-]
+
+{
+  "resource": {
+    "dataset": "LC8_L1T_TOA",
+    "planet": "earth"
+  }, 
+  "results": [
+    {
+      "date": "2015-02-07T03:28:54",
+      "id": "LC8_L1T_TOA/LC81270592015038LGN00"
+    }, 
+    {
+      "date": "2015-02-23T03:28:48",
+      "id": "LC8_L1T_TOA/LC81270592015054LGN00"
+    }
+  ], 
+  "count": 2
+}
 ```
 
-This endpoint retrieves all dates of NASA earth imagery for the given resource and location.  The endpoint is helpful to determine available imagery, which can be queried in a spearate request to the [`imagery`](/#imagery) endpoint.
+This endpoint retrieves all dates of NASA earth imagery for the given location
+and date range.  The endpoint is helpful to determine available imagery, which
+can be queried in a spearate request to the [`imagery`](/#imagery) endpoint.
 
 ### HTTP Request
 
-`GET http://api.nasa.gov/earth/dates`
+`GET https://api.data.gov/nasa/planetary/earth/assets`
 
 ### Query Parameters
 
@@ -136,8 +146,9 @@ Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
 **lat** | **float** | n/a | **Latitude**
 **lon** | **float** | n/a | **Longitude**
-resource | string | L8_TOA | resource indicators
-api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+**begin** | **YYYY-MM-DD** | n/a | **beginning of date range**
+end | YYYY-MM-DD | ((today)) | end of date range
+**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
 
 
 # Mars
