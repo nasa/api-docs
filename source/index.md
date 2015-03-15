@@ -199,6 +199,7 @@ concept_tags | bool | False | Return an ordered dictionary of concepts from the 
 [New Scientist](http://www.newscientist.com/) built a highly useful app to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  Their app restructures and rides on data from the [NASA Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/).  This endpoint resurfaces the data to interact with local information on global warming anomalies through the browser.  Provide an address or a coordinate pair, along with a date range, and watch the local temperature change.  
 
 > Example JSON response
+
 ```json
 {
   "count": 6, 
