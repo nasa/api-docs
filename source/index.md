@@ -181,6 +181,7 @@ One of the most popular websites at NASA is the [Astronomy Picture of the Day](h
 
 > ![](../images/apod.jpg)
 
+## Address
 
 ### HTTP Request
 
@@ -193,3 +194,56 @@ Parameter | Type | Default | Description
 **date** | **YYYY-MM-DD** | today | **The date of the APOD image to retrieve**
 concept_tags | bool | False | Return an ordered dictionary of concepts from the APOD explanation
 **api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+
+# Global temperature anomaly
+
+[New Scientist](http://www.newscientist.com/) built a highly useful app to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  Their app restructures and rides on data from the [NASA Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/).  This endpoint resurfaces the data to interact with local information on global warming anomalies through the browser.  Provide an address or a coordinate pair, along with a date range, and watch the local temperature change.  
+
+> Example JSON response
+
+{
+  "count": 6, 
+  "results": [
+    {"anomaly": 0.0575, "year": 2009}, 
+    {"anomaly": 0.1285, "year": 2010}, 
+    {"anomaly": -0.256, "year": 2011}, 
+    {"anomaly": 0.3971, "year": 2012}, 
+    {"anomaly": 0.1606, "year": 2013}, 
+    {"anomaly": 1.4499, "year": 2014}
+  ]
+}
+
+
+## Address
+
+### HTTP Request
+
+`GET http://api.nasa.gov/planetary/earth/temperature/address`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**address** | **string** | n/a | **Address string**
+begin | int | 1880 | beginning year for date range, inclusive
+end | int | 2014 | end year for date range, inclusive
+**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+
+## Coordinates
+
+### HTTP Request
+
+`GET http://api.nasa.gov/planetary/earth/temperature/coords`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**lat** | **float** | n/a | **Latitude in degrees**
+**lon** | **float** | n/a | **Longitude in degrees**
+begin | int | 1880 | beginning year for date range, inclusive
+end | int | 2014 | end year for date range, inclusive
+**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+
+
+
