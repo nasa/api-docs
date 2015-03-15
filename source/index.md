@@ -194,7 +194,9 @@ Parameter | Type | Default | Description
 concept_tags | bool | False | Return an ordered dictionary of concepts from the APOD explanation
 **api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
 
-# Global temperature anomaly
+
+
+# Earth temperature anomalies
 
 [New Scientist](http://www.newscientist.com/) built a highly useful app to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  Their app restructures and rides on data from the [NASA Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/).  This endpoint resurfaces the data to interact with local information on global warming anomalies through the browser.  Provide an address or a coordinate pair, along with a date range, and watch the local temperature change.  
 
@@ -248,53 +250,93 @@ end | int | 2014 | end year for date range, inclusive
 
 # Patents
 
+The NASA patent portfolio is available to benefit US citizens. Through partnerships and licensing agreements with industry, these patents ensure that NASA's investments in pioneering research find secondary uses that benefit the economy, create jobs, and improve quality of life.  This endpoint provides structured, searchable developer access to NASA's patents.
 
+**Acceptable patent categories**
+
+- materials_and_coatings
+- sensors
+- aeronautics
+- health_medicine_biotechnology
+- information_technology_software
+- robotics_automation_control
+- mechanical_fluid_systems
+- electrical_electronics
+- instrumentation
+- optics
+- power_generation_storage
+- propulsion
+- communications
+- manufacturing
+- environment
 
 > Example JSON response
 
 ```json
 {
-  "count": 6, 
+  "count": 106,
   "results": [
-    {"anomaly": 0.0575, "year": 2009}, 
-    {"anomaly": 0.1285, "year": 2010}, 
-    {"anomaly": -0.256, "year": 2011}, 
-    {"anomaly": 0.3971, "year": 2012}, 
-    {"anomaly": 0.1606, "year": 2013}, 
-    {"anomaly": 1.4499, "year": 2014}
+    {
+      "patent_number": "7767270", 
+      "id": "patent_ARC-14661-3", 
+      "abstract": "Method and system for functionalizing ...", 
+      "serial_number": "11/387,503", 
+      "contact": {
+        "facility": "NASA Ames Research Center", 
+        "email": "Trupti.D.Sanghani@nasa.gov", 
+        "address": "Mail Stop 202A-3, Moffett Field, CA 94035", 
+        "name": "Trupti D. Sanghani", 
+        "office": "Technology Partnerships Division"
+      }, 
+      "expiration_date": "", 
+      "concepts": [
+        "Ionizing radiation", 
+        "Topology", 
+        "Gas", 
+        "Carbon nanotube", 
+        "Temperature", 
+        "Carbon", 
+        "Metric space", 
+        "Fundamental physics concepts"
+      ], 
+      "publication": null, 
+      "eRelations": [], 
+      "category": "materials and coatings", 
+      "innovator": [
+        {
+          "company": "SETI Institute", 
+          "mname": "N.", 
+          "lname": "Khare", 
+          "fname": "Bishun", 
+          "order": "1"
+        }
+      ], 
+      "reference_number": "ARC-14661-3", 
+      "_id": "53f65b3d5904da2c9fc3008f", 
+      "client_record_id": "patent_ARC-14661-3", 
+      "title": "Selective functionalization ...", 
+      "trl": "3 - Proof-of-concept", 
+      "center": "ARC"},
+    ...
   ]
 }
 ```
 
-## Address
 
 ### HTTP Request
 
-`GET http://api.nasa.gov/planetary/earth/temperature/address`
+`GET http://api.nasa.gov/patents`
 
 ### Query Parameters
 
 Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
-**address** | **string** | n/a | **Address string**
-begin | int | 1880 | beginning year for date range, inclusive
-end | int | 2014 | end year for date range, inclusive
+**category** | **string** | n/a | **Patent category**
+query | string | None | Search text to filter results
+concept_tags | bool | False | Return an ordered dictionary of concepts from the patent abstract
 **api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
 
-## Coordinates
-
-### HTTP Request
-
-`GET http://api.nasa.gov/planetary/earth/temperature/coords`
-
-### Query Parameters
-
-Parameter | Type | Default | Description
---------- | --------- | ------- | -----------
-**lat** | **float** | n/a | **Latitude in degrees**
-**lon** | **float** | n/a | **Longitude in degrees**
-begin | int | 1880 | beginning year for date range, inclusive
-end | int | 2014 | end year for date range, inclusive
-**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
-
+<aside class="notice">
+The patent category must be from the acceptable category list or no results will be returned.
+</aside>
 
