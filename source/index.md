@@ -246,4 +246,55 @@ end | int | 2014 | end year for date range, inclusive
 **api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
 
 
+# Patents
+
+
+
+> Example JSON response
+
+```json
+{
+  "count": 6, 
+  "results": [
+    {"anomaly": 0.0575, "year": 2009}, 
+    {"anomaly": 0.1285, "year": 2010}, 
+    {"anomaly": -0.256, "year": 2011}, 
+    {"anomaly": 0.3971, "year": 2012}, 
+    {"anomaly": 0.1606, "year": 2013}, 
+    {"anomaly": 1.4499, "year": 2014}
+  ]
+}
+```
+
+## Address
+
+### HTTP Request
+
+`GET http://api.nasa.gov/planetary/earth/temperature/address`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**address** | **string** | n/a | **Address string**
+begin | int | 1880 | beginning year for date range, inclusive
+end | int | 2014 | end year for date range, inclusive
+**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+
+## Coordinates
+
+### HTTP Request
+
+`GET http://api.nasa.gov/planetary/earth/temperature/coords`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | --------- | ------- | -----------
+**lat** | **float** | n/a | **Latitude in degrees**
+**lon** | **float** | n/a | **Longitude in degrees**
+begin | int | 1880 | beginning year for date range, inclusive
+end | int | 2014 | end year for date range, inclusive
+**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+
 
