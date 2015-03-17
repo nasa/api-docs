@@ -17,6 +17,38 @@ search: true
 
 NASA has **the best** data.  Way better than NOAA.  Most visitors to nasa.gov websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, emminently available.  
 
+# Apply for an API Key
+
+{% raw %}
+<div id="apidatagov_signup">Loading signup form...</div>
+<script type="text/javascript">
+ /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+ var apiUmbrellaSignupOptions = {
+   // Pick a short, unique name to identify your site, like 'gsa-auctions'
+   // in this example.
+   registrationSource: 'nasa-apis',
+
+   // Enter the API key you signed up for and specially configured for this
+   // API key signup embed form.
+   apiKey: 'EMZRfUZmi9ZMWFd5JqL6fHXHcCe0mXXXk9K5aRd3',
+
+   // Provide an example URL you want to show to users after they signup.
+   // This can be any API endpoint on your server, and you can use the
+   // special {{api_key}} variable to automatically substitute in the API
+   // key the user just signed up for.
+   exampleApiUrl: 'https://api.data.gov/nasa/nasa-apis?api_key={{api_key}}&format=JSON'
+ };
+
+ /* * * DON'T EDIT BELOW THIS LINE * * */
+ (function() {
+   var apiUmbrella = document.createElement('script'); apiUmbrella.type = 'text/javascript'; apiUmbrella.async = true;
+   apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+ })();
+</script>
+<noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
+{% endraw %}
+
 # Authentication
 
 You do not need to authenticate in order to explore the NASA data.  However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for an [api.data.gov developer key](https://api.data.gov/signup).  
