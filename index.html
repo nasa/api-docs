@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="javascripts/all.js" type="text/javascript"></script>
+
+      <script>
+        $(function() {
+          setupLanguages(["Example response"]);
+        });
+      </script>
+  </head>
+
+  <body class="index">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="Example response">Example response</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://api.data.gov/signup'>Sign Up for a Developer Key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="introduction">Introduction</h1>
+
+<p>NASA has <strong>the best</strong> data.  Way better than NOAA.  Most visitors to nasa.gov websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, emminently available.  </p>
+
+<h1 id="apply-for-an-api-key">Apply for an API Key</h1>
+
+<p>{% raw %}
+<div id="apidatagov_signup">Loading signup form&hellip;</div>
+<script type="text/javascript">
+ /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+ var apiUmbrellaSignupOptions = {
+   // Pick a short, unique name to identify your site, like &#39;gsa-auctions&#39;
+   // in this example.
+   registrationSource: &#39;nasa-apis&#39;,</p>
+
+<p>// Enter the API key you signed up for and specially configured for this
+   // API key signup embed form.
+   apiKey: &#39;EMZRfUZmi9ZMWFd5JqL6fHXHcCe0mXXXk9K5aRd3&#39;,</p>
+
+<p>// Provide an example URL you want to show to users after they signup.
+   // This can be any API endpoint on your server, and you can use the
+   // special {{api_key}} variable to automatically substitute in the API
+   // key the user just signed up for.
+   exampleApiUrl: &#39;https://api.data.gov/nasa/nasa-apis?api_key={{api_key}}&amp;format=JSON&#39;
+ };</p>
+
+<p>/* * * DON&#39;T EDIT BELOW THIS LINE * * */
+ (function() {
+   var apiUmbrella = document.createElement(&#39;script&#39;); apiUmbrella.type = &#39;text/javascript&#39;; apiUmbrella.async = true;
+   apiUmbrella.src = &#39;https://api.data.gov/static/javascripts/signup_embed.js&#39;;
+   (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(apiUmbrella);
+ })();
+</script>
+<noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
+{% endraw %}</p>
+
+<h1 id="authentication">Authentication</h1>
+
+<p>You do not need to authenticate in order to explore the NASA data.  However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for an <a href="https://api.data.gov/signup">api.data.gov developer key</a>.  </p>
+
+<h2 id="web-service-rate-limits">Web Service Rate Limits</h2>
+
+<p>Limits are placed on the number of API requests you may make using your API key. Rate limits may vary by service, but the defaults are:</p>
+
+<ul>
+<li>Hourly Limit: 1,000 requests per hour</li>
+</ul>
+
+<p>For each API key, these limits are applied across all api.data.gov API requests. Exceeding these limits will lead to your API key being temporarily blocked from making further requests. The block will automatically be lifted by waiting an hour. If you need higher rate limits, contact us.</p>
+
+<h2 id="demo_key-rate-limits">DEMO_KEY Rate Limits</h2>
+
+<p>In documentation examples, the special DEMO_KEY api key is used. This API key can be used for initially exploring APIs prior to signing up, but it has much lower rate limits, so you&rsquo;re encouraged to signup for your own API key if you plan to use the API (signup is quick and easy). The rate limits for the DEMO_KEY are:</p>
+
+<ul>
+<li>Hourly Limit: 30 requests per IP address per hour</li>
+<li>Daily Limit: 50 requests per IP address per day</li>
+</ul>
+
+<h2 id="how-do-i-see-my-current-usage?">How Do I See My Current Usage?</h2>
+
+<p>Your can check your current rate limit and usage details by inspecting the <code class="prettyprint">X-RateLimit-Limit</code> and <code class="prettyprint">X-RateLimit-Remaining</code> HTTP headers that are returned on every API response. For example, if an API has the default hourly limit of 1,000 request, after making 2 requests, you will receive these HTTP headers in the response of the second request.</p>
+
+<blockquote>
+<p>HTTP headers on API response</p>
+</blockquote>
+<pre><code class="highlight shell">X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 998
+</code></pre>
+
+<p>The hourly counters for your API key reset on a rolling basis.</p>
+
+<p><strong>Example</strong>: If you made 500 requests at 10:15AM and 500 requests at 10:25AM, your API key would become temporarily blocked. This temporary block of your API key would cease at 11:15AM, at which point you could make 500 requests. At 11:25AM, you could then make another 500 requests.</p>
+
+<aside class="notice">
+Anyone can register for an api.data.gov key, which can be used to access data across federal agencies.
+</aside>
+
+<h1 id="earth">Earth</h1>
+
+<p>A recent industry <a href="https://www.fgdc.gov/ngac/meetings/december-2014/ngac-landsat-economic-value-paper-2014-update.pdf">report</a> estimates that total annual value of $2.19 billion, far exceeding the multi-year total cost of building, launching, and managing Landsat satellites and sensors.  The value is derived from consumer <em>use</em> of the data.  There is no inherent value in idle data.  The objective of this endpoint is to unlock the significant public investment in earth observation data.  An open, well-documented, and simple API dramatically reduces the transaction costs, which are a significant barrier to engaging with information.  </p>
+
+<p>Currently, we only support the Landsat 8 sensor.  To be explicit, the resource string identifier for supported resources are as follows.  Resources in parentheses indicate planned resources.</p>
+
+<ul>
+<li><code class="prettyprint">L8_TOA</code></li>
+<li><code class="prettyprint">(L7_TOA)</code></li>
+</ul>
+
+<h2 id="imagery">Imagery</h2>
+
+<blockquote>
+<p>The JSON response is structured.</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-01T09:01:36.000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goog.le/img.html"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the link to the the image at the supplied location, date, and resource.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.nasa.gov/earth/imagery</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td>current</td>
+<td>date of imagery to extract</td>
+</tr>
+<tr>
+<td>resource</td>
+<td>L8_TOA</td>
+<td>resource indicators</td>
+</tr>
+<tr>
+<td>lat</td>
+<td>None</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>lon</td>
+<td>None</td>
+<td>Longitude</td>
+</tr>
+</tbody></table>
+
+<h2 id="available-resources">Available resources</h2>
+
+<blockquote>
+<p>The JSON response is structured.</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-01T09:01:36.000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landsat8"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-15T15:46:12.000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landsat8"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-01T08:23:32.000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landsat8"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all dates of NASA earth imagery for the given resource and location.  Currently, the only </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.nasa.gov/earth/dates</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource</td>
+<td>L8_TOA</td>
+<td>The resource string</td>
+</tr>
+<tr>
+<td>lat</td>
+<td>None</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>lon</td>
+<td>None</td>
+<td>Longitude</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+  The first r
+</aside>
+ &ndash;>
+
+<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre>
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre>
+<pre><code class="highlight shell">curl <span class="s2">"http://example.com/api/kittens/3"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific kitten.</p>
+
+<aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the cat to retrieve</td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slown down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="Example response">Example response</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
