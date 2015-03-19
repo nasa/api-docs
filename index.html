@@ -103,215 +103,458 @@ Anyone can register for an api.data.gov key, which can be used to access data ac
 <h2 id="imagery">Imagery</h2>
 
 <blockquote>
-<p>The JSON response is structured.</p>
+<p>Example JSON response</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-01T09:01:36.000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goog.le/img.html"</span><span class="w">
+  </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"planet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"earth"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LC8_L1T_TOA"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-07T03:28:54"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cloud_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.056768</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://goo.gl/6sdgCt"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LC8_L1T_TOA/LC81270592015038LGN00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves the link to the the image at the supplied location, date, and resource.</p>
+<blockquote>
+<p>Example image at returned URL</p>
+
+<p><img src="images/earth.png" /></p>
+</blockquote>
+
+<p>This endpoint retrieves the Landsat 8 image for the supplied location and
+date.  The response will include the date and URL to the image that is closest
+to the supplied date. The requested resource may not be available for the
+<em>exact</em> date in the request. The parameters in bold are required, all others
+are optional.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://api.nasa.gov/earth/imagery</code></p>
+<p><code class="prettyprint">GET https://api.data.gov/nasa/planetary/earth/imagery</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td><strong>lat</strong></td>
+<td><strong>float</strong></td>
+<td>n/a</td>
+<td><strong>Latitude</strong></td>
+</tr>
+<tr>
+<td><strong>lon</strong></td>
+<td><strong>float</strong></td>
+<td>n/a</td>
+<td><strong>Longitude</strong></td>
+</tr>
+<tr>
+<td>dim</td>
+<td>float</td>
+<td>0.025</td>
+<td>width and height of image in degrees</td>
+</tr>
+<tr>
 <td>date</td>
-<td>current</td>
-<td>date of imagery to extract</td>
+<td>YYYY-MM-DD</td>
+<td>((today))</td>
+<td>date of image; if <code class="prettyprint">None</code> supplied, then the most recent image is returned</td>
 </tr>
 <tr>
-<td>resource</td>
-<td>L8_TOA</td>
-<td>resource indicators</td>
+<td>cloud_score</td>
+<td>bool</td>
+<td>False</td>
+<td>calculate the percentage of the image covered by clouds</td>
 </tr>
 <tr>
-<td>lat</td>
-<td>None</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>None</td>
-<td>Longitude</td>
+<td><strong>api_key</strong></td>
+<td><strong>string</strong></td>
+<td>DEMO_KEY</td>
+<td><strong>api.data.gov key for expanded usage</strong></td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Note that the returned object may not match the supplied date exactly.
+</aside>
 
 <h2 id="available-resources">Available resources</h2>
 
 <blockquote>
-<p>The JSON response is structured.</p>
+<p>Example JSON response</p>
 </blockquote>
-<pre><code class="highlight json"><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-01T09:01:36.000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landsat8"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-15T15:46:12.000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landsat8"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-01T08:23:32.000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landsat8"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre><code class="highlight json"><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LC8_L1T_TOA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"planet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"earth"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-07T03:28:54"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LC8_L1T_TOA/LC81270592015038LGN00"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-23T03:28:48"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LC8_L1T_TOA/LC81270592015054LGN00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all dates of NASA earth imagery for the given resource and location.  Currently, the only </p>
+<p>This endpoint retrieves all dates of NASA earth imagery for the given location
+and date range.  The endpoint is helpful to determine available imagery, which
+can be queried in a spearate request to the <a href="/#imagery"><code class="prettyprint">imagery</code></a> endpoint.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://api.nasa.gov/earth/dates</code></p>
+<p><code class="prettyprint">GET https://api.data.gov/nasa/planetary/earth/assets</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>resource</td>
-<td>L8_TOA</td>
-<td>The resource string</td>
+<td><strong>lat</strong></td>
+<td><strong>float</strong></td>
+<td>n/a</td>
+<td><strong>Latitude</strong></td>
 </tr>
 <tr>
-<td>lat</td>
-<td>None</td>
-<td>Latitude</td>
+<td><strong>lon</strong></td>
+<td><strong>float</strong></td>
+<td>n/a</td>
+<td><strong>Longitude</strong></td>
 </tr>
 <tr>
-<td>lon</td>
-<td>None</td>
-<td>Longitude</td>
+<td><strong>begin</strong></td>
+<td><strong>YYYY-MM-DD</strong></td>
+<td>n/a</td>
+<td><strong>beginning of date range</strong></td>
+</tr>
+<tr>
+<td>end</td>
+<td>YYYY-MM-DD</td>
+<td>((today))</td>
+<td>end of date range</td>
+</tr>
+<tr>
+<td><strong>api_key</strong></td>
+<td><strong>string</strong></td>
+<td>DEMO_KEY</td>
+<td><strong>api.data.gov key for expanded usage</strong></td>
 </tr>
 </tbody></table>
 
-<!-- <aside class="success">
-  The first r
-</aside>
- &ndash;>
+<h1 id="apod">APOD</h1>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://example.com/api/kittens/3"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>One of the most popular websites at NASA is the <a href="http://apod.nasa.gov/apod/astropix.html">Astronomy Picture of the Day</a>. In fact, this website is one of the <a href="https://analytics.usa.gov/demo/">most popular websites</a> across all federal agencies.  This endpoint structures the APOD images so that they can be repurposed for other applications.  In addition, it adds the ability to process the APOD explanation into core concepts using natural language processing and cross-referencing the text with large, online databases.  </p>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example JSON response</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"concept_tags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Interior View"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://apod.nasa.gov/apod/image/1501/15618296264_21bc1e368e_o1024.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some prefer windows, and these are the best available on board the International Space Station. Taken on January 4, this snapshot from inside the station's large, seven-window Cupola module also shows off a workstation for controlling Canadarm2. Used to grapple visiting cargo vehicles and assist astronauts during spacewalks, the robotic arm is just outside the window at the right. The Cupola itself is attached to the Earth-facing or nadir port of the station's Tranquility module, offering dynamic panoramas of our fair planet. Seen from the station's 90 minute long, 400 kilometer high orbit, Earth's bright limb is in view above center."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"concepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"International Space Station"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Mir"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Extra-vehicular activity"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"STS-130"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Unity"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Planet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Window"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Earth"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015-01-23</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
+<blockquote>
+<p>Example image at returned URL</p>
 
-<aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+<p><img src="images/apod.jpg" /></p>
+</blockquote>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://api.nasa.gov/apod</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the cat to retrieve</td>
+<td><strong>date</strong></td>
+<td><strong>YYYY-MM-DD</strong></td>
+<td>today</td>
+<td><strong>The date of the APOD image to retrieve</strong></td>
+</tr>
+<tr>
+<td>concept_tags</td>
+<td>bool</td>
+<td>False</td>
+<td>Return an ordered dictionary of concepts from the APOD explanation</td>
+</tr>
+<tr>
+<td><strong>api_key</strong></td>
+<td><strong>string</strong></td>
+<td>DEMO_KEY</td>
+<td><strong>api.data.gov key for expanded usage</strong></td>
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
+<h1 id="earth-temperature-anomalies">Earth temperature anomalies</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<p><a href="http://www.newscientist.com/">New Scientist</a> built a highly useful app to <a href="http://warmingworld.newscientistapps.com/">explore global temperature anomalies</a>.  Their app restructures and rides on data from the <a href="http://data.giss.nasa.gov/gistemp/">NASA Goddard Institute for Space Studies Surface Temperature Analysis</a>.  This endpoint resurfaces the data to interact with local information on global warming anomalies through the browser.  Provide an address or a coordinate pair, along with a date range, and watch the local temperature change.  </p>
 
-<p>The Kittn API uses the following error codes:</p>
+<blockquote>
+<p>Example JSON response</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="s2">"anomaly"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0575</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2009</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="s2">"anomaly"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1285</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="s2">"anomaly"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.256</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2011</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="s2">"anomaly"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3971</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="s2">"anomaly"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1606</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2013</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="s2">"anomaly"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.4499</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="address">Address</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.nasa.gov/planetary/earth/temperature/address</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td><strong>address</strong></td>
+<td><strong>string</strong></td>
+<td>n/a</td>
+<td><strong>Address string</strong></td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>begin</td>
+<td>int</td>
+<td>1880</td>
+<td>beginning year for date range, inclusive</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>end</td>
+<td>int</td>
+<td>2014</td>
+<td>end year for date range, inclusive</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slown down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td><strong>api_key</strong></td>
+<td><strong>string</strong></td>
+<td>DEMO_KEY</td>
+<td><strong>api.data.gov key for expanded usage</strong></td>
 </tr>
 </tbody></table>
+
+<h2 id="coordinates">Coordinates</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.nasa.gov/planetary/earth/temperature/coords</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>lat</strong></td>
+<td><strong>float</strong></td>
+<td>n/a</td>
+<td><strong>Latitude in degrees</strong></td>
+</tr>
+<tr>
+<td><strong>lon</strong></td>
+<td><strong>float</strong></td>
+<td>n/a</td>
+<td><strong>Longitude in degrees</strong></td>
+</tr>
+<tr>
+<td>begin</td>
+<td>int</td>
+<td>1880</td>
+<td>beginning year for date range, inclusive</td>
+</tr>
+<tr>
+<td>end</td>
+<td>int</td>
+<td>2014</td>
+<td>end year for date range, inclusive</td>
+</tr>
+<tr>
+<td><strong>api_key</strong></td>
+<td><strong>string</strong></td>
+<td>DEMO_KEY</td>
+<td><strong>api.data.gov key for expanded usage</strong></td>
+</tr>
+</tbody></table>
+
+<h1 id="patents">Patents</h1>
+
+<p>The NASA patent portfolio is available to benefit US citizens. Through partnerships and licensing agreements with industry, these patents ensure that NASA&rsquo;s investments in pioneering research find secondary uses that benefit the economy, create jobs, and improve quality of life.  This endpoint provides structured, searchable developer access to NASA&rsquo;s patents.</p>
+
+<p><strong>Acceptable patent categories</strong></p>
+
+<ul>
+<li>materials_and_coatings</li>
+<li>sensors</li>
+<li>aeronautics</li>
+<li>health_medicine_biotechnology</li>
+<li>information_technology_software</li>
+<li>robotics_automation_control</li>
+<li>mechanical_fluid_systems</li>
+<li>electrical_electronics</li>
+<li>instrumentation</li>
+<li>optics</li>
+<li>power_generation_storage</li>
+<li>propulsion</li>
+<li>communications</li>
+<li>manufacturing</li>
+<li>environment</li>
+</ul>
+
+<blockquote>
+<p>Example JSON response</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"patent_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7767270"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patent_ARC-14661-3"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Method and system for functionalizing ..."</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"serial_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11/387,503"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"facility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NASA Ames Research Center"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trupti.D.Sanghani@nasa.gov"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mail Stop 202A-3, Moffett Field, CA 94035"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trupti D. Sanghani"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"office"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Technology Partnerships Division"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> 
+      </span><span class="s2">"expiration_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"concepts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Ionizing radiation"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Topology"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Gas"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Carbon nanotube"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Temperature"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Carbon"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Metric space"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"Fundamental physics concepts"</span><span class="w">
+      </span><span class="p">],</span><span class="w"> 
+      </span><span class="s2">"publication"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"eRelations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> 
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials and coatings"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"innovator"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SETI Institute"</span><span class="p">,</span><span class="w"> 
+          </span><span class="s2">"mname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N."</span><span class="p">,</span><span class="w"> 
+          </span><span class="s2">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Khare"</span><span class="p">,</span><span class="w"> 
+          </span><span class="s2">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bishun"</span><span class="p">,</span><span class="w"> 
+          </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w"> 
+      </span><span class="s2">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARC-14661-3"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53f65b3d5904da2c9fc3008f"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"client_record_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patent_ARC-14661-3"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Selective functionalization ..."</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"trl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 - Proof-of-concept"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"center"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARC"</span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.nasa.gov/patents</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>category</strong></td>
+<td><strong>string</strong></td>
+<td>n/a</td>
+<td><strong>Patent category</strong></td>
+</tr>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>None</td>
+<td>Search text to filter results</td>
+</tr>
+<tr>
+<td>concept_tags</td>
+<td>bool</td>
+<td>False</td>
+<td>Return an ordered dictionary of concepts from the patent abstract</td>
+</tr>
+<tr>
+<td><strong>api_key</strong></td>
+<td><strong>string</strong></td>
+<td>DEMO_KEY</td>
+<td><strong>api.data.gov key for expanded usage</strong></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The patent category must be from the acceptable category list or no results will be returned.
+</aside>
 
       </div>
       <div class="dark-box">
