@@ -47,38 +47,6 @@
 
 <p>NASA has <strong>the best</strong> data.  Way better than NOAA.  Most visitors to nasa.gov websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, emminently available.  </p>
 
-<h1 id="apply-for-an-api-key">Apply for an API Key</h1>
-
-<p>{% raw %}
-<div id="apidatagov_signup">Loading signup form&hellip;</div>
-<script type="text/javascript">
- /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
- var apiUmbrellaSignupOptions = {
-   // Pick a short, unique name to identify your site, like &#39;gsa-auctions&#39;
-   // in this example.
-   registrationSource: &#39;nasa-apis&#39;,</p>
-
-<p>// Enter the API key you signed up for and specially configured for this
-   // API key signup embed form.
-   apiKey: &#39;EMZRfUZmi9ZMWFd5JqL6fHXHcCe0mXXXk9K5aRd3&#39;,</p>
-
-<p>// Provide an example URL you want to show to users after they signup.
-   // This can be any API endpoint on your server, and you can use the
-   // special {{api_key}} variable to automatically substitute in the API
-   // key the user just signed up for.
-   exampleApiUrl: &#39;https://api.data.gov/nasa/nasa-apis?api_key={{api_key}}&amp;format=JSON&#39;
- };</p>
-
-<p>/* * * DON&#39;T EDIT BELOW THIS LINE * * */
- (function() {
-   var apiUmbrella = document.createElement(&#39;script&#39;); apiUmbrella.type = &#39;text/javascript&#39;; apiUmbrella.async = true;
-   apiUmbrella.src = &#39;https://api.data.gov/static/javascripts/signup_embed.js&#39;;
-   (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(apiUmbrella);
- })();
-</script>
-<noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
-{% endraw %}</p>
-
 <h1 id="authentication">Authentication</h1>
 
 <p>You do not need to authenticate in order to explore the NASA data.  However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for an <a href="https://api.data.gov/signup">api.data.gov developer key</a>.  </p>
