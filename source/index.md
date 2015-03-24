@@ -147,7 +147,7 @@ One of the most popular websites at NASA is the [Astronomy Picture of the Day](h
 
 ### HTTP Request
 
-`GET http://api.data.gov/nasa/planetary/apod`
+`GET https://api.data.gov/nasa/planetary/apod`
 
 ### Query Parameters
 
@@ -162,59 +162,66 @@ api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
 # Earth temperature anomalies
 
-[New Scientist](http://www.newscientist.com/) built a highly useful app to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  Their app restructures and rides on data from the [NASA Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/).  This endpoint resurfaces the data to interact with local information on global warming anomalies through the browser.  Provide an address or a coordinate pair, along with a date range, and watch the local temperature change.  
-
+There is no doubt that, on average, the earth is warming.  However, the warming is spatially heterogenous.  How much warmer (or cooler) is your hometown?  This endpoint reports local temperature anomalies from the [Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/) via the [New Scientist](http://www.newscientist.com/) web application to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov.  The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the [d3 framework]().
 
 ## Address
 
+The location can be specified as an address string.
+
 ### HTTP Request
 
-`GET http://api.nasa.gov/planetary/earth/temperature/address`
+`GET https://api.data.gov/nasa/planetary/earth/temperature/address`
 
 ### Query Parameters
 
 Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
-address | string | n/a | Address string
+text | string | n/a | Address string
 begin | int | 1880 | beginning year for date range, inclusive
 end | int | 2014 | end year for date range, inclusive
 api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
+### Example query
+[`https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&begin=1990`](https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&begin=1990&api_key=DEMO_KEY)
+
 ## Coordinates
+
+Alternatively, you can supply the precise latitude and longitude as the location.
 
 ### HTTP Request
 
-`GET http://api.nasa.gov/planetary/earth/temperature/coords`
+`GET https://api.data.gov/planetary/earth/temperature/coords`
 
 ### Query Parameters
 
 Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
-**lat** | **float** | n/a | **Latitude in degrees**
-**lon** | **float** | n/a | **Longitude in degrees**
+lat | float | n/a | Latitude
+lon | float | n/a | Longitude
 begin | int | 1880 | beginning year for date range, inclusive
 end | int | 2014 | end year for date range, inclusive
-**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
+### Example query
+[`https://api.data.gov/nasa/planetary/earth/temperature/coords?lat=100.3&lon=1.6&begin=1990&end=2005&api_key=DEMO_KEY`](https://api.data.gov/nasa/planetary/earth/temperature/coords?lat=100.3&lon=1.6&begin=1990&end=2005&api_key=DEMO_KEY)
 
 # Patents
 
-The NASA patent portfolio is available to benefit US citizens. Through partnerships and licensing agreements with industry, these patents ensure that NASA's investments in pioneering research find secondary uses that benefit the economy, create jobs, and improve quality of life.  This endpoint provides structured, searchable developer access to NASA's patents.
+The NASA patent portfolio is available to benefit US citizens. Through partnerships and licensing agreements with industry, these patents ensure that NASA's investments in pioneering research find secondary uses that benefit the economy, create jobs, and improve quality of life.  This endpoint provides structured, searchable developer access to NASA's patents that have been curated to support technology transfer.
 
 ### HTTP Request
 
-`GET http://api.nasa.gov/patents`
+`GET https://api.data.gov/patents`
 
 ### Query Parameters
 
 Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
-**category** | **string** | n/a | **Patent category**
 query | string | None | Search text to filter results
 concept_tags | bool | False | Return an ordered dictionary of concepts from the patent abstract
-**api_key** | **string** | DEMO_KEY | **api.data.gov key for expanded usage**
+limit | int | *all* | number of patents to return
+api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
-<aside class="notice">
-The patent category must be from the acceptable category list or no results will be returned.
-</aside>
+### Example query
+[`https://api.data.gov/nasa/patents/content?query=temperature&limit=5&api_key=DEMO_KEY`](https://api.data.gov/nasa/patents/content?query=temperature&limit=5&api_key=DEMO_KEY)
 
