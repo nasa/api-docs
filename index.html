@@ -49,6 +49,42 @@
           this documentation site</a>.</p>
 
         <h1 id="apply-for-an-api-key">Apply for an API Key</h1>
+		<p id="apidatagov_signup" style="margin-right: 50%; width: 75%;">Loading signup form...</p>
+		<script type="text/javascript">
+		 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		 var apiUmbrellaSignupOptions = {
+		   // Pick a short, unique name to identify your site, like 'gsa-auctions'
+		   // in this example.
+		   registrationSource: 'nasa-apis',
+
+		   // Enter the API key you signed up for and specially configured for this
+		   // API key signup embed form.
+		   apiKey: 'EMZRfUZmi9ZMWFd5JqL6fHXHcCe0mXXXk9K5aRd3',
+
+		   // Provide an example URL you want to show to users after they signup.
+		   // This can be any API endpoint on your server, and you can use the
+		   // special {{api_key}} variable to automatically substitute in the API
+		   // key the user just signed up for.
+		   exampleApiUrl: 'https://api.nasa.gov/apod?api_key={{api_key}}&format=JSON'
+		 };
+
+		 /* * * DON'T EDIT BELOW THIS LINE * * */
+		 (function() {
+		   var apiUmbrella = document.createElement('script'); apiUmbrella.type = 'text/javascript'; apiUmbrella.async = true;
+		   apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+		   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+		 })();
+		 
+		 
+		 setTimeout(function() {
+    		   $('.api-umbrella-embed .form-group .col-sm-5').each(function(index, node) { 
+    		   		$(node).removeClass("col-sm-5");
+    				$(node).addClass("col-sm-8");
+    		   });		 	
+		 }, 500);
+
+		</script>
+		<noscript>Please enable JavaScript to signup for an <a href="http://api.nasa.gov/">api.data.gov</a> API key.</noscript>
 
         <h1 id="authentication">Authentication</h1>
 
