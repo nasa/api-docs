@@ -527,7 +527,7 @@
 
         <h3 id="http-request">HTTP Request</h3>
 
-          <p><code class="prettyprint">GET https://api.data.gov/patents</code></p>
+          <p><code class="prettyprint">GET https://api.data.gov/nasa/patents</code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
 
@@ -568,6 +568,66 @@
         <h3 id="example-query">Example query</h3>
 
           <p><a href="https://api.data.gov/nasa/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.data.gov/nasa/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY</code></a></p>
+
+        <h1 id="patents">Sounds (beta)</h1>
+
+          <p>
+
+            Sound exists in space.  Sometimes.  And NASA has released a series
+            of space sounds via sound cloud.  We have abstracted away some of
+            the hassle in accessing these sounds, so that developers can play
+            with the audio files.  For example, a useful application would be
+            an automatic filter to identify human voices in these audio files.
+            For now, that would help identify content.  Later, however, when
+            we retrieve sounds from far-off planets, we can apply the filter
+            to identify unknown human space colonies.  That was a joke.  Sort
+            of.
+
+          </p>
+
+        <h3 id="http-request">HTTP Request</h3>
+
+          <p><code class="prettyprint">GET https://api.data.gov/nasa/planetary/sounds</code></p>
+
+        <h3 id="query-parameters">Query Parameters</h3>
+
+          <table><thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+            </thead><tbody>
+            <tr>
+              <td>q</td>
+              <td>string</td>
+              <td>None</td>
+              <td>Search text to filter results</td>
+            </tr>
+            <tr>
+              <td>limit</td>
+              <td>int</td>
+              <td>10</td>
+              <td>number of tracks to return</td>
+            </tr>
+            <tr>
+              <td>api_key</td>
+              <td>string</td>
+              <td>DEMO_KEY</td>
+              <td>api.data.gov key for expanded usage</td>
+            </tr>
+          </tbody></table>
+
+        <h3 id="example-query">Example query</h3>
+
+          <p><a href="http://api.data.gov/nasa/planetary/sounds?q=apollo&api_key=DEMO_KEY"><code class="prettyprint">http://api.data.gov/nasa/planetary/sounds?q=apollo&api_key=DEMO_KEY</code></a></p>
+
+        <aside class="notice"> 
+          Note that the download URLs in the returned object require
+          soundcloud authentication to access the files.  This will likely
+          change in the stable version of the API.
+        </aside>
 
       </div>
       <div class="dark-box">
