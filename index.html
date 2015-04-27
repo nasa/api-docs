@@ -71,7 +71,31 @@
 		   // This can be any API endpoint on your server, and you can use the
 		   // special {{api_key}} variable to automatically substitute in the API
 		   // key the user just signed up for.
-		   exampleApiUrl: 'api.data.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
+		   exampleApiUrl: 'api.data.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON',
+
+		   // OPTIONAL: Provide extra content to display on the signup confirmation
+		   // page. This will be displayed below the user's API key and the example
+		   // API URL are shown. HTML is allowed. Defaults to ""
+		   // signupConfirmationMessage: '',
+
+		   // OPTIONAL: Provide a URL to your own contact page to link to for user
+		   // support. Defaults to "https://api.data.gov/contact/"
+		   contactUrl: 'https://github.com/nasa/api-docs/issues'
+
+		   // OPTIONAL: Set to false to disable sending a welcome e-mail to the
+		   // user after signing up. Defaults to true.
+		   // sendWelcomeEmail: false,
+
+		   // OPTIONAL: Provide the name of your developer site. This will appear
+		   // in the subject of the welcome e-mail as "Your {{siteName}} API key".
+		   // Defaults to "api.data.gov".
+		   // siteName: 'Agency Developer Network',
+
+		   // OPTIONAL: Provide a custom sender name for who the welcome email
+		   // appears from. The actual address will be "noreply@api.data.gov", but
+		   // this will change the name of the displayed sender in this fashion:
+		   // "{{emailFromName}} <noreply@api.data.gov>". Defaults to "".
+		   // emailFromName: 'Agency Developer Network',
 		 };
 
 		 /* * * DON'T EDIT BELOW THIS LINE * * */
