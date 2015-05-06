@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>NASA Open APIs</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="javascripts/all.js" type="text/javascript"></script>
+	<script src="javascripts/menu-notoc.js" type="text/javascript"></script>
 
 	<style>
 		.signup-example a {
@@ -28,7 +29,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <a href="/landing.html"><img src="images/logo.png"/></a>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -36,13 +37,18 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#apply-for-an-api-key'>Sign Up for a API Key</a></li>
+            <li><a href='#apply-for-an-api-key'>API Key Sign Up</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+		<h1 id="home">Home</h1>
+		
+		<h1 id="getting-started-link">Getting Started</h1>
+		
+		  
+        <!-- <h1 id="introduction" style="margin-top: 0px;">Introduction</h1>
 
           <p>NASA has <strong>the best</strong> data.  Way better than NOAA.  Most
           visitors to <a href="https://www.nasa.gov">nasa.gov</a> websites are looking
@@ -52,9 +58,9 @@
           endpoints that will soon be available.  Stay tuned.  In the meantime, if you
           have any suggestions (either about the APIs or documentation) please submit an
           issue at the <a href="https://github.com/nasa/api-docs">open repository for
-          this documentation site</a>.</p>
+          this documentation site</a>.</p> -->
 
-        <h1 id="apply-for-an-api-key">Apply for an API Key</h1>
+		<!-- <h2 id="#apply-for-an-api-key">Get Your API Key</h2>
 		<p id="apidatagov_signup" style="margin-right: 50%; width: 75%;">Loading signup form...</p>
 		<script type="text/javascript">
 		 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -71,7 +77,7 @@
 		   // This can be any API endpoint on your server, and you can use the
 		   // special {{api_key}} variable to automatically substitute in the API
 		   // key the user just signed up for.
-		   exampleApiUrl: 'api.data.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
+		   exampleApiUrl: 'api.nasa.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
 		 };
 
 		 /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -80,19 +86,21 @@
 		   apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
 		   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
 		 })();
-		 
-		 
+
 		 setTimeout(function() {
-    		   $('.api-umbrella-embed .form-group .col-sm-5').each(function(index, node) { 
+    		   $('.api-umbrella-embed .form-group .col-sm-5').each(function(index, node) {
     		   		$(node).removeClass("col-sm-5");
     				$(node).addClass("col-sm-8");
-    		   });		 	
-		 }, 500);
+    		   });
+			   //$('.api-umbrella-embed p').text("Sign up for an application programming interface (API) key to access and use web services available on both NASA API and the api.data.gov developer networks.");
+			   $('.api-umbrella-embed p').remove();
+			   $('.api-umbrella-embed').prepend($("<p style='margin-bottom: 25px;'>Sign up your API key to access and use APIs available on both NASA API and api.data.gov developer networks.</p>"));
+		 }, 1000);
 
 		</script>
-		<noscript>Please enable JavaScript to signup for a <a href="http://nasa.github.io/api-docs/#apply-for-an-api-key">NASA API key</a>.</noscript>
+		<noscript>Please enable JavaScript to signup for a <a href="http://nasa.github.io/api-docs/#apply-for-an-api-key">NASA API key</a>.</noscript> -->
 
-        <h1 id="authentication">Authentication</h1>
+        <h1 id="authentication" style="margin-top: 0px;">Authentication</h1>
 
           <p><strong>You do not need to authenticate</strong> in order to
           explore the NASA data.  However, if you will be intensively using
@@ -273,7 +281,7 @@
           house?  This endpoint retrieves the date-times and asset names for
           available imagery for a supplied location. The satellite passes over
           each point on earth roughly once every sixteen days.  <a
-          href="#">This is an amazing visualization</a> of the acquisition
+          href="http://earthobservatory.nasa.gov/Features/LandsatBigData/">This is an amazing visualization</a> of the acquisition
           pattern for Landsat 8 imagery. The objective of this endpoint is
           primarily to support the use of the <a href="/#imagery">imagery
           endpoint</a>.</p>
@@ -407,7 +415,7 @@
           response to correspond to other APIs on api.nasa.gov.  The developer
           supplies a location and date range, and the returned object is a
           list of dictionaries that is ready for visualization in the <a
-          href="#">d3 framework</a>.</p>
+          href="http://d3js.org/">d3 framework</a>.</p>
 
         <h2 id="address">Address</h2>
 
