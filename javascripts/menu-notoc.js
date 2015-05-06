@@ -9,7 +9,7 @@ $(document).ready(function() {
 	$("input[value='api-listing']").remove();
 	$("#api-listing").remove();
 	$("#tocify-header1 .tocify-item a").on("click", function() {
-		window.location.href = "/#apply-for-an-api-key";
+		window.location.href = "/#authentication";
 	});
 	
 	$("input[value='getting-started-link']").remove();
