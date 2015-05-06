@@ -17,11 +17,4 @@ $(document).ready(function() {
 	$("#tocify-header1 .tocify-item a").on("click", function() {
 		window.location.href = "/landing.html#getting-started";
 	});
-	
-	//stubbed method:
-	function f1() {
-		console.log("stubbed method");
-	}
-	
-	
 });

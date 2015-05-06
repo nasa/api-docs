@@ -27,7 +27,7 @@
 		<div id="toc"></div>
         
 		<ul class="toc-footer">
-			<li><a href='/index.html#apply-for-an-api-key'>Sign Up for a API Key</a></li>
+			<li><a href='#apply-for-an-api-key'>API Key Sign Up</a></li>
 			<li><a href='//data.nasa.gov'>NASA Data Portal</a></li>
 			<li><a href='//code.nasa.gov'>NASA Open Source</a></li>
 			<li><a href='//github.com/nasa'>NASA on Github</a></li>
@@ -36,6 +36,7 @@
 	<div class="page-wrapper">
 		<div class="dark-box"></div>
 		<div class="content">
+			
 			<!-- jumbotron-->
 			<div class="mainSection">
 				<div style="height: 35px;"></div>
@@ -78,17 +79,24 @@
 					<div style="clear: both;"></div>
 				</div>
 				
-				<!-- <div class="infographic">
+				<!-- TODO: add infographic material -->
+				<!-- 
+				<div class="infographic">
 					<div style="float: left;">
 						<img src="images/infographic_why.jpg" width="125px" style="margin-top: 0px;"/>
 					</div>
 					<div style="clear: both;"></div>
-				</div> -->
-				
+				</div>
+				-->
 				<div style="clear: right;"></div>
 			</div>
 			
 			
+			<!--
+				 document sections 
+			-->
+				
+			<!-- Getting Started -->
 			<div class="gettingStarted">
 				<div style="height: 30px;"></div>
 				<a href="#getting-started" class="button">Get Started</a>
@@ -98,12 +106,62 @@
             <p style="margin-top: 10px;">Welcome to the NASA API portal. The objective of this site is to make NASA data, including imagery, emminently accessible to application developers.  The api.nasa.gov catalog is growing.</p>
 			
 			<h1 id="getting-started">Getting Started</h1>
-        	<p>Most developers getting started with api.nasa.gov wish to leverage NASA data in their applications and services, and this is encouraged!  There are also developers that have existing APIs that they may wish to contribute to the NASA API site.  Below describes two paths on how to "use" our APIs as well as "contribute" to our API catalog.  First, to get started with using NASA APIs, we recommend <a href="/index.html#apply-for-an-api-key">applying for an API key</a>, reviewing the <a href="/index.html#authentication">Authentication</a> section, then once ready, dive in to <a href="/#earth">API calls</a>.  </p>
-			<div style=" text-align: center; width: 100%"><img src="images/getting_started_use" style="margin: auto;"/></div>
+        	<p>Most developers getting started with api.nasa.gov wish to leverage NASA data in their applications and services, and this is encouraged!  There are also developers that have existing APIs that they may wish to <a href="#contributing">contribute</a> to the NASA API site.  Below describes two paths on how to "use" our APIs as well as "contribute" to our API catalog.  First, to get started with using NASA APIs, we recommend <a href="/index.html#apply-for-an-api-key">applying for an API key</a>, reviewing the <a href="/index.html#authentication">Authentication</a> section, then once ready, dive in to <a href="/#earth">API calls</a>.  </p>
+			<div style=" text-align: center; width: 100%"><img src="images/getting_started_use" style="margin: auto; margin-top: 25px;"/></div>
 
+			<h2 id="#apply-for-an-api-key">Get Your API Key</h2>
+			<p id="apidatagov_signup" style="margin-right: 50%; width: 75%;">Loading signup form...</p>
+			<script type="text/javascript">
+			 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			 var apiUmbrellaSignupOptions = {
+			   // Pick a short, unique name to identify your site, like 'gsa-auctions'
+			   // in this example.
+			   registrationSource: 'nasa-apis',
+
+			   // Enter the API key you signed up for and specially configured for this
+			   // API key signup embed form.
+			   apiKey: 'EMZRfUZmi9ZMWFd5JqL6fHXHcCe0mXXXk9K5aRd3',
+
+			   // Provide an example URL you want to show to users after they signup.
+			   // This can be any API endpoint on your server, and you can use the
+			   // special {{api_key}} variable to automatically substitute in the API
+			   // key the user just signed up for.
+			   exampleApiUrl: 'api.nasa.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
+			 };
+
+			 /* * * DON'T EDIT BELOW THIS LINE * * */
+			 (function() {
+			   var apiUmbrella = document.createElement('script'); apiUmbrella.type = 'text/javascript'; apiUmbrella.async = true;
+			   apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+			   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+			 })();		 
+		 
+			 setTimeout(function() {
+	    		   $('.api-umbrella-embed .form-group .col-sm-5').each(function(index, node) { 
+	    		   		$(node).removeClass("col-sm-5");
+	    				$(node).addClass("col-sm-8");
+	    		   });		 	
+				   //$('.api-umbrella-embed p').text("Sign up for an application programming interface (API) key to access and use web services available on both NASA API and the api.data.gov developer networks.");		
+				   $('.api-umbrella-embed p').remove();
+				   $('.api-umbrella-embed').prepend($("<p style='margin-bottom: 25px;'>Sign up your API key to access and use APIs available on both NASA API and api.data.gov developer networks.</p>"));
+			 }, 1000);
+
+			</script>
+			<noscript>Please enable JavaScript to signup for a <a href="http://nasa.github.io/api-docs/#apply-for-an-api-key">NASA API key</a>.</noscript>
+			
+			
+			<h2 id="#overview_authentication">Authentication</h2>
+			<p>
+				Authentication is in place on api.nasa.gov to enable developers greater access to backend resources.  Although api.nasa.gov Web Services can in fact be called without an API key, this introduces limitations related to Rate Limiting of calls.  To understand how to use your API key to sign calls, details about Web Service and DEMO_KEY Rate Limits, and viewing current usage, please visit the API <a href="/#authentication">Authentication Section</a> on the NASA API Listing page for detailed information.
+			</p>
+			
+			
+			<!-- NASA API Listing -->
 			<h1 id="api-listing">NASA API Listing</h1>
         	<p></p>
 			
+			
+			<!-- Contributing -->
 			<h1 id="contributing">Contributing</h1>
         	<p>Next, why not contribute to api.nasa.gov? If you have excellent data or a service that can benefit the community, publish your API on your server.  Once you have a running server and a robust API in place, take a look at our <a href="//github.com/nasa/api-docs/tree/staging">API documentation repository on GitHub</a>.  </p>
 			<div style=" text-align: center; width: 100%"><img src="images/getting_started_contribute" style="margin: auto;"/></div>
@@ -118,16 +176,20 @@
 				laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
 				cupidatat non proident, sunt in</p>
 
+			<!-- About -->
 			<h1 id="about">About</h1>
         	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
 				laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
 				cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				
+			
+			<!-- Contact -->
 			<h1 id="contact">Contact</h1>
         	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
 				laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
 				cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				
+			
 			
 			<div class="mobile-ads">
 				<div style="float: left;margin-top: 3px;">

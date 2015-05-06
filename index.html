@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>NASA Open APIs</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
@@ -37,7 +37,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#apply-for-an-api-key'>Sign Up for a API Key</a></li>
+            <li><a href='#apply-for-an-api-key'>API Key Sign Up</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -60,7 +60,7 @@
           issue at the <a href="https://github.com/nasa/api-docs">open repository for
           this documentation site</a>.</p> -->
 
-        <h1 id="apply-for-an-api-key" style="margin-top: 0px;">Apply for an API Key</h1>
+		<!-- <h2 id="#apply-for-an-api-key">Get Your API Key</h2>
 		<p id="apidatagov_signup" style="margin-right: 50%; width: 75%;">Loading signup form...</p>
 		<script type="text/javascript">
 		 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -77,7 +77,7 @@
 		   // This can be any API endpoint on your server, and you can use the
 		   // special {{api_key}} variable to automatically substitute in the API
 		   // key the user just signed up for.
-		   exampleApiUrl: 'api.data.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
+		   exampleApiUrl: 'api.nasa.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
 		 };
 
 		 /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -86,19 +86,21 @@
 		   apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
 		   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
 		 })();
-		 
-		 
+
 		 setTimeout(function() {
-    		   $('.api-umbrella-embed .form-group .col-sm-5').each(function(index, node) { 
+    		   $('.api-umbrella-embed .form-group .col-sm-5').each(function(index, node) {
     		   		$(node).removeClass("col-sm-5");
     				$(node).addClass("col-sm-8");
-    		   });		 	
-		 }, 500);
+    		   });
+			   //$('.api-umbrella-embed p').text("Sign up for an application programming interface (API) key to access and use web services available on both NASA API and the api.data.gov developer networks.");
+			   $('.api-umbrella-embed p').remove();
+			   $('.api-umbrella-embed').prepend($("<p style='margin-bottom: 25px;'>Sign up your API key to access and use APIs available on both NASA API and api.data.gov developer networks.</p>"));
+		 }, 1000);
 
 		</script>
-		<noscript>Please enable JavaScript to signup for a <a href="http://nasa.github.io/api-docs/#apply-for-an-api-key">NASA API key</a>.</noscript>
+		<noscript>Please enable JavaScript to signup for a <a href="http://nasa.github.io/api-docs/#apply-for-an-api-key">NASA API key</a>.</noscript> -->
 
-        <h1 id="authentication">Authentication</h1>
+        <h1 id="authentication" style="margin-top: 0px;">Authentication</h1>
 
           <p><strong>You do not need to authenticate</strong> in order to
           explore the NASA data.  However, if you will be intensively using
