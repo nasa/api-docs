@@ -52,7 +52,7 @@
           <p><strong>You do not need to authenticate</strong> in order to
           explore the NASA data.  However, if you will be intensively using
           the APIs to, say, support a mobile application, then you should sign
-          up for a <a href="#apply-for-an-api-key">NASA 
+          up for a <a href="/landing.html#apply-for-an-api-key">NASA 
           developer key</a>.  </p>
 
         <h2 id="web-service-rate-limits">Web Service Rate Limits</h2>
@@ -66,7 +66,7 @@
           </ul>
 
           <p>For each API key, these limits are applied across all
-          api.data.gov API requests. Exceeding these limits will lead to your
+          api.nasa.gov API requests. Exceeding these limits will lead to your
           API key being temporarily blocked from making further requests. The
           block will automatically be lifted by waiting an hour. If you need
           higher rate limits, contact us.</p>
@@ -106,7 +106,7 @@
           could then make another 500 requests.</p>
 
           <aside class="success">
-            Anyone can register for an api.data.gov key, which can be used to
+            Anyone can register for an api.nasa.gov key, which can be used to
             access data across federal agencies.  
           </aside>
 
@@ -159,7 +159,7 @@
         <h3 id="http-request">HTTP Request</h3>
 
           <p><code class="prettyprint">
-            GET https://api.data.gov/nasa/planetary/earth/imagery
+            GET https://api.nasa.gov/nasa/planetary/earth/imagery
           </code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
@@ -209,13 +209,13 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="https://api.data.gov/nasa/planetary/earth/imagery?lon=100.75&amp;lat=1.5&amp;date=2014-02-01&amp;cloud_score=True&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.data.gov/nasa/planetary/earth/imagery?lon=100.75&amp;lat=1.5&amp;date=2014-02-01&amp;cloud_score=True&amp;api_key=DEMO_KEY</code></a></p>
+          <p><a href="https://api.nasa.gov/nasa/planetary/earth/imagery?lon=100.75&amp;lat=1.5&amp;date=2014-02-01&amp;cloud_score=True&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/nasa/planetary/earth/imagery?lon=100.75&amp;lat=1.5&amp;date=2014-02-01&amp;cloud_score=True&amp;api_key=DEMO_KEY</code></a></p>
 
           <aside class="notice"> Note that the returned object may not match
             the supplied date exactly.  Instead, the image closest to the
@@ -236,7 +236,7 @@
         <h3 id="http-request">HTTP Request</h3>
 
           <p><code class="prettyprint">
-            GET https://api.data.gov/nasa/planetary/earth/assets
+            GET https://api.nasa.gov/nasa/planetary/earth/assets
           </code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
@@ -277,13 +277,13 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="https://api.data.gov/nasa/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.data.gov/nasa/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY</code></a></p>
+          <p><a href="https://api.nasa.gov/nasa/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/nasa/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY</code></a></p>
 
         <h1 id="apod">APOD</h1>
 
@@ -308,7 +308,7 @@
         <h3 id="http-request">HTTP Request</h3>
 
           <p><code class="prettyprint">
-            GET https://api.data.gov/nasa/planetary/apod
+            GET https://api.nasa.gov/nasa/planetary/apod
           </code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
@@ -337,14 +337,14 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="https://api.data.gov/nasa/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY">
-          <code class="prettyprint">https://api.data.gov/nasa/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY
+          <p><a href="https://api.nasa.gov/nasa/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY">
+          <code class="prettyprint">https://api.nasa.gov/nasa/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY
           </code></a></p>
 
         <h1 id="earth-temperature-anomalies">Earth temperature anomalies</h1>
@@ -371,7 +371,7 @@
         <h3 id="http-request">HTTP Request</h3>
 
           <p><code class="prettyprint">
-            GET https://api.data.gov/nasa/planetary/earth/temperature/address
+            GET https://api.nasa.gov/nasa/planetary/earth/temperature/address
           </code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
@@ -406,13 +406,13 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800%20F%20Street,%20NW,%20Washington%20DC&amp;begin=1990&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.data.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&amp;begin=1990</code></a></p>
+          <p><a href="https://api.nasa.gov/nasa/planetary/earth/temperature/address?text=1800%20F%20Street,%20NW,%20Washington%20DC&amp;begin=1990&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/nasa/planetary/earth/temperature/address?text=1800 F Street, NW, Washington DC&amp;begin=1990</code></a></p>
 
         <h2 id="coordinates">Coordinates</h2>
 
@@ -422,7 +422,7 @@
         <h3 id="http-request">HTTP Request</h3>
 
           <p><code class="prettyprint">GET
-          https://api.data.gov/planetary/earth/temperature/coords</code></p>
+          https://api.nasa.gov/planetary/earth/temperature/coords</code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
 
@@ -462,13 +462,13 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="https://api.data.gov/nasa/planetary/earth/temperature/coords?lon=100.3&lat=1.6&begin=1990&end=2005&api_key=DEMO_KEY"><code class="prettyprint">https://api.data.gov/nasa/planetary/earth/temperature/coords?lon=100.3&amp;lat=1.6&amp;begin=1990&amp;end=2005&amp;api_key=DEMO_KEY</code></a></p>
+          <p><a href="https://api.nasa.gov/nasa/planetary/earth/temperature/coords?lon=100.3&lat=1.6&begin=1990&end=2005&api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/nasa/planetary/earth/temperature/coords?lon=100.3&amp;lat=1.6&amp;begin=1990&amp;end=2005&amp;api_key=DEMO_KEY</code></a></p>
 
         <h1 id="patents">Patents</h1>
 
@@ -482,7 +482,7 @@
 
         <h3 id="http-request">HTTP Request</h3>
 
-          <p><code class="prettyprint">GET https://api.data.gov/nasa/patents</code></p>
+          <p><code class="prettyprint">GET https://api.nasa.gov/nasa/patents</code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
 
@@ -516,13 +516,13 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="https://api.data.gov/nasa/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.data.gov/nasa/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY</code></a></p>
+          <p><a href="https://api.nasa.gov/nasa/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/nasa/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY</code></a></p>
 
         <h1 id="sounds">Sounds (beta)</h1>
 
@@ -542,7 +542,7 @@
 
         <h3 id="http-request">HTTP Request</h3>
 
-          <p><code class="prettyprint">GET https://api.data.gov/nasa/planetary/sounds</code></p>
+          <p><code class="prettyprint">GET https://api.nasa.gov/nasa/planetary/sounds</code></p>
 
         <h3 id="query-parameters">Query Parameters</h3>
 
@@ -570,13 +570,13 @@
               <td>api_key</td>
               <td>string</td>
               <td>DEMO_KEY</td>
-              <td>api.data.gov key for expanded usage</td>
+              <td>api.nasa.gov key for expanded usage</td>
             </tr>
           </tbody></table>
 
         <h3 id="example-query">Example query</h3>
 
-          <p><a href="http://api.data.gov/nasa/planetary/sounds?q=apollo&api_key=DEMO_KEY"><code class="prettyprint">http://api.data.gov/nasa/planetary/sounds?q=apollo&api_key=DEMO_KEY</code></a></p>
+          <p><a href="http://api.nasa.gov/nasa/planetary/sounds?q=apollo&api_key=DEMO_KEY"><code class="prettyprint">http://api.nasa.gov/nasa/planetary/sounds?q=apollo&api_key=DEMO_KEY</code></a></p>
 
         <aside class="notice"> 
           Note that the download URLs in the returned object require
