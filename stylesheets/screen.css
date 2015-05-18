@@ -985,7 +985,7 @@ html,body {
 			text-align: center;
 			width: 100%;
 			height: 400px;
-			background-image:  url(/images/fold.jpg);
+			background-image:  url(../images/fold.jpg);
 			background-position:bottom left;
 			background-repeat:no-repeat;
 			background-size: cover;
