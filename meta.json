@@ -1,0 +1,13 @@
+{
+"title": "api-docs", 
+"url": "https://github.com/nasa/api-docs", 
+"repo": "api-docs",  
+"missions":[],
+"categories": ["Web Development"],
+"languages": ["Javascript", "HTML", "CSS"],
+"operating_systems": ["Linux", "Windows", "Mac", "Unix"],  
+"poc": "Jason Duley", 
+"poc_mbox": "jason.duley@nasa.gov", 
+"license": "NASA Open Source Agreement Version 1.3", 
+"software_types": ["documentation", "API", "web services"]
+}
