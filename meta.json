@@ -4,7 +4,7 @@
 "repo": "api-docs",  
 "missions":["OCIO"],
 "categories": ["Web Development", "Websites"],
-"languages": ["Javascript", "HTML", "CSS"],
+"languages": ["Javascript", "HTML", "CSS", "JQuery"],
 "operating_systems": ["Linux", "Windows", "Mac", "Unix"],  
 "poc": "Jason Duley", 
 "poc_mbox": "jason.duley@nasa.gov", 
