@@ -122,6 +122,68 @@
             access data across federal agencies.  
           </aside>
 
+          <h1 id="apod">APOD</h1>
+
+            <p>One of the most popular websites at NASA is the <a
+            href="http://apod.nasa.gov/apod/astropix.html">Astronomy Picture of
+            the Day</a>. In fact, this website is one of the <a
+            href="https://analytics.usa.gov/demo/">most popular websites</a>
+            across all federal agencies.  It has the popular appeal of a Justin
+            Bieber video.  This endpoint structures the APOD imagery and
+            associated metadata so that it can be repurposed for other
+            applications.  In addition, if the <code
+            class="prettyprint">concept_tags</code> parameter is set to <code
+            class="prettyprint">True</code>, then keywords derived from the
+            image explanation are returned.  These keywords could be used as
+            auto-generated hashtags for twitter or instagram feeds; but
+            generally help with discoverability of relevant imagery.</p>
+
+            <p><strong>Example image:</strong></p>
+
+            <p><img src="images/apod.jpg" /></p>
+
+          <h3 id="http-request">HTTP Request</h3>
+
+            <p><code class="prettyprint">
+              GET https://api.nasa.gov/planetary/apod
+            </code></p>
+
+          <h3 id="query-parameters">Query Parameters</h3>
+
+            <table><thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+              </thead><tbody>
+              <tr>
+                <td>date</td>
+                <td>YYYY-MM-DD</td>
+                <td><em>today</em></td>
+                <td>The date of the APOD image to retrieve</td>
+              </tr>
+              <tr>
+                <td>concept_tags</td>
+                <td>bool</td>
+                <td>False</td>
+                <td>Return an ordered dictionary of concepts from the APOD explanation</td>
+              </tr>
+              <tr>
+                <td>api_key</td>
+                <td>string</td>
+                <td>DEMO_KEY</td>
+                <td>api.nasa.gov key for expanded usage</td>
+              </tr>
+            </tbody></table>
+
+          <h3 id="example-query">Example query</h3>
+
+            <p><a href="https://api.nasa.gov/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY">
+            <code class="prettyprint">https://api.nasa.gov/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY
+            </code></a></p>
+			
         <h1 id="earth">Earth</h1>
 
           <p>A recent industry <a
@@ -296,67 +358,7 @@
 
           <p><a href="https://api.nasa.gov/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY</code></a></p>
 
-        <h1 id="apod">APOD</h1>
-
-          <p>One of the most popular websites at NASA is the <a
-          href="http://apod.nasa.gov/apod/astropix.html">Astronomy Picture of
-          the Day</a>. In fact, this website is one of the <a
-          href="https://analytics.usa.gov/demo/">most popular websites</a>
-          across all federal agencies.  It has the popular appeal of a Justin
-          Bieber video.  This endpoint structures the APOD imagery and
-          associated metadata so that it can be repurposed for other
-          applications.  In addition, if the <code
-          class="prettyprint">concept_tags</code> parameter is set to <code
-          class="prettyprint">True</code>, then keywords derived from the
-          image explanation are returned.  These keywords could be used as
-          auto-generated hashtags for twitter or instagram feeds; but
-          generally help with discoverability of relevant imagery.</p>
-
-          <p><strong>Example image:</strong></p>
-
-          <p><img src="images/apod.jpg" /></p>
-
-        <h3 id="http-request">HTTP Request</h3>
-
-          <p><code class="prettyprint">
-            GET https://api.nasa.gov/planetary/apod
-          </code></p>
-
-        <h3 id="query-parameters">Query Parameters</h3>
-
-          <table><thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-            </thead><tbody>
-            <tr>
-              <td>date</td>
-              <td>YYYY-MM-DD</td>
-              <td><em>today</em></td>
-              <td>The date of the APOD image to retrieve</td>
-            </tr>
-            <tr>
-              <td>concept_tags</td>
-              <td>bool</td>
-              <td>False</td>
-              <td>Return an ordered dictionary of concepts from the APOD explanation</td>
-            </tr>
-            <tr>
-              <td>api_key</td>
-              <td>string</td>
-              <td>DEMO_KEY</td>
-              <td>api.nasa.gov key for expanded usage</td>
-            </tr>
-          </tbody></table>
-
-        <h3 id="example-query">Example query</h3>
-
-          <p><a href="https://api.nasa.gov/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY">
-          <code class="prettyprint">https://api.nasa.gov/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY
-          </code></a></p>
+        
 
         <h1 id="earth-temperature-anomalies">Earth temperature anomalies</h1>
 
