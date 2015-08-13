@@ -5,12 +5,12 @@
 "description": "repository to host api.nasa.gov website and associated API documentation.", 
 "url": "https://github.com/nasa/api-docs",
 "repo": "nasa/api-docs",
-"missions":["OCIO"], 
+"missions":["OCIO", "GSA"], 
 "categories": ["CTOF2F", "NASA", "In-house software‎"], 
 "languages": ["Javascript", "HTML", "CSS", "Python", "PL2"],
 "operating_systems": ["Linux", "Windows", "Unix", "Mac"],  
 "poc": "Jason Duley", 
-"poc_mbox": "jason.duley@nasa.gov", 
+"poc_mbox": "jason.j.duley@nasa.gov", 
 "license": "NASA Open Source Agreement Version 1.3", 
-"software_types": ["website", "front-end", "gh-pages"]
+"software_types": ["website", "front-end", "gh-pages", "API"]
 }
