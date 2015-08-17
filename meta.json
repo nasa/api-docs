@@ -7,7 +7,7 @@
 "repo": "nasa/api-docs",
 "missions":["OCIO", "GSA"], 
 "categories": ["CTOF2F", "NASA", "In-house software‎"], 
-"languages": ["Javascript", "HTML", "CSS", "Python", "PL2"],
+"languages": ["Javascript", "HTML", "CSS", "Python"],
 "operating_systems": ["Linux", "Windows", "Unix", "Mac"],  
 "poc": "Jason Duley", 
 "poc_mbox": "jason.j.duley@nasa.gov", 
