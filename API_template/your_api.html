@@ -1,47 +1,115 @@
 <!-- API Title as it will appear in the left nav table of contents -->
-<h1 id="your_api_id">My API</h1>
+<h1 id="your_api_id">Asteroids - NeoWs</h1>
 
 <!-- provide a background and overview of your API -->
-<p>API overview goes here</p>
-
-<!-- Optional - include sample imagery -->
-<p><strong>Example image:</strong></p>
-<p><img src="images/apod.jpg" /></p>
-
-<!-- Sample HTTP Request -->
-<h3 id="http-request">HTTP Request</h3>
 <p>
+  NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information.
+	With NeoWs a user can: search for Asteroids based on their closest approach date to Earth,
+	lookup a specific Asteroid with its NASA JPL small body id, as well as browse the overall data-set.
+
+  Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.gov/).
+
+	Interactive api documentation http://<PROXY URL>
+</p>
+
+<!-- Neo - Feed -->
+<h3 id="http-request">Neo - Feed</h3>
+<p>
+  Retrieve a list of Asteroids based on their closest approach date to Earth.
 	<code class="prettyprint">
-		GET https://api.nasa.gov/nasa/group/your_api
+    GET <PROXY URL>/rest/v1/feed?start_date=<STAT_DATE>&end_date=<END_DATE>
 	</code>
 </p>
 
 <!-- Query Parameters-->
 <h3 id="query-parameters">Query Parameters</h3>
-<table><thead>
-<tr>
-  <th>Parameter</th>
-  <th>Type</th>
-  <th>Default</th>
-  <th>Description</th>
-</tr>
-</thead><tbody>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>start_date</td>
+      <td>String</td>
+      <td>none</td>
+      <td>Starting date for asteroid search</td>
+    </tr>
+    <tr>
+      <td>end_date</td>
+      <td>String</td>
+      <td>7 days after start_date</td>
+      <td>Ending date for asteroid search</td>
+    </tr>
+  </tbody>
+</table>
 
-<!-- uncomment and repeat for each param -->
-<!-- <tr>
-  <td>my_parameter</td>
-  <td>the type</td>
-  <td><em>today</em></td>
-  <td>A parameter in my API</td>
-</tr> -->
-</tbody></table>
-
-<!-- Make an example GET call to see your API in action, use DEMO_KEY -->
 <h3 id="example-query">Example query</h3>
 <p>
-	<a href="https://api.nasa.gov/nasa/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY">
+	<a href="http://<PROXY URL>/rest/v1/feed?start_date=2015-09-07&amp;end_date=2015-09-08&amp;api_key=DEMO_KEY">
 		<code class="prettyprint">
-			https://api.data.gov/nasa/planetary/apod?concept_tags=True&amp;api_key=DEMO_KEY
+      http://<PROXY URL>/rest/v1/feed?start_date=2015-09-07&amp;end_date=2015-09-08&amp;api_key=DEMO_KEY
+		</code>
+	</a>
+</p>
+
+<!-- Neo - Lookup -->
+<h3 id="http-request">Neo - Lookup</h3>
+<p>
+  Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID
+	<code class="prettyprint">
+    GET <PROXY URL>/rest/v1/neo/<Astetoid_ID>
+	</code>
+</p>
+
+<!-- Path Parameters-->
+<h3 id="query-parameters">Path Parameters</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>astetoid_id</th>
+      <th>String</th>
+      <th>none</th>
+      <th>Asteroid SPK-ID correlates to the NASA JPL small body</th>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-query">Example query</h3>
+<p>
+	<a href="http://<PROXY URL>/rest/v1/neo/3542519?api_key=DEMO_KEY">
+		<code class="prettyprint">
+      http://<PROXY URL>/rest/v1/neo/3542519?api_key=DEMO_KEY
+		</code>
+	</a>
+</p>
+
+<!-- Neo - Browse -->
+<h3 id="http-request">Neo - Browse</h3>
+<p>
+  Browse the overall Asteroid data-set
+	<code class="prettyprint">
+    GET http://<PROXY URL>/rest/v1/neo/browse/
+	</code>
+</p>
+
+<h3 id="example-query">Example query</h3>
+<p>
+	<a href="http://<PROXY URL>/rest/v1/neo/browse&amp;api_key=DEMO_KEY">
+		<code class="prettyprint">
+      http://<PROXY URL>/rest/v1/neo/browse&amp;api_key=DEMO_KEY
 		</code>
 	</a>
 </p>
