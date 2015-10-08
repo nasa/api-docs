@@ -124,13 +124,14 @@
 			<div style=" text-align: center; width: 100%"><img src="images/getting_started_use" style="margin: auto; margin-top: 25px;"/></div>
 			
 						
+
 			<h2 id="live_example">Live Example</h2>
 			<p>The following live editor allows you to see the APOD API in action!  </p>
 			
 			<div id="exampleIframe">
-				<a class="jsbin-embed" style="min-height: 725px;" href="http://jsbin.com/jivewu/5/embed?js,output&height=725px">Example APOD call</a>
+				<a class="jsbin-embed" style="min-height: 725px;" href="https://jsbin.com/jivewu/5/embed?js,output&height=725px">Example APOD call</a>
 			</div>
-			
+	
 	
 
 			<h2 id="apply-for-an-api-key">Get Your API Key</h2>
@@ -150,18 +151,11 @@
 			   // This can be any API endpoint on your server, and you can use the
 			   // special {{api_key}} variable to automatically substitute in the API
 			   // key the user just signed up for.
-			   exampleApiUrl: 'api.nasa.gov/nasa/planetary/apod?api_key={{api_key}}&format=JSON'
+			   exampleApiUrl: 'https://api.nasa.gov/planetary/apod?api_key={{api_key}}&format=JSON'
 			 };
 
 			 /* * * DON'T EDIT BELOW THIS LINE * * */
 			 (function() {	
-				 
-				 // $("#doWork").click(function(e) {
-// 					 var ce = $('<a class="jsbin-embed" style="min-height: 725px;" href="http://jsbin.com/jivewu/4/embed?js,output&height=725px">Example APOD call</a>');
-// 					 $("#exampleIframe2").append(ce);
-// 					 e.preventDefault();
-// 				 });
-				 
 			   var apiUmbrella = document.createElement('script'); apiUmbrella.type = 'text/javascript'; apiUmbrella.async = true;
 			   apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
 			   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
