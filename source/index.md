@@ -9,7 +9,7 @@ search: true
 
 # Introduction
 
-NASA has **the best** data.  Way better than NOAA.  Most visitors to [nasa.gov](https://www.nasa.gov) websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, emminently accessible to application developers.  The [api.nasa.gov] index is growing.  These endpoints are just a sample of the endpoints that will soon be available.  Stay tuned.  In the meantime, if you have any suggestions (either about the APIs or documentation) please submit an issue at the [open repository for this documentation site](https://github.com/nasa/api-docs).
+NASA has **the best** data.  Way better than NOAA.  Most visitors to [nasa.gov](https://www.nasa.gov) websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, eminently accessible to application developers.  The [api.nasa.gov] index is growing.  These endpoints are just a sample of the endpoints that will soon be available.  Stay tuned.  In the meantime, if you have any suggestions (either about the APIs or documentation) please submit an issue at the [open repository for this documentation site](https://github.com/nasa/api-docs).
 
 # Apply for an API Key
 
