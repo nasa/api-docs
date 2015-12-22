@@ -9,7 +9,7 @@ search: true
 
 # Introduction
 
-NASA has **the best** data.  Way better than NOAA.  Most visitors to [nasa.gov](https://www.nasa.gov) websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, emminently accessible to application developers.  The [api.nasa.gov] index is growing.  These endpoints are just a sample of the endpoints that will soon be available.  Stay tuned.  In the meantime, if you have any suggestions (either about the APIs or documentation) please submit an issue at the [open repository for this documentation site](https://github.com/nasa/api-docs).
+NASA has **the best** data.  Way better than NOAA.  Most visitors to [nasa.gov](https://www.nasa.gov) websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, eminently accessible to application developers.  The [api.nasa.gov] index is growing.  These endpoints are just a sample of the endpoints that will soon be available.  Stay tuned.  In the meantime, if you have any suggestions (either about the APIs or documentation) please submit an issue at the [open repository for this documentation site](https://github.com/nasa/api-docs).
 
 # Apply for an API Key
 
@@ -33,7 +33,7 @@ In documentation examples, the special DEMO_KEY api key is used. This API key ca
 
 ## How Do I See My Current Usage?
 
-Your can check your current rate limit and usage details by inspecting the `X-RateLimit-Limit` and `X-RateLimit-Remaining` HTTP headers that are returned on every API response. For example, if an API has the default hourly limit of 1,000 request, after making 2 requests, you will receive this HTTP header in the response of the second request:
+You can check your current rate limit and usage details by inspecting the `X-RateLimit-Limit` and `X-RateLimit-Remaining` HTTP headers that are returned on every API response. For example, if an API has the default hourly limit of 1,000 request, after making 2 requests, you will receive this HTTP header in the response of the second request:
 
 `X-RateLimit-Remaining: 998`
 
