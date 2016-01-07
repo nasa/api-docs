@@ -149,6 +149,8 @@
             <p><code class="prettyprint">
               GET https://api.nasa.gov/planetary/apod
             </code></p>
+			
+			<p><b>concept_tags are now disabled in this service.  Also, an optional return parameter <i>copyright</i> is returned if the image is not public domain.</b></p>
 
           <h3 id="query-parameters">Query Parameters</h3>
 
@@ -167,7 +169,7 @@
                 <td>The date of the APOD image to retrieve</td>
               </tr>
               <!-- <tr>
-                <td>concept_tags</td>
+                <td><del>concept_tags</del></td>
                 <td>bool</td>
                 <td>False</td>
                 <td>Return an ordered dictionary of concepts from the APOD explanation</td>
