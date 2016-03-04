@@ -52,7 +52,7 @@ A recent industry [report](https://www.fgdc.gov/ngac/meetings/december-2014/ngac
 
 **Example image:**
 
-![](../images/earth.png)
+![](images/earth.png)
 
 Imagine the possibilities associated with this imagery, like [monitoring deforestation at 15-meter resolution](https://www.globalforestwatch.org) or assessing the damage from natural disasters.  If you discover any cool applications, [please let us know](mailto:daniel.s.hammer@nasa.gov) so that we can showcase them on [open.nasa.gov](https://open.nasa.gov).  
 
@@ -113,7 +113,7 @@ One of the most popular websites at NASA is the [Astronomy Picture of the Day](h
 
 **Example image:**
 
-![](../images/apod.jpg)
+![](images/apod.jpg)
 
 ### HTTP Request
 
