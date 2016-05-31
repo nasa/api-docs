@@ -197,134 +197,134 @@
 
 
 			<!-- BEGIN NEO -->
-			<h1 id="NeoWS">Asteroids - NeoWs</h1>
-			<p>
-			  NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information.
-				With NeoWs a user can: search for Asteroids based on their closest approach date to Earth,
-				lookup a specific Asteroid with its NASA JPL small body id, as well as browse the overall data-set.
-			</p>
-			<p>
-			  Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.gov/).
-			</p>
-			<p>
-				This API is maintained by <a href="https://github.com/SpaceRocks/">SpaceRocks Team: David Greenfield, Arezu Sarvestani, Jason English and Peter Baunach</a>.
-			</p>
-			<!-- Neo - Feed -->
-                        <h2 id="neows-feed">Neo - Feed</h2>
-			<p>
-			  Retrieve a list of Asteroids based on their closest approach date to Earth.
-				<code class="prettyprint">
-			    	GET https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY
-				</code>
-			</p>
-			<!-- Query Parameters-->
-			<h3 id="query-parameters">Query Parameters</h3>
-			<table>
-			  <thead>
-			    <tr>
-			      <th>Parameter</th>
-			      <th>Type</th>
-			      <th>Default</th>
-			      <th>Description</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <td>start_date</td>
-			      <td>YYYY-MM-DD</td>
-			      <td>none</td>
-			      <td>Starting date for asteroid search</td>
-			    </tr>
-			    <tr>
-			      <td>end_date</td>
-			      <td>YYYY-MM-DD</td>
-			      <td>7 days after start_date</td>
-			      <td>Ending date for asteroid search</td>
-			    </tr>
-                <tr>
-                  <td>api_key</td>
-                  <td>string</td>
-                  <td>DEMO_KEY</td>
-                  <td>api.nasa.gov key for expanded usage</td>
-                </tr>
-			  </tbody>
-			</table>
+						<h1 id="NeoWS">Asteroids - NeoWs</h1>
+						<p>
+						  NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information.
+							With NeoWs a user can: search for Asteroids based on their closest approach date to Earth,
+							lookup a specific Asteroid with its NASA JPL small body id, as well as browse the overall data-set.
+						</p>
+						<p>
+						  Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.gov/).
+						</p>
+						<p>
+							This API is maintained by <a href="https://github.com/SpaceRocks/">SpaceRocks Team: David Greenfield, Arezu Sarvestani, Jason English and Peter Baunach</a>.
+						</p>
+						<!-- Neo - Feed -->
+			                        <h2 id="neows-feed">Neo - Feed</h2>
+						<p>
+						  Retrieve a list of Asteroids based on their closest approach date to Earth.
+							<code class="prettyprint">
+						    	GET https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY
+							</code>
+						</p>
+						<!-- Query Parameters-->
+						<h3 id="query-parameters">Query Parameters</h3>
+						<table>
+						  <thead>
+						    <tr>
+						      <th>Parameter</th>
+						      <th>Type</th>
+						      <th>Default</th>
+						      <th>Description</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>start_date</td>
+						      <td>YYYY-MM-DD</td>
+						      <td>none</td>
+						      <td>Starting date for asteroid search</td>
+						    </tr>
+						    <tr>
+						      <td>end_date</td>
+						      <td>YYYY-MM-DD</td>
+						      <td>7 days after start_date</td>
+						      <td>Ending date for asteroid search</td>
+						    </tr>
+			                <tr>
+			                  <td>api_key</td>
+			                  <td>string</td>
+			                  <td>DEMO_KEY</td>
+			                  <td>api.nasa.gov key for expanded usage</td>
+			                </tr>
+						  </tbody>
+						</table>
 
-			<h3 id="example-query">Example query</h3>
-			<p>
-				<a href="https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&amp;end_date=2015-09-08&amp;api_key=DEMO_KEY">
-					<code class="prettyprint">
-			      https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&amp;end_date=2015-09-08&amp;api_key=DEMO_KEY
-					</code>
-				</a>
-			</p>
+						<h3 id="example-query">Example query</h3>
+						<p>
+							<a href="https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&amp;end_date=2015-09-08&amp;api_key=DEMO_KEY">
+								<code class="prettyprint">
+						      https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&amp;end_date=2015-09-08&amp;api_key=DEMO_KEY
+								</code>
+							</a>
+						</p>
 
-			<!-- Neo - Lookup -->
-			<h2 id="neows-lookup">Neo - Lookup</h2>
-			<p>
-			  Lookup a specific Asteroid based on its <a href="http://ssd.jpl.nasa.gov/sbdb_query.cgi">NASA JPL small body (SPK-ID) ID</a>
-				<code class="prettyprint">
-			    GET https://api.nasa.gov/neo/rest/v1/neo/<Asteroid_ID>
-				</code>
-			</p>
+						<!-- Neo - Lookup -->
+						<h2 id="neows-lookup">Neo - Lookup</h2>
+						<p>
+						  Lookup a specific Asteroid based on its <a href="http://ssd.jpl.nasa.gov/sbdb_query.cgi">NASA JPL small body (SPK-ID) ID</a>
+							<code class="prettyprint">
+						    GET https://api.nasa.gov/neo/rest/v1/neo/<Asteroid_ID>
+							</code>
+						</p>
 
-			<!-- Path Parameters-->
-			<h3 id="query-parameters">Path Parameters</h3>
-			<table>
-			  <thead>
-			    <tr>
-			      <th>Parameter</th>
-			      <th>Type</th>
-			      <th>Default</th>
-			      <th>Description</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <th>asteroid_id</th>
-			      <th>int</th>
-			      <th>none</th>
-			      <th>Asteroid SPK-ID correlates to the NASA JPL small body</th>
-			    </tr>
-                <tr>
-                  <td>api_key</td>
-                  <td>string</td>
-                  <td>DEMO_KEY</td>
-                  <td>api.nasa.gov key for expanded usage</td>
-                </tr>
-			  </tbody>
-			</table>
+						<!-- Path Parameters-->
+						<h3 id="query-parameters">Path Parameters</h3>
+						<table>
+						  <thead>
+						    <tr>
+						      <th>Parameter</th>
+						      <th>Type</th>
+						      <th>Default</th>
+						      <th>Description</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th>asteroid_id</th>
+						      <th>int</th>
+						      <th>none</th>
+						      <th>Asteroid SPK-ID correlates to the NASA JPL small body</th>
+						    </tr>
+			                <tr>
+			                  <td>api_key</td>
+			                  <td>string</td>
+			                  <td>DEMO_KEY</td>
+			                  <td>api.nasa.gov key for expanded usage</td>
+			                </tr>
+						  </tbody>
+						</table>
 
-			<h3 id="example-query">Example query</h3>
-			<p>
-				<a href="https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=DEMO_KEY">
-					<code class="prettyprint">
-			      https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=DEMO_KEY
-					</code>
-				</a>
-			</p>
+						<h3 id="example-query">Example query</h3>
+						<p>
+							<a href="https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=DEMO_KEY">
+								<code class="prettyprint">
+						      https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=DEMO_KEY
+								</code>
+							</a>
+						</p>
 
-			<!-- Neo - Browse -->
-			<h2 id="neows-browse">Neo - Browse</h2>
-			<p>
-			  Browse the overall Asteroid data-set
-				<code class="prettyprint">
-			    GET https://api.nasa.gov/neo/rest/v1/neo/browse/
-				</code>
-			</p>
+						<!-- Neo - Browse -->
+						<h2 id="neows-browse">Neo - Browse</h2>
+						<p>
+						  Browse the overall Asteroid data-set
+							<code class="prettyprint">
+						    GET https://api.nasa.gov/neo/rest/v1/neo/browse/
+							</code>
+						</p>
 
-			<h3 id="example-query">Example query</h3>
-			<p>
-				<a href="https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY">
-					<code class="prettyprint">
-			      https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY
-					</code>
-				</a>
-			</p>
-			<!-- Neo - Live doc -->
-			<h2 id="neows-swagger">Neo - Live Documents</h2>
-			<iframe class="" id="" src="https://api.nasa.gov/neo/?api_key=DEMO_KEY" style="border: 1px solid rgb(170, 170, 170); width: 100%; min-height: 725px; max-height: 725px; height: 30px;"></iframe>
-			<!-- END NEO -->
+						<h3 id="example-query">Example query</h3>
+						<p>
+							<a href="https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY">
+								<code class="prettyprint">
+						      https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY
+								</code>
+							</a>
+						</p>
+						<!-- Neo - Live doc -->
+						<h2 id="neows-swagger">Neo - Live Documents</h2>
+						<iframe class="" id="" src="https://api.nasa.gov/neo/?api_key=DEMO_KEY" style="border: 1px solid rgb(170, 170, 170); width: 100%; min-height: 725px; max-height: 725px; height: 30px;"></iframe>
+						<!-- END NEO -->
 
       <h1 id="EONET">EONET</h1>
       <p>
@@ -944,6 +944,12 @@
               <td><a href="https://api.nasa.gov/mars-wmts/catalog/opportunity_hirise_mosaic.html">Preview</a></td>
               <td><a href="https://api.nasa.gov/mars-wmts/catalog/opportunity_hirise_mosaic/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
             </tr>
+			
+            <!-- <tr>
+              <td>Rover Path - Opportunity Landing Site</td>
+              <td><a href="https://api.nasa.gov/mars-wmts/arcgis/rest/services/opportunity_path/MapServer/WMTS.html">Preview</a></td>
+              <td><a href="https://api.nasa.gov/mars-wmts/arcgis/rest/services/opportunity_path/MapServer/WMTS/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
+            </tr> -->
 
             <tr>
               <td>HiRISE Mosaic - Phoenix Landing Site</td>
@@ -1031,6 +1037,12 @@
       				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/global_LAMO/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
     		    </tr>
             <tr>
+              <td>Vesta_Dawn_HAMO_DTM_DLR_Global_48ppd 8Bit</td>
+      				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_DTM_DLR_Global_48ppd8.html">Preview</a></td>
+      				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_DTM_DLR_Global_48ppd8/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
+    		    </tr>
+            <tr>
+			<tr>
               <td>Vesta_Dawn_Geology_Global_32ppd_IAU</td>
       				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_Geology_Global_32ppd_IAU.html">Preview</a></td>
       				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_Geology_Global_32ppd_IAU/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
@@ -1041,10 +1053,15 @@
       				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_ClrShade_DLR_Global_48ppd_IAU/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
     		    </tr>
             <tr>
-              <td>Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU</td>
-      				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU.html">Preview</a></td>
-      				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
+              <td>Vesta_Dawn_HAMO_MinRatio_DLR_global_74ppd_IAU</td>
+      				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_MinRatio_DLR_global_74ppd_IAU.html">Preview</a></td>
+      				<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_MinRatio_DLR_global_74ppd_IAU/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
     		    </tr>
+	            <tr>
+	            <td>Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU</td>
+	      		<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU.html">Preview</a></td>
+	      		<td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU/1.0.0/WMTSCapabilities.xml">WMTS Capabilities</a></td>
+	    		</tr>
             <tr>
               <td>Vesta_Dawn_HAMO_TrueClr_DLR_global_74ppd</td>
               <td><a href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_TrueClr_DLR_global_74ppd.html">Preview</a></td>
