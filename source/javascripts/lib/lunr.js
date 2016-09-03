@@ -1091,7 +1091,7 @@ lunr.Index.prototype.search = function (query) {
         }
 
         // calculate the query tf-idf score for this token
-        // applying an similarityBoost to ensure exact matches
+        // applying a similarityBoost to ensure exact matches
         // these rank higher than expanded terms
         if (pos > -1) queryVector.insert(pos, tf * idf * similarityBoost)
 
