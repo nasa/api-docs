@@ -1091,7 +1091,7 @@ lunr.Index.prototype.search = function (query) {
         }
 
         // calculate the query tf-idf score for this token
-        // applying an similarityBoost to ensure exact matches
+        // applying a similarityBoost to ensure exact matches
         // these rank higher than expanded terms
         if (pos > -1) queryVector.insert(pos, tf * idf * similarityBoost)
 
@@ -1637,7 +1637,7 @@ lunr.Pipeline.registerFunction(lunr.stopWordFilter, 'stopWordFilter')
 
 /**
  * lunr.trimmer is a pipeline function for trimming non word
- * characters from the begining and end of tokens before they
+ * characters from the beginning and end of tokens before they
  * enter the index.
  *
  * This implementation may not work correctly for non latin
@@ -1861,7 +1861,7 @@ lunr.TokenStore.prototype.toJSON = function () {
     } else if (typeof exports === 'object') {
       /**
        * Node. Does not work with strict CommonJS, but
-       * only CommonJS-like enviroments that support module.exports,
+       * only CommonJS-like environments that support module.exports,
        * like Node.
        */
       module.exports = factory()

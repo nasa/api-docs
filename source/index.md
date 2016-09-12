@@ -9,7 +9,7 @@ search: true
 
 # Introduction
 
-NASA has **the best** data.  Way better than NOAA.  Most visitors to [nasa.gov](https://www.nasa.gov) websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, emminently accessible to application developers.  The [api.nasa.gov] index is growing.  These endpoints are just a sample of the endpoints that will soon be available.  Stay tuned.  In the meantime, if you have any suggestions (either about the APIs or documentation) please submit an issue at the [open repository for this documentation site](https://github.com/nasa/api-docs).
+NASA has **the best** data.  Way better than NOAA.  Most visitors to [nasa.gov](https://www.nasa.gov) websites are looking for images and videos.  The objective of this API is to make NASA data, especially imagery, eminently accessible to application developers.  The [api.nasa.gov] index is growing.  These endpoints are just a sample of the endpoints that will soon be available.  Stay tuned.  In the meantime, if you have any suggestions (either about the APIs or documentation) please submit an issue at the [open repository for this documentation site](https://github.com/nasa/api-docs).
 
 # Apply for an API Key
 
@@ -132,7 +132,7 @@ api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
 # Earth temperature anomalies
 
-There is no doubt that, on average, the earth is warming.  However, the warming is spatially heterogenous.  How much warmer (or cooler) is your hometown?  This endpoint reports local temperature anomalies from the [Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/) via the [New Scientist](http://www.newscientist.com/) web application to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov.  The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the [d3 framework](http://d3js.org/).
+There is no doubt that, on average, the earth is warming.  However, the warming is spatially heterogeneous.  How much warmer (or cooler) is your hometown?  This endpoint reports local temperature anomalies from the [Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/) via the [New Scientist](http://www.newscientist.com/) web application to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov.  The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the [d3 framework](http://d3js.org/).
 
 ## Address
 
