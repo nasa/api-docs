@@ -132,7 +132,7 @@ api_key | string | DEMO_KEY | api.data.gov key for expanded usage
 
 # Earth temperature anomalies
 
-There is no doubt that, on average, the earth is warming.  However, the warming is spatially heterogenous.  How much warmer (or cooler) is your hometown?  This endpoint reports local temperature anomalies from the [Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/) via the [New Scientist](http://www.newscientist.com/) web application to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov.  The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the [d3 framework](http://d3js.org/).
+There is no doubt that, on average, the earth is warming.  However, the warming is spatially heterogeneous.  How much warmer (or cooler) is your hometown?  This endpoint reports local temperature anomalies from the [Goddard Institute for Space Studies Surface Temperature Analysis](http://data.giss.nasa.gov/gistemp/) via the [New Scientist](http://www.newscientist.com/) web application to [explore global temperature anomalies](http://warmingworld.newscientistapps.com/).  This endpoint restructures the query and response to correspond to other APIs on api.nasa.gov.  The developer supplies a location and date range, and the returned object is a list of dictionaries that is ready for visualization in the [d3 framework](http://d3js.org/).
 
 ## Address
 
