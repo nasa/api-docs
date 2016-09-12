@@ -1637,7 +1637,7 @@ lunr.Pipeline.registerFunction(lunr.stopWordFilter, 'stopWordFilter')
 
 /**
  * lunr.trimmer is a pipeline function for trimming non word
- * characters from the begining and end of tokens before they
+ * characters from the beginning and end of tokens before they
  * enter the index.
  *
  * This implementation may not work correctly for non latin
