@@ -841,7 +841,99 @@ The following information is available for every image in the collection:
 			</a>
 		</p>
 
+    <h3>Mission Manifest</h3>
 
+    <p>
+      A mission manifest is available for each Rover at the /manifest/<rover_name>. This manifest will list
+      details of the Rover's mission to help narrow down photo queries to the API. The information in the manifest includes:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>name</td>
+          <td>Name of the Rover</td>
+        </tr>
+        <tr>
+          <td>landing_date</td>
+          <td>The Rover's landing date on Mars</td>
+        </tr>
+        <tr>
+          <td>launch_date</td>
+          <td>The Rover's launch date from Earth</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>The Rover's mission status</td>
+        </tr>
+        <tr>
+          <td>max_sol</td>
+          <td>The most recent Martian sol from which photos exist</td>
+        </tr>
+        <tr>
+          <td>max_date</td>
+          <td>The most recent Earth date from which photos exist</td>
+        </tr>
+        <tr>
+          <td>total_photos</td>
+          <td>Number of photos taken by that Rover</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>It also includes a list of objects under the "photos" key which are grouped by sol, and each of which contains:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>sol</td>
+          <td>Martian sol of the Rover's mission</td>
+        </tr>
+        <tr>
+          <td>total_photos</td>
+          <td>Number of photos taken by that Rover on that sol</td>
+        </tr>
+        <tr>
+          <td>cameras</td>
+          <td>Cameras for which there are photos by that Rover on that sol</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>An example entry from a sol at /manifests/Curiosity might look like:</p>
+
+    <code>
+      {
+        sol: 0,
+        total_photos: 3702,
+        cameras: [
+          "CHEMCAM",
+          "FHAZ",
+          "MARDI",
+          "RHAZ"
+        ]
+      }
+    </code>
+
+    <p>This would tell you that this rover, on sol 0, took 3702 photos, and those are from among the CHEMCAM, FHAZ, MARDI, and RHAZ cameras.</p>
 
         <h1 id="patents">Patents</h1>
 
