@@ -329,7 +329,7 @@
       <!-- EPIC API -->
       <h1 id="EPIC">EPIC</h1>
       <p>
-Version 1.0 of the EPIC API provides information on the daily natural color imagery collected by DSCOVR's Earth Polychromatic Imaging Camera (EPIC) instrument. Uniquely positioned at the Earth-Sun Lagrange point, EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.
+The EPIC API provides information on the daily imagery collected by DSCOVR's Earth Polychromatic Imaging Camera (EPIC) instrument. Uniquely positioned at the Earth-Sun Lagrange point, EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits using a 2048x2048 pixel CCD (Charge Coupled Device) detector coupled to a 30-cm aperture Cassegrain telescope.
 </p>
 
 <p>
@@ -353,21 +353,17 @@ The following information is available for every image in the collection:
     <li>Image [name]</li>
     <li>Date</li>
     <li>Caption</li>
-    <li>Coords</li>
-    {<br>
-    <ul>
-        <li>centroid_coordinates</li>
-        <li>dscovr_j2000_position</li>
-        <li>lunar_j2000_position</li>
-        <li>sun_j2000_position</li>
-        <li>attitude_quaternions </li>
-    </ul>
-    }<br>
+    <li>centroid_coordinates</li>
+    <li>dscovr_j2000_position</li>
+    <li>lunar_j2000_position</li>
+    <li>sun_j2000_position</li>
+    <li>attitude_quaternions</li>
 </ul>
 <br>
 
 <p><strong>Example image:</strong></p>
 <p><img style='width:75%;' src="https://api.nasa.gov/EPIC/archive/natural/png/epic_1b_20150613110250_01.png?api_key=DEMO_KEY"/></p>
+<h3 id="example-query">Querying by Date(s)</h3>
 <h3 id="example-query">Querying by Date(s)</h3>
 <table>
     <thead>
@@ -380,50 +376,91 @@ The following information is available for every image in the collection:
     </thead>
     <tbody>
         <tr>
-            <td>date</td>
-            <td>YYYY-MM-DD</td>
-            <td>Most Recent Available</td>
-            <td>Retrieve matadata for all imagery available for a given date.</td>
+            <td>natural</td>
+            <td>string</td>
+            <td>Most Recent Natural Color</td>
+            <td>Metadata on the most recent date of natural color imagery.</td>
         </tr>
         <tr>
-            <td>available_dates</td>
+            <td>natural/date</td>
+            <td>YYYY-MM-DD</td>
+            <td>Most Recent Available</td>
+            <td>Metadata for natural color imagery available for a given date.</td>
+        </tr>
+        <tr>
+            <td>natural/all</td>
             <td>string</td>
-            <td>All Available Dates</td>
-            <td>Retrieve a listing of all dates with available imagery.</td>
+            <td>Dates for Natural Color</td>
+            <td>A listing of all dates with available natural color imagery.</td>
+        </tr>
+        <tr>
+            <td>natural/available</td>
+            <td>string</td>
+            <td>Dates for Natural Color</td>
+            <td>Alternate listing of all dates with available natural color imagery.</td>
+        </tr>
+        <tr>
+            <td>enhanced</td>
+            <td>string</td>
+            <td>Most Recent Enhanced Color</td>
+            <td>Metadata on the most recent date of enhanced color imagery.</td>
+        </tr>
+        <tr>
+            <td>enhanced/date</td>
+            <td>YYYY-MM-DD</td>
+            <td>Most Recent Available</td>
+            <td>Metadata for enhanced color  imagery for a given date.</td>
+        </tr>
+        <tr>
+            <td>enhanced/all</td>
+            <td>string</td>
+            <td>Dates for Enhanced Imagery</td>
+            <td>A listing of all dates with available enhanced color imagery.</td>
+        </tr>
+        <tr>
+            <td>enhanced/available</td>
+            <td>string</td>
+            <td>Dates for Enhanced Imagery</td>
+            <td>Alternate listing of all dates with available enhanced color imagery.</td>
         </tr>
         <tr>
             <td>api_key</td>
             <td>string</td>
             <td>DEMO_KEY</td>
-            <td>api.nasa.gov key for expanded usage</td>
+            <td>API key from api.nasa.gov for expanded usage.</td>
         </tr>
     </tbody>
 </table>
 
 <h3 id="example-query">Example queries</h3>
 <p>
-    <a href="https://api.nasa.gov/EPIC/api/v1.0/images.php?api_key=DEMO_KEY">
-        <code class="prettyprint">
-            https://api.nasa.gov/EPIC/api/v1.0/images.php?api_key=DEMO_KEY
-        </code>
-    </a>
-    <br>
-    <a href="https://api.nasa.gov/EPIC/api/v1.0/images.php?date=2015-10-31&api_key=DEMO_KEY">
-        <code class="prettyprint">
-            https://api.nasa.gov/EPIC/api/v1.0/images.php?date=2015-10-31&api_key=DEMO_KEY
-        </code>
-    </a>
-    <br>
-    <a href="https://api.nasa.gov/EPIC/api/v1.0/images.php?available_dates&api_key=DEMO_KEY">
-        <code class="prettyprint">
-            https://api.nasa.gov/EPIC/api/v1.0/images.php?available_dates&api_key=DEMO_KEY
-        </code>
-    </a>
+<a href="https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY">
+    <code class="prettyprint">
+        https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY
+    </code>
+</a>
+<br>
+<a href="https://api.nasa.gov/EPIC/api/natural/date/2015/10/31?api_key=DEMO_KEY">
+    <code class="prettyprint">
+        https://api.nasa.gov/EPIC/api/natural/date/2015/10/31?api_key=DEMO_KEY
+    </code>
+</a>
+<br>
+<a href="https://api.nasa.gov/EPIC/api/enhanced/available?api_key=DEMO_KEY">
+    <code class="prettyprint">
+        https://api.nasa.gov/EPIC/api/enhanced/available?api_key=DEMO_KEY
+    </code>
+</a>
+<br>
+<a href="https://api.nasa.gov/EPIC/archive/enhanced/2016/12/04/png/epic_RBG_20161204003633_01.png?api_key=DEMO_KEY">
+    <code class="prettyprint">
+        https://api.nasa.gov/EPIC/archive/enhanced/2016/12/04/png/epic_RBG_20161204003633_01.png?api_key=DEMO_KEY
+    </code>
+</a>
 </p>
-
 <p>
-    More examples and usage tips can be found on the
-    <a href='http://epic.gsfc.nasa.gov/about.html' target='_blank'>EPIC About Page</a>.
+More examples and usage tips can be found on the
+<a href='https://epic.gsfc.nasa.gov/about/api' target='_blank'>EPIC API Documentation Page</a>.
 </p>
 <p>&nbsp;</p>
 <!-- end EPIC -->
