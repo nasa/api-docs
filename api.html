@@ -1139,24 +1139,7 @@ More examples and usage tips can be found on the
           NEO Earth close-approaches less than 0.05 au in the next 60 days sorted by date.
         </p>
 
-        <h3 id="http-request">HTTP Request</h3>
-        <p><code class="highlighter-rouge">GET <a href="https://api.nasa.gov/SSD-CNEOS/CAD?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/CAD?api_key=DEMO_KEY</a></code></p>
 
-        <h3 id="example-queries">Example Queries</h3>
-
-        <ul>
-          <li>get all close-approach data for asteroid 433 Eros:
-            <ul>
-              <li><a href="https://api.nasa.gov/SSD-CNEOS/CAD?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&des=433">https://api.nasa.gov/SSD-CNEOS/CAD?api_key=DEMO_KEY&des=433</a></li>
-            </ul>
-          </li>
-          <li>get Earth close-approach data for NEOs within 10 lunar distances on or after 2018-Jan-01 sorted by distance
-            <ul>
-              <li><a href="https://api.nasa.gov/SSD-CNEOS/CAD?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&dist-max=10LD&date-min=2018-01-01&sort=dist">https://api.nasa.gov/SSD-CNEOS/CAD?api_key=DEMO_KEY&dist-max=10LD&date-min=2018-01-01&sort=dist</a></li>
-            </ul>
-          </li>
-        </ul>
-        <br/>
         <p>
           For complete API documentation please visit the <a href="http://ssd-api.jpl.nasa.gov/doc/cad.html">JPL SBDB Close-Approach Data API</a> website.
         </p>
@@ -1168,18 +1151,7 @@ More examples and usage tips can be found on the
         See the CNEOS page on
         <a href="http://cneos.jpl.nasa.gov/fireballs/">fireballs</a> for details on this data-set.</p>
 
-        <h3 id="http-request">HTTP Request</h3>
 
-        <p><code class="highlighter-rouge">GET <a href="https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=DEMO_KEY</a></code></p>
-
-        <h3 id="example-queries">Example Queries</h3>
-
-        <ul>
-          <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=DEMO_KEY</a></code> (return all available data in reverse-chronologic order)</li>
-          <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&limit=20">https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=DEMO_KEY&limit=20</a></code> (return the most recent 20 records)</li>
-          <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&date-min=2014-01-01&req-alt=true">https://api.nasa.gov/SSD-CNEOS/Fireball?api_key=DEMO_KEY&date-min=2014-01-01&req-alt=true</a></code> (return data on or after 2014-01-01 and only records with the altitude defined)</li>
-        </ul>
-        <br/>
         <p>
           For complete API documentation please visit the <a href="http://ssd-api.jpl.nasa.gov/doc/fireball.html">JPL Fireball Data API</a> website.
         </p>
@@ -1192,26 +1164,7 @@ More examples and usage tips can be found on the
         Please see the <a href="http://cneos.jpl.nasa.gov/nhats/">NHATS web-page</a>
         for details about NHATS.</p>
 
-        <h3 id="http-request">HTTP Request</h3>
 
-        <p><code class="highlighter-rouge">GET <a href="https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=DEMO_KEY</a></code></p>
-
-        <h3 id="example-queries">Example Queries</h3>
-
-        <ul>
-          <li>get summary data for available NHATS objects using various constraints:
-            <ul>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=DEMO_KEY</a></code> (unconstrained)</li>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&dv=6&dur=360&stay=8&launch=2015-2040&h=26&occ=7">https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=DEMO_KEY&dv=6&dur=360&stay=8&launch=2015-2040&h=26&occ=7</a></code> (web-page “standard” constraints)</li>
-            </ul>
-          </li>
-          <li>get details for the specified NHATS object:
-            <ul>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&des=99942">https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=DEMO_KEY&des=99942</a></code> (99942 Apophis, default constraints )</li>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&des=2000%20SG344&dv=6&dur=360&stay=8&launch=2015-2040">https://api.nasa.gov/SSD-CNEOS/NHATS?api_key=DEMO_KEY&des=2000%20SG344&dv=6&dur=360&stay=8&launch=2015-2040</a></code> (2000 SG344, constrained)</li>
-            </ul>
-          </li>
-        </ul>
 
         <p>
           For complete API documentation please visit the <a href="http://ssd-api.jpl.nasa.gov/doc/nhats.html">JPL NHATS API</a> website.
@@ -1228,35 +1181,7 @@ More examples and usage tips can be found on the
           * <code class="highlighter-rouge">R</code> - removed-objects table
         </p>
 
-        <h3 id="http-request">HTTP Request</h3>
-
-        <p><code class="highlighter-rouge">GET <a href="https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=DEMO_KEY</a></code></p>
-
-        <h3 id="example-queries">Example Queries</h3>
-
-        <ul>
-          <li><code class="highlighter-rouge">O</code> - get details for the specified Sentry object:
-            <ul>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&des=99942">https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=DEMO_KEY&des=99942</a></code> (99942 Apophis)</li>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&des=2000%20SG344">https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=DEMO_KEY&des=2000%20SG344</a></code> (2000 SG344)</li>
-            </ul>
-          </li>
-          <li><code class="highlighter-rouge">S</code> - get summary data for available Sentry objects:
-            <ul>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=DEMO_KEY</a></code></li>
-            </ul>
-          </li>
-          <li><code class="highlighter-rouge">V</code> - get VI data for available Sentry objects with IP&gt;=1e-3:
-            <ul>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&all=1&ip-min=1e-3">https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=DEMO_KEY&all=1&ip-min=1e-3</a></code></li>
-            </ul>
-          </li>
-          <li><code class="highlighter-rouge">R</code> - get data for objects removed from Sentry:
-            <ul>
-              <li><code class="highlighter-rouge"><a href="https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4&removed=1">https://api.nasa.gov/SSD-CNEOS/Sentry?api_key=DEMO_KEY&removed=1</a></code></li>
-            </ul>
-          </li>
-        </ul>
+        
         <p>
           For complete API documentation please visit the <a href="http://ssd-api.jpl.nasa.gov/doc/sentry.html">JPL Sentry API</a> website.
         </p>
