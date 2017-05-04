@@ -1298,7 +1298,7 @@ More examples and usage tips can be found on the
         <h1 id="trek">Vesta/Moon/Mars Trek WMTS</h1>
         <p>
           Here we have the collection of APIs that power the awesome <a href="http://marstrek.jpl.nasa.gov/">Mars Trek</a> and
-          <a href="http://vestatrek.jpl.nasa.gov/">Vesta Trek</a> NASA web-based portals for exploration.  Both APIs can be
+          <a href="http://vestatrek.jpl.nasa.gov/">Vesta Trek</a> NASA web-based portals for exploration and have newly added <a href="https://moontrek.jpl.nasa.gov/">Moon Trek</a>.  These APIs can be
           leveraged using your favorite OGC RESTFul Web Map and Tile Service (WMTS) client.  Please visit <a href="http://www.opengeospatial.org/standards/wmts">http://www.opengeospatial.org/standards/wmts</a>
           for more information about WMTS.  To help you get started, we've included some demos using the ESRI javascript client library for
           <a href="https://api.nasa.gov/mars-wmts/catalog/">Mars</a> and <a href="https://api.nasa.gov/vesta-wmts/catalog/">Vesta</a>.
@@ -1309,14 +1309,12 @@ More examples and usage tips can be found on the
           the <a href="mailto:MarsTrek@jpl.nasa.gov">Jet Propulsion Lab (JPL) Trek team</a>.
         </p>
 
+        <p>
+          Please note that the Vesta and Mars APIS are accessable via <a href="https://api.nasa.gov/api.html#trek">api.nasa.gov</a> and the Moon APIS are available via <a href="https://moontrek.jpl.nasa.gov/TrekAPI/">https://moontrek.jpl.nasa.gov/TrekAPI/</a>
+        </p>
+
 
         <h3 id="query-parameters">Available Moon Mosaics</h3>
-        <p>
-          Map layers are available through the OGC RESTful WMTS protocol. To find out more information about OGC WMTS, go to http://www.opengeospatial.org/standards/wmts. A simple javascript example using ESRI javascript client library is included for each service. Click 'Preview' to run it.
-        </p>
-        <p>
-          To access these tiles through a WMTS client library, depending on the WMTS client library, you only need to provide the WMTS Endpoint and the full extent or bbox information. However, if you want to access tiles without using a WMTS client library, the following information will give you some help.
-        </p>
         <p>
           Here is basic information about how to request image tiles from a RESTful WMTS service. The basic URL template is as follows:
         </p>
