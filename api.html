@@ -664,6 +664,130 @@ More examples and usage tips can be found on the
           <p><a href="https://api.nasa.gov/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY</code></a></p>
 
 
+          <h1 id="genelab">GeneLab Search API</h1>
+
+          <p>GeneLab provides a RESTful Application Programming Interface (API) to its
+          full-text search capability, which provides the same functionality available through the GeneLab
+          <a href="https://genelab-data.ndc.nasa.gov/genelab/" target="_blank">public data repository website</a>. The API
+          provides a choice of standardized web output formats, such as JavaScript Object Notation (JSON)
+          or Hyper Text Markup Language (HTML), of the search results. The GeneLab Search API can also federate with other
+          heterogeneous external bioinformatics databases, such as the National Institutes of Health (NIH) / National Center
+          for Biotechnology Information's (NCBI) <a href="https://www.ncbi.nlm.nih.gov/geo/" target="_blank">Gene Expression Omnibus (GEO)</a>;
+          the European Bioinformatics Institute's (EBI) <a href="https://www.ebi.ac.uk/pride/archive/" target="_blank">Proteomics Identification (PRIDE)</a>;
+          the Argonne National Laboratory's (ANL) <a href="http://metagenomics.anl.gov" target="_blank">Metagenomics Rapid Annotations using Subsystems Technology (MG-RAST)</a>.
+          </p>
+
+          <br/>
+
+          <p><strong>GeneLab Sample JSON Search API Output:</strong></p>
+          <p><img width="65%" src="images/genelab_search_json_api.png" /></p>
+
+          <h3 id="http-request">HTTP Request for JSON results</h3>
+          <p>
+          	<code class="prettyprint">
+          		GET https://genelab-data.ndc.nasa.gov/genelab/data/search?term=mouse%20liver&type=cgene
+          	</code>
+          </p>
+
+          <br/>
+          <br/>
+          <p><strong>GeneLab Sample HTML Search API Output:</strong></p>
+          <p><img width="65%" src="images/genelab_search_html_api.png" /></p>
+
+          <h3 id="http-request">HTTP Request for HTML results</h3>
+          <p>
+          	<code class="prettyprint">
+          		GET https://genelab-data.ndc.nasa.gov/genelab/search_studies/?q=mouse%20liver&data_source=cgene
+          	</code>
+          </p>
+
+          <br/>
+
+          <h3 id="query-parameters">Query Parameters</h3>
+          <table border="1"><thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          </thead><tbody>
+
+          <tr>
+            <td>term</td>
+            <td>String (optional multiple values)</td>
+            <td><em>Query all GeneLab data sets</em></td>
+            <td>Keyword(s) to search on along with optional case-insensitive boolean operators, such as: AND, OR, NOT
+            (Note: Default search is a boolean "AND" for all keyword searches)</td>
+          </tr>
+
+          <tr>
+            <td>type</td>
+            <td>String (multiple valid values: cgene, nih_geo_gse, ebi_pride, mg_rast)</td>
+            <td><em>cgene (GeneLab database)</em></td>
+            <td>Specific database(s) to query on (e.g., values available cgene=GeneLab, nih_geo_gse=NIH GEO,
+            ebi_pride=EBI PRIDE, or mg_rast=MG-RAST database with optional multiple values separated by comma delimiter)</td>
+          </tr>
+
+          <tr>
+            <td>from</td>
+            <td>Integer (single value)</td>
+            <td><em>0 (first index page)</em></td>
+            <td>Search result sets pagination start page (defaults to 0)</td>
+          </tr>
+
+          <tr>
+            <td>size</td>
+            <td>Integer (single value)</td>
+            <td><em>25</em></td>
+            <td>Search result sets display count (defaults to 25)</td>
+          </tr>
+
+          <tr>
+            <td>sort</td>
+            <td>String (single value)</td>
+            <td><em>GeneLab Accession Number (descending order)</em></td>
+            <td>Sort by a specific field or attribute name</td>
+          </tr>
+
+          <tr>
+            <td>order</td>
+            <td>String (single value)</td>
+            <td><em>DESC (descending order)</em></td>
+            <td>Sort order (e.g., either ASC for ascending or DESC for descending)</td>
+          </tr>
+
+          <tr>
+            <td>ffield</td>
+            <td>String (single value; should always be paired with fvalue parameter)</td>
+            <td><em>N/A</em></td>
+            <td>Search filter field is only for GeneLab database (cgene) at this time. Other databases will be included
+            at a later time</td>
+          </tr>
+
+          <tr>
+            <td>fvalue</td>
+            <td>String (single value; should always be paired with ffield parameter)</td>
+            <td><em>N/A</em></td>
+            <td>Search filter value is only for GeneLab database (cgene) at this time. Other databases will be included
+            at a later time</td>
+          </tr>
+          </tbody></table>
+
+          <h3 id="example-query">Sample query</h3>
+          <p>
+          	<a href="https://genelab-data.ndc.nasa.gov/genelab/data/search?term=space&from=0&type=cgene,nih_geo_gse&ffield=links&fvalue=GPL16417&ffield=Data Source Accession&fvalue=GSE82255&api_key=DEMO_KEY">
+          		<code class="prettyprint">
+          			https://genelab-data.ndc.nasa.gov/genelab/data/search?term=space&from=0&type=cgene,nih_geo_gse&ffield=links&fvalue=GPL16417&ffield=Data Source Accession&fvalue=GSE82255&api_key=DEMO_KEY
+          		</code>
+          	</a>
+          </p>
+
+
+
+
+
+
 
     <h1 id="Images">NASA Image and Video Library</h1>
     <p>
