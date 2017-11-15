@@ -4,18 +4,18 @@ source 'http://rubygems.org'
 
 gem "rouge", "1.7.2"
 
-gem "middleman", "~>3.3.0"
+gem "middleman", "~> 4.1.2"
 
 # For syntax highlighting
-gem "middleman-syntax"
+gem "middleman-syntax", ">= 2.1.0"
 
 # Plugin for middleman to generate Github pages
 gem 'middleman-gh-pages'
 
 # Live-reloading plugin
-gem "middleman-livereload", "~> 3.3.0"
+gem "middleman-livereload", "~> 3.4.1"
 
-gem 'redcarpet', '~> 3.2.1'
+gem 'redcarpet', '~> 3.2.3'
 
 # For faster file watcher updates on Windows:
 gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
