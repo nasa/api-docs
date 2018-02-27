@@ -1379,13 +1379,13 @@ More examples and usage tips can be found on the
           TechPort data into either an XML or a JSON format,
           which can then be further processed and analyzed. Complete documentation (in Swagger 2.0 format) of the available objects, properties,
           RESTful URIs is available in the online API specification at:<br/>
-          <a href="https://api.nasa.gov/techport/api/specification?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/techport/api/specification?api_key=DEMO_KEY</a>.
+          <a href="https://api.nasa.gov/techport/api/specification?api_key=DEMO_KEY">https://api.nasa.gov/techport/api/specification?api_key=DEMO_KEY</a>.
         </p>
 
         <p>
           In general, queries can be issued to the system with the following URI format:
         </p>
-        <p><code>GET https://api.nasa.gov/techport/api/items/{id_parameter}?api_key=DEMO_KEY</a></code></p>
+        <p><code>GET https://api.nasa.gov/techport/api/projects/{id_parameter}?api_key=DEMO_KEY</a></code></p>
 
         <table>
           <thead>
@@ -1402,17 +1402,17 @@ More examples and usage tips can be found on the
               <td style="text-align: left">Yes</td>
               <td style="text-align: left">Type:&nbsp;int<br/>Default:&nbsp;None</td>
               <td style="text-align: left">The id value of the TechPort record. ID values can be obtained through the standard TechPort search feature and are visible
-                in the website URLs, e.g. http://techport.nasa.gov/view/0000, where 0000 is the ID value. Alternatively, a request to /api/items will display all valid IDs in the system.</td>
+                in the website URLs, e.g. http://techport.nasa.gov/view/0000, where 0000 is the ID value. Alternatively, a request to /api/projects will display all valid IDs in the system.</td>
             </tr>
           </tbody>
         </table>
 
         <h3 id="example-queries">Example Queries</h3>
 
-        <p><code>GET <a href="https://api.nasa.gov/techport/api/items/17792?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/techport/api/items/17792?api_key=DEMO_KEY</a></code></p>
-        <p><code>GET <a href="https://api.nasa.gov/techport/api/items/17792.json?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/techport/api/items/17792.json?api_key=DEMO_KEY</a></code></p>
-        <p><code>GET <a href="https://api.nasa.gov/techport/api/items?api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/techport/api/items?api_key=DEMO_KEY</a></code></p>
-        <p><code>GET <a href="https://api.nasa.gov/techport/api/items?updatedSince=2016-01-01&api_key=Fxz2JjcPYj83uK81qYOyKnTPlKHVLEcPtB78Ezg4">https://api.nasa.gov/techport/api/items?updatedSince=2016-01-01&api_key=DEMO_KEY</a></code></p>
+        <p><code>GET <a href="https://api.nasa.gov/techport/api/projects/17792?api_key=DEMO_KEY">https://api.nasa.gov/techport/api/projects/17792?api_key=DEMO_KEY</a></code></p>
+        <p><code>GET <a href="https://api.nasa.gov/techport/api/projects/17792.json?api_key=DEMO_KEY">https://api.nasa.gov/techport/api/projects/17792.xml?api_key=DEMO_KEY</a></code></p>
+        <p><code>GET <a href="https://api.nasa.gov/techport/api/projects?api_key=DEMO_KEY">https://api.nasa.gov/techport/api/projects?api_key=DEMO_KEY</a></code></p>
+        <p><code>GET <a href="https://api.nasa.gov/techport/api/projects?updatedSince=2016-01-01&api_key=DEMO_KEY">https://api.nasa.gov/techport/api/projects?updatedSince=2016-01-01&api_key=DEMO_KEY</a></code></p>
 
         <p>
           For more information on Techport and additional example usage please visit <a href="http://techport.nasa.gov">http://techport.nasa.gov</a>.
