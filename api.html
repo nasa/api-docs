@@ -882,7 +882,49 @@ More examples and usage tips can be found on the
           <p><a href="https://api.nasa.gov/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/planetary/earth/assets?lon=100.75&amp;lat=1.5&amp;begin=2014-02-01&amp;api_key=DEMO_KEY</code></a></p>
 
 
-          <h1 id="genelab">GeneLab Search API</h1>
+
+
+          <!-- EXOPlanet Archive API -->
+          <h1 id="exoPlanet" style="margin-top: 0px;">Exoplanet Archive</h1>
+          <h2 id="exoPlanetIntro">Introduction</h2>
+          <p>The Exoplanet Archive API allows programatic access to
+            <a href="https://exoplanetarchive.ipac.caltech.edu/index.html">NASA's Exoplanet Archive</a> database.  This API
+            contains a ton of options so to get started please visit
+            <a href="https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html">this page</a> for introductory materials.
+            To see <a href="https://exoplanetarchive.ipac.caltech.edu/docs/data.html">what data</a> is available in this API <a href="https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html#data">visit here</a> and also be sure to check out
+            <a href="https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html#troubleshoot">best-practices and troubleshooting</a> in case you get stuck.  Happy planet hunting!
+            </p>
+            <p><img src="https://exoplanetarchive.ipac.caltech.edu/images/news/news-image-generic-transit.jpg"/></p>
+
+            <h2 id="exoPlanetExamples">Example Queries</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th style="text-align: left">Example API</th>
+                  <th style="text-align: left">URL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr valign="top">
+                  <td style="text-align: left"><a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=ipac&where=pl_kepflag=1">Confirmed planets in the Kepler field </a></td>
+                  <td style="text-align: left"><a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=ipac&where=pl_kepflag=1">https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=ipac&where=pl_kepflag=1</a></td>
+                </tr>
+                <tr valign="top">
+                  <td style="text-align: left"><a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=ipac&where=pl_tranflag=1">Confirmed planets that transit their host stars </a></td>
+                  <td style="text-align: left"><a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=ipac&where=pl_tranflag=1">https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=ipac&where=pl_tranflag=1</a></td>
+                </tr>
+                <tr valign="top">
+                  <td style="text-align: left"><a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=cumulative&where=koi_prad<2 and koi_teq>180 and koi_teq<303 and koi_disposition like 'CANDIDATE'">All planetary candidates smaller than 2Re with equilibrium temperatures between 180-303K</a></td>
+                  <td style="text-align: left"><a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=cumulative&where=koi_prad<2 and koi_teq>180 and koi_teq<303 and koi_disposition like 'CANDIDATE'">https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=cumulative&where=koi_prad<2 and koi_teq>180 and koi_teq<303 and koi_disposition like 'CANDIDATE'</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <p><a href="https://exoplanetarchive.ipac.caltech.edu/docs/API_queries.html">More examples here.</a></p>
+
+
+
+
+          <h1 id="genelab">GeneLab Search</h1>
 
           <p>GeneLab provides a RESTful Application Programming Interface (API) to its
           full-text search capability, which provides the same functionality available through the GeneLab
@@ -1369,6 +1411,29 @@ More examples and usage tips can be found on the
 
     <p>This would tell you that this rover, on sol 0, took 3702 photos, and those are from among the CHEMCAM, FHAZ, MARDI, and RHAZ cameras.</p>
 
+
+    <!-- SSC Web API -->
+    <h1 id="SSC" style="margin-top: 0px;">Satellite Situation Center</h1>
+    <p>The <a href="https://sscweb.sci.gsfc.nasa.gov/WebServices/REST/">Satellite Situation Center Web (SSCWeb) service</a> has
+      been developed and is operated
+      jointly by the <a href="https://spdf.gsfc.nasa.gov/">NASA/GSFC Space Physics Data Facility (SPDF)</a> and the National Space Science
+      Data Center (NSSDC) to support a range of NASA science programs and to fulfill key
+      international NASA responsibilities including those of NSSDC and the World Data Center-A
+      for Rockets and Satellites. The software and associated database of SSCWeb together
+      form a system to cast geocentric spacecraft location information into a framework
+      of (empirical) geophysical regions and mappings of spacecraft locations along lines
+      of the Earth's magnetic field. This capability is one key to mission science planning
+      (both single missions and coordinated observations of multiple spacecraft with
+      ground-based investigations) and to subsequent multi-mission data analysis.  To get started with this
+      API please <a href="https://sscweb.sci.gsfc.nasa.gov/WebServices/REST/json/">visit this page</a>.
+      </p>
+
+
+
+
+
+
+    <!-- patents -->
         <h1 id="patents">Patents</h1>
 
           <p>The NASA patent portfolio is available to benefit US citizens.
@@ -1423,10 +1488,11 @@ More examples and usage tips can be found on the
 
           <p><a href="https://api.nasa.gov/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY"><code class="prettyprint">https://api.nasa.gov/patents/content?query=temperature&amp;limit=5&amp;api_key=DEMO_KEY</code></a></p>
 
+
+          <!-- sounds api-->
+          <!--
         <h1 id="sounds">Sounds (beta)</h1>
-
           <p>
-
             Sound exists in space.  Sometimes.  And NASA has released a series
             of space sounds via sound cloud.  We have abstracted away some of
             the hassle in accessing these sounds, so that developers can play
@@ -1436,7 +1502,6 @@ More examples and usage tips can be found on the
             we retrieve sounds from far-off planets, we can apply the filter
             to identify unknown human space colonies.  That was a joke.  Sort
             of.
-
           </p>
 
         <h3 id="http-request">HTTP Request</h3>
@@ -1482,7 +1547,7 @@ More examples and usage tips can be found on the
           soundcloud authentication to access the files.  This will likely
           change in the stable version of the API.
         </aside>
-
+      -->
 
         <!--  SSD/CNEOS API -->
         <h1 id="ssd_CNEOS" style="margin-top: 0px;">SSD/CNEOS</h1>
@@ -1923,8 +1988,7 @@ More examples and usage tips can be found on the
 			<ul class="site-footer-nav-right footer-aux-desktop">
 				<li><a href="//www.nasa.gov/about/highlights/HP_Privacy.html" rel="nofollow">Privacy Policy and Important Notices</a></li>
 				<li>NASA Official: <a href="mailto: jason.duley@nasa.gov" rel="nofollow">Jason Duley</a></li>
-				<li class="page_editor">Page Editor: <a href="mailto: brian.a.thomas@nasa.gov" rel="nofollow">Brian Thomas</a></li>
-
+				<!-- <li class="page_editor">Page Editor: <a href="mailto: brian.a.thomas@nasa.gov" rel="nofollow">Brian Thomas</a></li> -->
 			</ul>
 			<ul class="site-footer-nav-right footer-aux-mobile">
 				<li><a href="//www.nasa.gov/about/highlights/HP_Privacy.html" rel="nofollow">Legal</a></li>
