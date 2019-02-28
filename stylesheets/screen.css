@@ -966,7 +966,8 @@ html,body {
 			background-color: rgba(57,57,57,0.55);
 			font-size: 75px;
 			font-weight: normal;
-			font-family: 'Unlock', cursive;
+/* 			font-family: 'Unlock', cursive; */
+			font-family: 'Abel', sans-serif;
 			letter-spacing: 10px;
 			padding: 1%;
 		}
