@@ -15,6 +15,6 @@ $(document).ready(function() {
 	$("input[value='getting-started-link']").remove();
 	$("#getting-started-link").remove();
 	$("#tocify-header1 .tocify-item a").on("click", function() {
-		window.location.href = "/index.html#getting-started";
+		window.location.href = "/index.html#top";
 	});
 });
