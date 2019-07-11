@@ -1,8 +1,9 @@
-FROM ubuntu:trusty
+FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install -yq ruby ruby-dev build-essential
+RUN apt-get install -yq ruby ruby-dev build-essential zlib1g-dev nodejs
 RUN gem install --no-ri --no-rdoc bundler
+RUN mkdir -p /app
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 RUN cd /app; bundle install
