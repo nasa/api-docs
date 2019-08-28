@@ -176,6 +176,72 @@
                     <code class="prettyprint">https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
                     </code></a>
                 </p>
+                <!-- BEGIN INSIGHT_WEATHER -->
+                <h1 id="insight_weather">insight_weather</h1>
+                  <h2>InSight: Mars Weather Service API</h2>
+                  <p>(Last Updated: 8/28/2019)</p>
+                  <p>NASA’s InSight Mars lander takes continuous weather measurements (temperature, wind, pressure) on the 
+                    surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator.  Summaries of these data are 
+                    available at <a href="https://mars.nasa.gov/insight/weather/">https://mars.nasa.gov/insight/weather/</a>. 
+                </p>
+                <p>
+                    This API provides per-Sol summary data for each of the last seven available Sols (Martian Days). As more
+                    data from a particular Sol are downlinked from the spacecraft (sometimes several days later), these values
+                    are recalculated, and consequently may change as more data are received on Earth.
+                </p>
+                <p>
+                    This API is maintained and provided by NASA Jet Propulsion Laboratory and Cornell University. If you find
+                     bugs in this API, please use the contact form found at <a href="https://mars.nasa.gov/feedback/">https://mars.nasa.gov/feedback/</a>. The rate limit for
+                      this API is every hour no more than 2000 hits for each individual IP.
+                </p>
+
+                <h3>Defining the Data</h3>
+                <p>The summary data are provided as an object in a JSON stream, a formal definition of JSON is <a href="https://tools.ietf.org/html/rfc7159">RFC 7159</a>.  Appendix A contains an abridged, typical JSON stream for this API as an example.</p>
+
+                <h3 id="http-request">HTTP Request</h3>
+
+                  <p><code class="prettyprint">
+                    GET https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0
+                  </code></p>
+
+                <h3 id="query-parameters">Query Parameters</h3>
+
+                  <table><thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                    </thead><tbody>
+                    <tr>
+                      <td>version</td>
+                      <td>float</td>
+                      <td><em>1.0</em></td>
+                      <td>The version of this API</td>
+                    </tr>
+                    <tr>
+                      <td>feedtype</td>
+                      <td>string</td>
+                      <td>json</td>
+                      <td>The format of what is returned. Currently the default is JSON and only JSON works.</td>
+                    </tr>
+                    <tr>
+                      <td>api_key</td>
+                      <td>string</td>
+                      <td>DEMO_KEY</td>
+                      <td>api.data.gov key for expanded usage</td>
+                    </tr>
+                  </tbody></table>
+
+                <h3 id="example-query">Example query</h3>
+
+                  <p><a href="https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0">
+                  <code class="prettyprint">https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0
+                  </code></a></p>
+                <h5><a href="https://github.com/nasa/api-docs/blob/gh-pages/InSight%20Weather%20API%20Documentation.docx">This document</a> describes the API in more detail.</h5>
+
+                <!-- END INSIGHT_WEATHER -->
                 <!-- BEGIN NEO -->
                 <h1 id="NeoWS">Asteroids - NeoWs</h1>
                 <p>
