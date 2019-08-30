@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>InSight Mars Lander wind rose in 99 lines</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head><body>
+  <div id="nasa_api_key" ></div>
+  <div id="buttons" >Click Sol to plot its Wind Direction distribution:<br><!-- Controls (buttons) will be inside this DIV --></div>
+  <div id="wd_plot" style="width: 480px; height: 480px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="wd_most_common"><!-- Most common wind direction will be inside this DIV --></div>
+  <div id="summary"></div>
+  <pre id="json"></pre>
+
+  <script>
+  var nasa_api_key = 'DEMO_KEY';   // Replace with personal NASA API key
+  if (nasa_api_key=='DEMO_KEY') {
+    $('#nasa_api_key').html('Replace the NASA API DEMO_KEY with your own NASA API key obtained from <a href="https://api.nasa.gov/index.html#apply-for-an-api-key">here</a>.<hr>')
+  }
+
+  var global_data;  // Global to save Mars weather data object
+
+  //////////////////////////////////////////////////////////////////////
+  // Retrieve Mars weather data from NASA API as JSON stream
+  // - Write data for each Sol
+  // - Write JSON stream
+  //////////////////////////////////////////////////////////////////////
+  $.ajax({
+    url: "https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key="+nasa_api_key,
+    success: function(data)
+      {
+        global_data = data;           // Save object to global variable
+
+        $.each(data.sol_keys,write_sol_data); // Loop over Sols, write data
+        $("#summary").append('<hr>');
+
+        // Write JSON stream to #json PRE
+        $("#json").text(JSON.stringify(data, null, 2));  
+      }
+  });
+
+  //////////////////////////////////////////////////////////////////////
+  // Function to write data for one Sol
+  //////////////////////////////////////////////////////////////////////
+  function write_sol_data(i_index, sol) {
+    var sol_obj = global_data[sol];
+
+    // Summarize per-Sol temperature data to #summary DIV
+    $('#summary').append( 'On Sol <b> ' + sol + '</b>'
+                        + ' the temperatures ranged from <b>' + Math.round(sol_obj['AT'].mn) + '&deg;C</b> to <b>' + Math.round(sol_obj['AT'].mx) + '&deg;C</b>'
+                        + ' with an atmospheric pressure of <b>' + Math.round(sol_obj['PRE'].mn) + ' Pa</b> to <b>' + Math.round(sol_obj['PRE'].mx) + ' Pa</b>.<br>'
+                        );
+
+    // Add per-Sol button to #buttons DIV
+    $('#buttons').append( '<button id="' +sol+ '" onClick="plot_sol_data(' +sol+ ')">' +sol+ '</button>');
+  }
+
+  //////////////////////////////////////////////////////////////////////
+  // Plot Wind Direction (WD) data for one Sol to #wd_plot DIV
+  //////////////////////////////////////////////////////////////////////
+  function plot_sol_data(Sol) {
+    var wd_obj = global_data[Sol].WD;   // Wind direction object for Sol
+    var vals = [];                      // Value array, 1 per compass pt
+
+    // Loop over 16 compass points
+    $.each(["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
+          , function(i, npoint)
+      {
+        // Get count of samples at this compass point
+        // - Set to zero if compass point is not in
+        vals[vals.length] = (wd_obj[npoint]===undefined) ? 0 : wd_obj[npoint].ct;
+      });
+
+    var wd_data = [{               // Load WD data as one-element array
+      r: vals,
+      t: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
+      name: 'Sol ' + Sol,
+      marker: {color: 'rgb(0,127,127)'},
+      type: 'area'
+    }];
+    var wd_layout = {              // Load WD plot layout
+      font: {size: 16},
+      title: '     Wind Direction Distribution on Sol ' + Sol + ' at InSight Mars landing site',
+      legend: {font: {size: 16}},
+      radialaxis: {ticksuffix: ''},
+      orientation: 270
+    };
+    Plotly.newPlot('wd_plot', wd_data, wd_layout);     // Plot wind rose
+
+    // Add most common wind direction
+    if (wd_obj.most_common===null) {
+      $('#wd_most_common').html( 'Most common wind direction is undefined<hr>');
+    } else {
+      $('#wd_most_common').html( 'Most common wind direction is from ' + wd_obj.most_common.compass_point + '<hr>');
+    }
+  }
+  </script>
+</body></html>
