@@ -14,74 +14,64 @@
   <pre id="json"></pre>
 
   <script>
-  var nasa_api_key = 'DEMO_KEY';   // Replace with personal NASA API key
-  if (nasa_api_key=='DEMO_KEY') {
+  const nasa_api_key = 'DEMO_KEY';   // Replace with personal NASA API key
+  const cpoints = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+
+  if (nasa_api_key==='DEMO_KEY') {
     $('#nasa_api_key').html('Replace the NASA API DEMO_KEY with your own NASA API key obtained from <a href="https://api.nasa.gov/index.html#apply-for-an-api-key">here</a>.<hr>')
   }
-
-  var global_data;  // Global to save Mars weather data object
 
   //////////////////////////////////////////////////////////////////////
   // Retrieve Mars weather data from NASA API as JSON stream
   // - Write data for each Sol
   // - Write JSON stream
   //////////////////////////////////////////////////////////////////////
-  $.ajax({
-    url: "https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key="+nasa_api_key,
-    success: function(data)
-      {
-        global_data = data;           // Save object to global variable
+  $.get(
+       `https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key=${nasa_api_key}`,
+    data => {
+      data.sol_keys.forEach(sol => write_sol_data(sol, data[sol]));
+      $("#summary").append('<hr>');
 
-        $.each(data.sol_keys,write_sol_data); // Loop over Sols, write data
-        $("#summary").append('<hr>');
-
-        // Write JSON stream to #json PRE
-        $("#json").text(JSON.stringify(data, null, 2));  
-      }
-  });
+      // Write JSON stream to #json PRE
+      $("#json").text(JSON.stringify(data, null, 2));
+    }
+  );
 
   //////////////////////////////////////////////////////////////////////
   // Function to write data for one Sol
   //////////////////////////////////////////////////////////////////////
-  function write_sol_data(i_index, sol) {
-    var sol_obj = global_data[sol];
-
+  function write_sol_data(sol, sol_obj) {
     // Summarize per-Sol temperature data to #summary DIV
-    $('#summary').append( 'On Sol <b> ' + sol + '</b>'
-                        + ' the temperatures ranged from <b>' + Math.round(sol_obj['AT'].mn) + '&deg;C</b> to <b>' + Math.round(sol_obj['AT'].mx) + '&deg;C</b>'
-                        + ' with an atmospheric pressure of <b>' + Math.round(sol_obj['PRE'].mn) + ' Pa</b> to <b>' + Math.round(sol_obj['PRE'].mx) + ' Pa</b>.<br>'
-                        );
+    $('#summary').append( `On Sol <b>${sol}</b> the temperatures ranged from <b>${Math.round(sol_obj.AT.mn)}&deg;C</b> to <b>${Math.round(sol_obj.AT.mx)}&deg;C</b> with an atmospheric pressure of <b>${Math.round(sol_obj.PRE.mn)} Pa</b> to <b>${Math.round(sol_obj.PRE.mx)} Pa</b>.<br>`);
 
     // Add per-Sol button to #buttons DIV
-    $('#buttons').append( '<button id="' +sol+ '" onClick="plot_sol_data(' +sol+ ')">' +sol+ '</button>');
+    $('#buttons').append(
+        $('<button>')
+        .attr('id', sol)
+      .on('click', e => plot_sol_data(sol, sol_obj))
+      .text(sol)
+    );
   }
 
   //////////////////////////////////////////////////////////////////////
   // Plot Wind Direction (WD) data for one Sol to #wd_plot DIV
   //////////////////////////////////////////////////////////////////////
-  function plot_sol_data(Sol) {
-    var wd_obj = global_data[Sol].WD;   // Wind direction object for Sol
-    var vals = [];                      // Value array, 1 per compass pt
+  function plot_sol_data(Sol, sol_obj) {
+    var wd_obj = sol_obj.WD;   // Wind direction object for Sol
 
-    // Loop over 16 compass points
-    $.each(["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
-          , function(i, npoint)
-      {
-        // Get count of samples at this compass point
-        // - Set to zero if compass point is not in
-        vals[vals.length] = (wd_obj[npoint]===undefined) ? 0 : wd_obj[npoint].ct;
-      });
+    // fill compass points with sol data
+    var vals = (new Array(16)).fill(0).map((empty, idx) => wd_obj[idx] ? wd_obj[idx].ct : 0);
 
     var wd_data = [{               // Load WD data as one-element array
       r: vals,
-      t: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
-      name: 'Sol ' + Sol,
+      t: cpoints,
+      name: `Sol ${Sol}`,
       marker: {color: 'rgb(0,127,127)'},
       type: 'area'
     }];
     var wd_layout = {              // Load WD plot layout
       font: {size: 16},
-      title: '     Wind Direction Distribution on Sol ' + Sol + ' at InSight Mars landing site',
+      title: `     Wind Direction Distribution on Sol ${Sol} at InSight Mars landing site`,
       legend: {font: {size: 16}},
       radialaxis: {ticksuffix: ''},
       orientation: 270
@@ -89,11 +79,7 @@
     Plotly.newPlot('wd_plot', wd_data, wd_layout);     // Plot wind rose
 
     // Add most common wind direction
-    if (wd_obj.most_common===null) {
-      $('#wd_most_common').html( 'Most common wind direction is undefined<hr>');
-    } else {
-      $('#wd_most_common').html( 'Most common wind direction is from ' + wd_obj.most_common.compass_point + '<hr>');
-    }
+    $('#wd_most_common').html(`Most common wind direction is ${wd_obj.most_common ? wd_obj.most_common.compass_point : 'undefined'}<hr>`)
   }
   </script>
 </body></html>
