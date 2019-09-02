@@ -124,8 +124,10 @@ One of the most popular websites at NASA is the [Astronomy Picture of the Day](h
 Parameter | Type | Default | Description
 --------- | --------- | ------- | -----------
 date | YYYY-MM-DD | *today* | The date of the APOD image to retrieve
-concept_tags | bool | False | Return an ordered dictionary of concepts from the APOD explanation
 api_key | string | DEMO_KEY | api.data.gov key for expanded usage
+count | integer | <=100 | If this is specified then `count` randomly chosen
+images will be returned in a JSON array. Cannot be used in conjunction with
+`date` or `start_date` and `end_date`
 
 ### Example query
 [`https://api.data.gov/nasa/planetary/apod?concept_tags=True&api_key=DEMO_KEY`](https://api.data.gov/nasa/planetary/apod?concept_tags=True&api_key=DEMO_KEY)
