@@ -23,7 +23,9 @@
 		if(window.location.href.indexOf('nasa.github.io') !== -1) {
 			window.location.href = 'https://api.nasa.gov/';
 		}
-		else if (window.location.protocol != "https:") {
+		else if (window.location.protocol != "https:"
+		      && window.location.protocol != "file:"
+                        ) {
 			window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
 		}
 	</script>

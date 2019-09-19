@@ -16,7 +16,9 @@
             if(window.location.href.indexOf('nasa.github.io') !== -1) {
               window.location.href = 'https://api.nasa.gov/';
             }
-            else if (window.location.protocol != "https:") {
+            else if (window.location.protocol != "https:"
+                  && window.location.protocol != "file:"  // Avoid https when browsing locally as file:///...
+                    ) {
               window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
             }
         </script>
@@ -241,9 +243,9 @@
                   <p><a href="https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0">
                   <code class="prettyprint">https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0
                   </code></a></p>
-                <h5><a href="https://github.com/nasa/api-docs/blob/gh-pages/InSight%20Weather%20API%20Documentation.pdf">This document</a> describes the API in more detail.</h5>
-                <h5><a href="https://github.com/nasa/api-docs/blob/gh-pages/examples/insight_mars_wind_rose.html">This self-contained HTML document</a> is an example that draws a wind rose using InSight Wind Direction frequency distribution data, which data are part of the JSON object returned by this API.</h5>
-                <p>Here is something like what that wind rose looks like:<br><img src="https://github.com/nasa/api-docs/blob/gh-pages/insight_mars_wind_rose.png" /></p>
+                <h5><a href="./InSight%20Weather%20API%20Documentation.pdf">This document</a> describes the API in more detail.</h5>
+                <h5><a href="./examples/insight_mars_wind_rose.html">This self-contained HTML document</a> is an example that draws a wind rose using InSight Wind Direction frequency distribution data, which data are part of the JSON object returned by this API.</h5>
+                <p>Here is something like what that wind rose looks like:<br><img src="./examples/insight_mars_wind_rose.png" style="max-width: 50%;" /></p>
 
                 <!-- END INSIGHT_WEATHER -->
                 <!-- BEGIN NEO -->

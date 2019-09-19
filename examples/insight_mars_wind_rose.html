@@ -22,6 +22,8 @@
     $('#nasa_api_key').html('Replace the NASA API DEMO_KEY with your own NASA API key obtained from <a href="https://api.nasa.gov/index.html#apply-for-an-api-key">here</a>.<hr>')
   }
 
+  var one_sol = false;
+
   //////////////////////////////////////////////////////////////////////
   // Retrieve Mars weather data from NASA API as JSON stream
   // - Write data for each Sol
@@ -32,9 +34,14 @@
     data => {
       data.sol_keys.forEach(sol => write_sol_data(sol, data[sol]));
       $("#summary").append('<hr>');
-
+    }
+  ).always(
+    function(data) {
       // Write JSON stream to #json PRE
       $("#json").text(JSON.stringify(data, null, 2));
+      if (one_sol) {
+          plot_sol_data(one_sol, data[one_sol]);
+      }
     }
   );
 
@@ -44,6 +51,8 @@
   function write_sol_data(sol, sol_obj) {
     // Summarize per-Sol temperature data to #summary DIV
     $('#summary').append( `On Sol <b>${sol}</b> the temperatures ranged from <b>${Math.round(sol_obj.AT.mn)}&deg;C</b> to <b>${Math.round(sol_obj.AT.mx)}&deg;C</b> with an atmospheric pressure of <b>${Math.round(sol_obj.PRE.mn)} Pa</b> to <b>${Math.round(sol_obj.PRE.mx)} Pa</b>.<br>`);
+
+    one_sol = sol;
 
     // Add per-Sol button to #buttons DIV
     $('#buttons').append(
