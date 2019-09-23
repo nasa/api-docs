@@ -1,0 +1,21 @@
+<mat-accordion multi>
+  <mat-expansion-panel *ngFor="let api of apis">
+    <mat-expansion-panel-header class="api-panel-header">
+      <mat-panel-title style="max-width: 230px; min-width: 230px;">
+        {{api.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{api.summary}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div [innerHTML]="dom_san.bypassSecurityTrustHtml(api.html_template)"></div>
+    <!--<mat-chip-list>-->
+      <!--<mat-chip *ngFor="let tag of api.tags">{{tag}}</mat-chip>-->
+    <!--</mat-chip-list>-->
+    <!--<button mat-raised-button-->
+            <!--style="margin-right: 20px" color="primary"-->
+            <!--[routerLink]="['/apis', api.name]"-->
+            <!--(click)="set_api_id(api.name)">Test</button>-->
+  </mat-expansion-panel>
+</mat-accordion>
+

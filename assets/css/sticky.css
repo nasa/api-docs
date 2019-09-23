@@ -1,0 +1,122 @@
+html{
+  max-width: 100%;
+}
+
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+label{
+  margin-top: 0px;
+}
+
+abbr{
+  border-bottom: 0px white none !important;
+}
+
+.search-dropdown{
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  border: none;
+  color: #212121;
+  display: block;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  line-height: 1.3;
+  text-decoration: none;
+}
+.search-dropdown:visited{
+  color: #212121;
+}
+.search-dropdown:hover {
+  background-color: #f1f1f1;
+  color: #105bd8;
+  text-decoration: none;
+}
+
+.search-dropdown:focus {
+  outline-offset: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.usa-logo-img{
+  width: 30px;
+  height: auto;
+  top: 19px;
+  left: 50px;
+  position: absolute;
+}
+
+@media screen and (min-width: 951px) {
+  .search-dropdown:hover span {
+    border-bottom: 0.4rem solid #105bd8;
+    padding-bottom: 0.2rem;
+  }
+  .usa-logo-img{
+    width: 44px;
+    top: 0;
+    left: 0;
+  }
+}
+
+/*NasaWDS class overrides*/
+
+.usa-overlay{
+  z-index: 6000 !important;
+  overflow: hidden;
+}
+.usa-navbar{
+  height: 6rem;
+}
+.usa-logo{
+  line-height: 6rem;
+}
+.usa-logo-text{
+  font-size: 2.3rem;
+  padding-left: 2rem;
+}
+.usa-menu-btn{
+  height: 6rem;
+  font-size: 1.7rem;
+}
+
+*:focus,
+.usa-focus{
+  outline: 2px solid #aeb0b5;
+}
+
+[type=radio]:focus + label::before {
+  outline: 2px solid #aeb0b5;
+}
+
+[type=checkbox]:focus + label::before {
+  outline: 2px solid #aeb0b5;
+}
+a:focus {
+  outline: 2px solid #aeb0b5;
+}
+
+@media screen and (min-width: 951px) {
+  .usa-navbar{
+    height: 9rem;
+    z-index: 10000;
+  }
+  .usa-logo{
+    line-height: 7.8rem;
+  }
+  .usa-logo-text{
+    white-space:nowrap;
+    font-size: 3rem !important;
+    margin-bottom: 30px;
+  }
+}
+.usa-accordion-content[aria-hidden = false] {
+  display: block !important;
+}
