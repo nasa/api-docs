@@ -1100,13 +1100,13 @@ var toggleButton = function toggleButton(button, expanded) {
   // XXX multiselectable is opt-in, to preserve legacy behavior
   var multiselectable = accordion.getAttribute(MULTISELECTABLE) === 'true';
 
-  if (expanded && !multiselectable) {
+  /*if (expanded && !multiselectable) {
     forEach(getAccordionButtons(accordion), function (other) {
       if (other !== button) {
         toggle(other, false);
       }
     });
-  }
+  }*/
 };
 
 /**

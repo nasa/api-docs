@@ -43,19 +43,11 @@ function goTo(divName){
             $('html, body').animate({
                 scrollTop: divTop + window.scrollY
             }, 500, function() {
-                // Callback after animation
-                // Must change focus!
-                var $target = $(target);
-                $target.focus();
-                if ($target.is(":focus")) { // Checking if the target was focused
-                    return false;
-                } else {
-                    $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-                    $target.focus(); // Set focus again
-                };
+                return false;
             });
     }
     else{
+        console.log("scroll");
         window.scrollBy({left: 0, top: divTop, behavior: "smooth"});
     }
 }
@@ -79,11 +71,15 @@ function displayHelpClick(thisDiv, divHelpName){
     displayHelp(clickOn[thisDiv], divHelpName);
     if(clickOn[thisDiv]){
         $("#" + thisDiv).off("mouseenter")
-        .off("mouseout");
+        .off("mouseout")
+        .off("focusin")
+        .off("focusout");
     }
     else{
         $("#" + thisDiv).on("mouseenter", function(){displayHelp(true, divHelpName)})
-            .on("mouseout", function(){displayHelp(false, divHelpName)});
+            .on("mouseout", function(){displayHelp(false, divHelpName)})
+            .on("focusin", function(){displayHelp(true, divHelpName)})
+            .on("focusout", function(){displayHelp(false, divHelpName)});
     }
 }
 
@@ -128,9 +124,11 @@ function resolveAfterTenthSeconds() {
             temp.append(tempChild);
         }
         var textDiv = document.getElementById("apidatagov_signup_form").children[3]
-        textDiv.children[0].innerHTML = "Application URL<img src='assets/img/alerts/info.svg' height = '20px' width = '20px' class = 'infoDiv' onclick = 'displayHelpClick(this.id, \"infoTab\")' id = 'infoPic'>(optional):";
+        textDiv.children[0].innerHTML = "Application URL<img src='assets/img/alerts/info.svg' height = '20px' width = '20px' class = 'infoDiv' tabindex = '0' onclick = 'displayHelpClick(this.id, \"infoTab\")' id = 'infoPic'>(optional):";
         $("#infoPic").on("mouseenter", function(){displayHelp(true, 'infoTab');})
-        .on("mouseout", function(){displayHelp(false, 'infoTab');});
+        .on("mouseout", function(){displayHelp(false, 'infoTab');})
+        .on("focusin", function(){displayHelp(true, 'infoTab')})
+        .on("focusout", function(){displayHelp(false, 'infoTab')});
         textDiv.children[1].remove();
         var newField = document.createElement("input");
         newField.id = "user_use_description";

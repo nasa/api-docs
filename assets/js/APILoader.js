@@ -46,5 +46,5 @@ var jqxhr = $.getJSON( "assets/json/apis.json", function(data) {
         });
       }
       var result = await resolveAfterTenthSeconds();
-      goTo(this.name);
+      goTo(APIDiv.attr("id"));
     }
