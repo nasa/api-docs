@@ -54,6 +54,14 @@ abbr{
   position: absolute;
 }
 
+.parsley-errors-list{
+  color: red;
+  list-style-type: none;
+  padding-inline-start: 10px;
+  font-size: 80%;
+  margin-top: 5px;
+}
+
 @media screen and (min-width: 951px) {
   .search-dropdown:hover span {
     border-bottom: 0.4rem solid #105bd8;

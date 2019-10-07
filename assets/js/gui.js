@@ -47,7 +47,6 @@ function goTo(divName){
             });
     }
     else{
-        console.log("scroll");
         window.scrollBy({left: 0, top: divTop, behavior: "smooth"});
     }
 }
@@ -176,20 +175,21 @@ function searchHeader(){
     var filter = input.value.toUpperCase();
     var bigDiv = document.getElementById("headerSearch");
     var childDiv = bigDiv.children;
+    if(filter.length > 0){
+        bigDiv.style.display = "block";
 
-    bigDiv.style.display = "block";
-
-    for (i = 0; i < childDiv.length; i++) {
-      var a = childDiv[i].getElementsByTagName("a")[0];
-      var txtValue = a.textContent || a.innerText;
-      var txtValueB = "xxxxxxx";
-      if(a.sum != null){
-          txtValueB = a.sum;
-      }
-      if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValueB.toUpperCase().indexOf(filter) > -1) {
-        childDiv[i].style.display = "";
-      } else {
-        childDiv[i].style.display = "none";
-      }
+        for (i = 0; i < childDiv.length; i++) {
+        var a = childDiv[i].getElementsByTagName("a")[0];
+        var txtValue = a.textContent || a.innerText;
+        var txtValueB = "xxxxxxx";
+        if(a.sum != null){
+            txtValueB = a.sum;
+        }
+        if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValueB.toUpperCase().indexOf(filter) > -1) {
+            childDiv[i].style.display = "";
+        } else {
+            childDiv[i].style.display = "none";
+        }
+        }
     }
 }

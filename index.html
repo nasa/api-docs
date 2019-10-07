@@ -75,7 +75,7 @@
     <button class="usa-nav-close">
       <img src="assets/img/close.svg" alt="close">
    </button>
-    <ul class="usa-nav-primary usa-accordion">
+    <ul class="usa-nav-primary usa-accordion" id = "headerContent">
      <li><a class="usa-nav-link" href = '#main-content'>
          <span>Overview</span>
         </a></li>
@@ -85,11 +85,11 @@
       <li><a class="usa-nav-link" href = '#recovery'>
          <span>Recover API Key</span>
       </a></li>
-     <li><a class="usa-nav-link" href = '#browseAPI'>
+     <li><a class="usa-nav-link" href = '#browseAPI' onfocusin = 'new function(){$("#headerSearch").css("display","none");}'>
         <span>Browse APIs</span>
      </a></li>
       </ul>
-      <form class="usa-search usa-search-small ">
+      <form class="usa-search usa-search-small" id = "headerForm">
       <div role="search">
        <label class="usa-sr-only" for="basic-search-field-small">Search small</label>
        <input id="basic-search-field-small" type="search" name="search" onkeyup = "searchHeader()" autocomplete="off">
@@ -132,7 +132,7 @@
   <section class="usa-section" id = "signUp">
     <div class = "usa-grid">
     <h2>Generate API Key</h2>
-          <div id="apidatagov_signup">Loading signup form...</div>
+          <div id="apidatagov_signup" onfocusin = 'new function(){$("#headerSearch").css("display","none");}' >Loading signup form...</div>
           <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var apiUmbrellaSignupOptions = {
@@ -195,21 +195,37 @@
   </main>
   <!--Scrollable header JS-->
 <script>
-      var temp = $("#headerSearch");
-      var added = $("<div class = 'usa-width-one-whole'><a href = '#main-content' class = 'search-dropdown'><span>Overview</span></a></div>");
-      added.appendTo(temp);
-      added = $("<div class = 'usa-width-one-whole'><a href = '#signUp' class = 'search-dropdown'><span>Generate API Key</span></a></div>");
-      added.appendTo(temp);
-      added = $("<div class = 'usa-width-one-whole'><a href = '#recovery' class = 'search-dropdown'><span>Recover API Key</span></a></div>");
-      added.appendTo(temp);
-      added = $("<div class = 'usa-width-one-whole'><a href = '#browseAPI' class = 'search-dropdown'><span>Browse APIs</span></a></div>");
-      added.appendTo(temp);
-    var dio = $("#myHeader"); //you thought this variable would be named "header", but it was I, DIO
-    dio.addClass("sticky");
-    insertFooterHere("main-content");
-    $("#infoPic2").on("mouseenter", function(){displayHelp(true, 'infoTab2');})
-        .on("mouseout", function(){displayHelp(false, 'infoTab2');})
-        .on("focusin", function(){displayHelp(true, 'infoTab2')})
-        .on("focusout", function(){displayHelp(false, 'infoTab2')});
-    </script>
+  var temp = $("#headerSearch");
+  var added = $("<div class = 'usa-width-one-whole'><a href = '#main-content' class = 'search-dropdown'><span>Overview</span></a></div>");
+  added.appendTo(temp);
+  added = $("<div class = 'usa-width-one-whole'><a href = '#signUp' class = 'search-dropdown'><span>Generate API Key</span></a></div>");
+  added.appendTo(temp);
+  added = $("<div class = 'usa-width-one-whole'><a href = '#recovery' class = 'search-dropdown'><span>Recover API Key</span></a></div>");
+  added.appendTo(temp);
+  added = $("<div class = 'usa-width-one-whole'><a href = '#browseAPI' class = 'search-dropdown'><span>Browse APIs</span></a></div>");
+  added.appendTo(temp);
+  var dio = $("#myHeader"); //you thought this variable would be named "header", but it was I, DIO
+  dio.addClass("sticky");
+  insertFooterHere("main-content");
+  $("#infoPic2").on("mouseenter", function(){displayHelp(true, 'infoTab2');})
+    .on("mouseout", function(){displayHelp(false, 'infoTab2');})
+    .on("focusin", function(){displayHelp(true, 'infoTab2')})
+    .on("focusout", function(){displayHelp(false, 'infoTab2')});
+
+  var checkDivMove = false;
+  window.onresize = function(){
+    if (window.innerWidth < 951){
+      if(checkDivMove == false){
+        $("#headerForm").insertBefore($("#headerContent"));
+      }
+      checkDivMove = true;
+    }
+    else {
+      if(checkDivMove == true){
+        $("#headerContent").insertBefore($("#headerForm"));
+      }
+      checkDivMove = false;
+    }
+  };
+  </script>
 </html>
