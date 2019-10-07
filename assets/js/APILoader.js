@@ -5,7 +5,9 @@ var jqxhr = $.getJSON( "assets/json/apis.json", function(data) {
       var APIButton = $('<button class="usa-accordion-button" aria-expanded = "false"></button>');
       APIButton.attr("aria-controls", "b-a" + (key+1));
       APIButton.attr("name", "b-a" + (key+1));
+      APIButton.attr("id", APIname.name.toLowerCase());
       APIButton.click(addScroll);
+      APIButton.focus(function(){overrideHREF(this);});
       var APISummary = $('<small></small>');
       APISummary.css("font-weight", "400");
       APISummary.html(APIname.summary);
@@ -47,4 +49,9 @@ var jqxhr = $.getJSON( "assets/json/apis.json", function(data) {
       }
       var result = await resolveAfterTenthSeconds();
       goTo(APIDiv.attr("id"));
+    }
+    function overrideHREF(apiButton){
+      if(apiButton.id == window.location.hash.substring(1) && $(window.location.hash).attr("aria-expanded") == "false"){
+        $(window.location.hash).trigger("click");
+      }
     }

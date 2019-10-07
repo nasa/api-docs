@@ -100,6 +100,19 @@ function resolveAfterTenthSeconds() {
      }, 100);
     });
   }
+  function resolveAfterSucessfulKey() {
+    return new Promise(resolve => {
+     setTimeout(() => {
+        if(document.getElementById("apidatagov_signup_form") == null){
+            resolveCounter = 0;
+            resolve("true");
+        }
+        else{
+            resolve("false");
+        }
+     }, 100);
+    });
+  }
 
   async function asyncCall() {
     var result = await resolveAfterTenthSeconds();
@@ -141,6 +154,8 @@ function resolveAfterTenthSeconds() {
         help.animation = "slidein-bottom .3s ease-in-out";
         help.innerHTML = "<small>Enter the URL that you will use your API key with. We would love to see what you do with your key!</small>";
         textDiv.insertBefore(help, textDiv.children[1]);
+        var submitButton = $("#apidatagov_signup_form").find("button");
+        submitButton.on("click", function(){rmPeriods();});
     }
     else if(result == "false"){
         asyncCall();
@@ -190,6 +205,26 @@ function searchHeader(){
         } else {
             childDiv[i].style.display = "none";
         }
+        }
+    }
+}
+
+async function rmPeriods(){
+    var result2 = await resolveAfterTenthSeconds();
+    result2 = "";
+    var liElements = $("#apidatagov_signup_form").find("li");
+    if(liElements.length != 0){
+        for(var x = 0; x < liElements.length; x++){
+            liElements[x].innerHTML = liElements[x].innerHTML.substring(0, liElements[x].innerHTML.length-1);
+        }
+    }
+    else{
+        for(var x = 0; x < 30; x++){
+            result2 = await resolveAfterSucessfulKey();
+            if(result2 == "true"){
+                goTo("signUp");
+                break;
+            }
         }
     }
 }
