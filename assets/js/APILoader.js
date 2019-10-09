@@ -7,7 +7,7 @@ function loadAPIs(){
         APIButton.attr("aria-controls", "b-a" + (key+1));
         APIButton.attr("name", "b-a" + (key+1));
         APIButton.attr("id", APIname.name.toLowerCase().replace(/\//g, "-").replace(/\s/g, "-"));
-        APIButton.click(addScroll);
+        APIButton.click(openTabs);
         APIButton.focus(function(){overrideHREF(this);});
         var APISummary = $('<small></small>');
         APISummary.css("font-weight", "400");
@@ -39,7 +39,7 @@ function loadAPIs(){
       });
 }
 // function to initiate a scroll when a API tab is extended
-    async function addScroll(){
+    async function openTabs(){
       var APIDiv = $(this).next();
       if($(this).attr("aria-expanded") == "true"){
         $("A", APIDiv).each(function(){
@@ -51,8 +51,6 @@ function loadAPIs(){
           $(this).removeAttr("tabIndex");
         });
       }
-      var result = await resolveAfterTenthSeconds();
-      goTo(APIDiv.attr("id"));
     }
     function overrideHREF(apiButton){
       if(apiButton.id == window.location.hash.substring(1) && $(window.location.hash).attr("aria-expanded") == "false"){

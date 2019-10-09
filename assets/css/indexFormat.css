@@ -89,7 +89,9 @@ code{
 
 /*NasaWDS class overrides*/
 
-.usa-grid{
+.usa-section,
+.usa-section-dark,
+.usa-accordion-content{
   outline: none !important;
 }
 

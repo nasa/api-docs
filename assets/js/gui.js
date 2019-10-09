@@ -11,7 +11,6 @@ document.onclick = function (e) {
         nameSplit = nameSplit[nameSplit.length - 1].replace(/%20/g, " ");
         if (element.tagName == 'A'&& $(nameSplit).is('button') && $(element).parent().attr("class") == "usa-width-one-whole") {
             $(nameSplit).click();
-            $(nameSplit)[0].focus({preventScroll:true});
             return false; // prevent default action and stop event propagation
         }
         else if (element.tagName == 'A'&& nameSplit[0] == '#') {
@@ -52,8 +51,10 @@ function goTo(divName){
         window.scrollBy({left: 0, top: divTop, behavior: "smooth"});
     }
     $("#" + divName).attr("tabindex", "0");
-    $("#" + divName)[0].focus({preventScroll:true});
-    $("#" + divName).attr("tabindex", "-1");
+    $("#" + divName)[0].focus({preventScroll:true});   
+    if($("#" + divName).is("Section")){
+        $("#" + divName).attr("tabindex", "-1");
+    }
     highlightMenu();
 }
 //Displays the Application URL help
