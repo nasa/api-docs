@@ -11,234 +11,75 @@
   <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA" id="_fed_an_ua_tag"></script>
 </head>
   <link rel="stylesheet" href="assets/css/nasawds.min.css">
-  <link rel="stylesheet" href="assets/css/sticky.css">
+  <link rel="stylesheet" href="assets/css/indexFormat.css">
 <body>
-<script src="assets/js/nasawds.min.js"></script>
+<script src="assets/js/nasawds.js"></script>
 <script src = "assets/js/jquery.min.js"></script>
 <script src="assets/js/gui.js"></script>
 <script src="assets/js/APILoader.js"></script>
+<script src="assets/js/setup.js"></script>
+<script src="assets/js/contentLoader.js"></script>
 <script src= "assets/footer/OIT-footer.js"></script>
-
-<section class="usa-banner">
-  <div class="usa-accordion">
-    <header class="usa-banner-header">
-      <div class="usa-grid usa-banner-inner">
-      <img src="assets/img/favicons/favicon-usa-57.png" alt="U.S. flag">
-      <p>An official website of the United States government</p>
-      <button class="usa-accordion-button usa-banner-button"
-        aria-expanded="false" aria-controls="gov-banner">
-        <span class="usa-banner-button-text">Here's how you know</span>
-      </button>
-      </div>
-    </header>
-    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
-      <div class="usa-banner-guidance-gov usa-width-one-half">
-        <img class="usa-banner-icon usa-media_block-img" src="assets/img/icon-dot-gov.svg" alt="Dot gov">
-        <div class="usa-media_block-body">
-          <p>
-            <strong>The .gov means it’s official.</strong>
-            <br>
-            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
-          </p>
-        </div>
-      </div>
-      <div class="usa-banner-guidance-ssl usa-width-one-half">
-        <img class="usa-banner-icon usa-media_block-img" src="assets/img/icon-https.svg" alt="Https">
-        <div class="usa-media_block-body">
-          <p>
-            <strong>The site is secure.</strong>
-            <br>
-            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<header style = "box-shadow: 0px 4px 8px darkgrey !important;" class="usa-header usa-header-basic" role="banner" id = "myHeader">
-  <div class="usa-nav-container">
-    <div class="usa-navbar">
-      <div class="usa-logo" id="basic-logo">
-       <em class="usa-logo-text title" >
-          <img class="usa-logo-img" src="assets/img/favicons/favicon-192.png">
-          <a href="javascript:void(0)"
-            title="Home"
-            aria-label="Home" style="position: relative; left: 50px; top: 2px;">
-              { APIs }
-          </a>
-        </em>
-      </div>
-    <button class="usa-menu-btn" id = "headerButton">...</button>
-  </div>
-  <nav role="navigation" class="usa-nav" id = "headerNav">  
-    <button class="usa-nav-close">
-      <img src="assets/img/close.svg" alt="close">
-   </button>
-    <ul class="usa-nav-primary usa-accordion" id = "headerContent">
-     <li><a class="usa-nav-link" href = '#main-content'>
-         <span>Overview</span>
-        </a></li>
-      <li><a class="usa-nav-link" href = '#signUp'>
-          <span>Generate API Key</span>
-        </a></li>
-      <li><a class="usa-nav-link" href = '#recovery'>
-         <span>Recover API Key</span>
-      </a></li>
-     <li><a class="usa-nav-link" href = '#browseAPI' onfocusin = 'new function(){$("#headerSearch").css("display","none");}'>
-        <span>Browse APIs</span>
-     </a></li>
-      </ul>
-      <form class="usa-search usa-search-small" id = "headerForm">
-      <div role="search">
-       <label class="usa-sr-only" for="basic-search-field-small">Search small</label>
-       <input id="basic-search-field-small" type="search" name="search" onkeyup = "searchHeader()" autocomplete="off">
-       <button type="submit">
-         <span class="usa-sr-only">Search APIs</span>
-       </button>
-       <div class = "usa-grid" id = "headerSearch" style = "background: white; position: fixed; display: none; font-size: 2rem; box-shadow: 0px 4px 8px darkgrey !important; margin-right: 24px; padding-left: 1.5rem; padding-right: 1.5rem;">
-
-       </div>
-      </div>
-    </form>
-    </nav>
-  </div>
-</header>
 
 <div class="usa-overlay"></div>
 
 <main id="main-content">
-    <section class="usa-hero">
-    <div class="usa-grid" id = "underHeader">
-        <div class="usa-hero-callout usa-section-dark">
-            <h2>
-              { NASA APIs }
-            </h2>
-      
-            
-            <p>Welcome to the NASA API portal. The objective of this site is to make NASA data, 
-              including imagery, eminently accessible to application developers. 
-              The api.nasa.gov catalog is growing.</p>
-            
-      
-            
-            <a class="usa-button" onclick="goTo('signUp')">Get Started</a>
-            <a class="usa-button" onclick="goTo('browseAPI')">Browse APIs</a>
-            
-          </div>
-    </div>
-  </section>
 
-  <section class="usa-section" id = "signUp">
-    <div class = "usa-grid">
-    <h2>Generate API Key</h2>
-          <div id="apidatagov_signup" onfocusin = 'new function(){$("#headerSearch").css("display","none");}' >Loading signup form...</div>
-          <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var apiUmbrellaSignupOptions = {
-              // Pick a short, unique name to identify your site, like 'gsa-auctions'
-              // in this example.
-              registrationSource: 'web-admin',
-          
-              // Enter the API key you signed up for and specially configured for this
-              // API key signup embed form.
-              apiKey: 'jfr9uihqvncOuii7lda5bDlsvOIDePcKTLWlzLte',
-              
-              // Provide a URL or e-mail address to be used for customer support.
-              //
-              // The format for e-mail addresses can be given as either
-              // 'example@example.com' or 'mailto:example@example.com'.
-              contactUrl: 'mailto:nasa-data@lists.arc.nasa.gov',
-
-              // Provide the name of your developer site. This will appear in the
-              // subject of the welcome e-mail as "Your {{siteName}} API key".
-              siteName: 'https://api.nasa.gov',
-              
-              //
-              emailFromName: 'NASA',
-          
-              // Provide an example URL you want to show to users after they signup.
-              // This can be any API endpoint on your server, and you can use the
-              // special {{api_key}} variable to automatically substitute in the API
-              // key the user just signed up for.
-              exampleApiUrl: 'https://api.nasa.gov/planetary/apod?api_key={{api_key}}'
-            };
-          
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-              var apiUmbrella = document.createElement('script'); 
-              apiUmbrella.type = 'text/javascript'; 
-              apiUmbrella.async = true;
-              apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
-              asyncCall();
-            })();
-          </script>
-          <noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
-      </div>
-    </section>
-
-  <section class="usa-section-dark" id = "recovery">
-    <div class="usa-grid" style = "padding-top:3rem; padding-bottom: 3rem;">
-      <h2> API Key Recovery</h2>
-      <p class="usa-font-lead">Please <a _ngcontent-c9="" href="mailto:nasa-data@lists.arc.nasa.gov">contact us</a>  for help recovering an old API key<img src='assets/img/alerts/info.svg' height = '20px' width = '20px' class = 'infoDiv' onclick = 'displayHelpClick(this.id, "infoTab2")' id = 'infoPic2' style = "filter: invert(100%);" tabindex="0"><small id = "infoTab2" style="display: none;">You may apply for multiple keys as needed.</small></p>
-    </div>
-  </section>
-
-  <section class="usa-section">
-      <div class="usa-grid" id = "browseAPI">
-          <h2> Browse APIs</h2>
-
-          <div class="usa-width">
-            <div role="search">
-              <form class="usa-search usa-search-big">
-                <label class="usa-sr-only" for="search-field-big">Search big</label>
-                <input id="search-field-big" type="search" name="search" onkeyup = "searchFunction()" style = "margin-bottom: 7px">
-                <button type="submit">
-                  <span class="usa-search-submit-text">Search</span>
-                </button>
-              </form>
+    <section class="usa-section" id = "signUp">
+        <div class = "usa-grid">
+        <h2>Generate API Key</h2>
+                <div id="apidatagov_signup" onfocusin = 'new function(){$("#headerSearch").css("display","none");}' >Loading signup form...</div>
+                <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var apiUmbrellaSignupOptions = {
+                    // Pick a short, unique name to identify your site, like 'gsa-auctions'
+                    // in this example.
+                    registrationSource: 'web-admin',
+                
+                    // Enter the API key you signed up for and specially configured for this
+                    // API key signup embed form.
+                    apiKey: 'jfr9uihqvncOuii7lda5bDlsvOIDePcKTLWlzLte',
+                    
+                    // Provide a URL or e-mail address to be used for customer support.
+                    //
+                    // The format for e-mail addresses can be given as either
+                    // 'example@example.com' or 'mailto:example@example.com'.
+                    contactUrl: 'mailto:nasa-data@lists.arc.nasa.gov',
+    
+                    // Provide the name of your developer site. This will appear in the
+                    // subject of the welcome e-mail as "Your {{siteName}} API key".
+                    siteName: 'https://api.nasa.gov',
+                    
+                    //
+                    emailFromName: 'NASA',
+                
+                    // Provide an example URL you want to show to users after they signup.
+                    // This can be any API endpoint on your server, and you can use the
+                    // special {{api_key}} variable to automatically substitute in the API
+                    // key the user just signed up for.
+                    exampleApiUrl: 'https://api.nasa.gov/planetary/apod?api_key={{api_key}}'
+                };
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var apiUmbrella = document.createElement('script'); 
+                    apiUmbrella.type = 'text/javascript'; 
+                    apiUmbrella.async = true;
+                    apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+                    asyncCall();
+                })();
+                </script>
+                <noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
             </div>
-          </div>
-
-          <ul class="usa-accordion-bordered" id = "APIList">
-          </ul>
-        </div>
-  </section>
+    </section>
   </main>
-  <!--Scrollable header JS-->
 <script>
-  var temp = $("#headerSearch");
-  var added = $("<div class = 'usa-width-one-whole'><a href = '#main-content' class = 'search-dropdown'><span>Overview</span></a></div>");
-  added.appendTo(temp);
-  added = $("<div class = 'usa-width-one-whole'><a href = '#signUp' class = 'search-dropdown'><span>Generate API Key</span></a></div>");
-  added.appendTo(temp);
-  added = $("<div class = 'usa-width-one-whole'><a href = '#recovery' class = 'search-dropdown'><span>Recover API Key</span></a></div>");
-  added.appendTo(temp);
-  added = $("<div class = 'usa-width-one-whole'><a href = '#browseAPI' class = 'search-dropdown'><span>Browse APIs</span></a></div>");
-  added.appendTo(temp);
-  var dio = $("#myHeader"); //you thought this variable would be named "header", but it was I, DIO
-  dio.addClass("sticky");
-  insertFooterHere("main-content");
-  $("#infoPic2").on("mouseenter", function(){displayHelp(true, 'infoTab2');})
-    .on("mouseout", function(){displayHelp(false, 'infoTab2');})
-    .on("focusin", function(){displayHelp(true, 'infoTab2')})
-    .on("focusout", function(){displayHelp(false, 'infoTab2')});
-
-  var checkDivMove = false;
-  window.onresize = function(){
-    if (window.innerWidth < 951){
-      if(checkDivMove == false){
-        $("#headerForm").insertBefore($("#headerContent"));
-      }
-      checkDivMove = true;
-    }
-    else {
-      if(checkDivMove == true){
-        $("#headerContent").insertBefore($("#headerForm"));
-      }
-      checkDivMove = false;
-    }
-  };
-  </script>
+  insertBlockXatY("assets/html/header.html","Body",true);
+  insertBlockXatY("assets/html/overview.html","Main",true);
+  insertBlockXatY("assets/html/authentication.html","Main");
+  insertBlockXatY("assets/html/recoverKey.html","Main");
+  insertBlockXatY("assets/html/browseAPI.html","Main");
+  loadContent();
+</script>
 </html>

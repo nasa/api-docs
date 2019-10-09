@@ -1098,15 +1098,15 @@ var toggleButton = function toggleButton(button, expanded) {
 
   expanded = toggle(button, expanded);
   // XXX multiselectable is opt-in, to preserve legacy behavior
-  var multiselectable = accordion.getAttribute(MULTISELECTABLE) === 'true';
+  var multiselectable = accordion.getAttribute(MULTISELECTABLE) === 'false';
 
-  /*if (expanded && !multiselectable) {
+  if (expanded && !multiselectable) {
     forEach(getAccordionButtons(accordion), function (other) {
       if (other !== button) {
         toggle(other, false);
       }
     });
-  }*/
+  }
 };
 
 /**
@@ -1145,7 +1145,7 @@ var accordion = behavior(_defineProperty({}, CLICK, _defineProperty({}, BUTTON, 
     // We were just expanded, but if another accordion was also just
     // collapsed, we may no longer be in the viewport. This ensures
     // that we are still visible, so the user isn't confused.
-    if (!isElementInViewport(this)) this.scrollIntoView();
+    goTo(this.id);
   }
 })), {
   init: function init(root) {

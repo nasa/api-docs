@@ -8,12 +8,14 @@ document.onclick = function (e) {
     }
     if(element.href != null){
         var nameSplit = element.href.split('/');
-        if (element.tagName == 'A'&& nameSplit[nameSplit.length - 1][2] == '-' && $(element).parent().attr("class") == "usa-width-one-whole") {
-            $("#" + nameSplit[nameSplit.length - 1].substring(1)).prev().click();
+        nameSplit = nameSplit[nameSplit.length - 1].replace(/%20/g, " ");
+        console.log(nameSplit);
+        if (element.tagName == 'A'&& $(nameSplit).is('button') && $(element).parent().attr("class") == "usa-width-one-whole") {
+            $(nameSplit).click();
             return false; // prevent default action and stop event propagation
         }
-        else if (element.tagName == 'A'&& nameSplit[nameSplit.length - 1][0] == '#') {
-            goTo(nameSplit[nameSplit.length - 1].substring(1));
+        else if (element.tagName == 'A'&& nameSplit[0] == '#') {
+            goTo(nameSplit.substring(1));
             return false; // prevent default action and stop event propagation
         }
     }
@@ -49,6 +51,7 @@ function goTo(divName){
     else{
         window.scrollBy({left: 0, top: divTop, behavior: "smooth"});
     }
+    highlightMenu();
 }
 //Displays the Application URL help
 function displayHelp(enterExit, divHelpName2){
@@ -208,7 +211,7 @@ function searchHeader(){
         }
     }
 }
-
+// removes periods from error submit forms 
 async function rmPeriods(){
     var result2 = await resolveAfterTenthSeconds();
     result2 = "";
@@ -226,5 +229,32 @@ async function rmPeriods(){
                 break;
             }
         }
+    }
+}
+//checks if div is in top half of page
+function isElementInViewport (el) {
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+    var rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 && rect.top <= window.innerHeight/2
+    );
+}
+
+//adapts the header menu with location highlights
+var topDiv = "#main-content";
+function highlightMenu(){
+    var checkTopDiv = isElementInViewport($(topDiv));
+    if(!checkTopDiv){
+      var divList = ["#main-content", "#signUp", "#authentication", "#recovery", "#browseAPI"];
+      for(var x = 0; x < 5; x++){
+        if(isElementInViewport($(divList[x]))){
+          $("#headerContent").children().eq(divList.indexOf(topDiv)).children().removeClass( "currentDiv" );
+          topDiv = divList[x];
+          $("#headerContent").children().eq(x).children().addClass("currentDiv");
+          break;
+        }
+      }
     }
 }

@@ -11,12 +11,21 @@ html{
   background-color: white;
 }
 
+.currentDiv{
+  background-color: #beeeff;
+  height: 39px;
+}
+
 label{
   margin-top: 0px;
 }
 
 abbr{
   border-bottom: 0px white none !important;
+}
+
+code{
+  background: dimgray;
 }
 
 .search-dropdown{
@@ -72,6 +81,10 @@ abbr{
     top: 0;
     left: 0;
   }
+  .currentDiv{
+    height: 38px;
+    margin-bottom: 10px;
+  }
 }
 
 /*NasaWDS class overrides*/
@@ -111,6 +124,16 @@ a:focus {
   outline: 2px solid #aeb0b5;
 }
 
+.usa-nav{
+  padding-top: 4.5rem;
+}
+
+@media screen and (min-width: 1026px){
+  .usa-nav{
+    padding-top: 4.5rem !important;
+  }
+}
+
 @media screen and (min-width: 951px) {
   .usa-navbar{
     height: 9rem;
@@ -123,6 +146,12 @@ a:focus {
     white-space:nowrap;
     font-size: 3rem !important;
     margin-bottom: 30px;
+  }
+  .usa-nav-primary>li>a {
+    font-size: 1.3rem;
+  }
+  .usa-nav{
+    padding-top: 0rem;
   }
 }
 .usa-accordion-content[aria-hidden = false] {
