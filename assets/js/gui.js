@@ -9,9 +9,9 @@ document.onclick = function (e) {
     if(element.href != null){
         var nameSplit = element.href.split('/');
         nameSplit = nameSplit[nameSplit.length - 1].replace(/%20/g, " ");
-        console.log(nameSplit);
         if (element.tagName == 'A'&& $(nameSplit).is('button') && $(element).parent().attr("class") == "usa-width-one-whole") {
             $(nameSplit).click();
+            $(nameSplit)[0].focus({preventScroll:true});
             return false; // prevent default action and stop event propagation
         }
         else if (element.tagName == 'A'&& nameSplit[0] == '#') {
@@ -51,6 +51,9 @@ function goTo(divName){
     else{
         window.scrollBy({left: 0, top: divTop, behavior: "smooth"});
     }
+    $("#" + divName).attr("tabindex", "0");
+    $("#" + divName)[0].focus({preventScroll:true});
+    $("#" + divName).attr("tabindex", "-1");
     highlightMenu();
 }
 //Displays the Application URL help

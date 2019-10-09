@@ -89,6 +89,10 @@ code{
 
 /*NasaWDS class overrides*/
 
+.usa-grid{
+  outline: none !important;
+}
+
 .usa-overlay{
   z-index: 6000 !important;
   overflow: hidden;

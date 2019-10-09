@@ -24,56 +24,55 @@
 <div class="usa-overlay"></div>
 
 <main id="main-content">
+  <section class="usa-section" id = "signUp">
+    <div class = "usa-grid">
+      <h2>Generate API Key</h2>
+      <div id="apidatagov_signup" onfocusin = 'new function(){$("#headerSearch").css("display","none");}' >Loading signup form...</div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var apiUmbrellaSignupOptions = {
+            // Pick a short, unique name to identify your site, like 'gsa-auctions'
+            // in this example.
+            registrationSource: 'web-admin',
+        
+            // Enter the API key you signed up for and specially configured for this
+            // API key signup embed form.
+            apiKey: 'jfr9uihqvncOuii7lda5bDlsvOIDePcKTLWlzLte',
+            
+            // Provide a URL or e-mail address to be used for customer support.
+            //
+            // The format for e-mail addresses can be given as either
+            // 'example@example.com' or 'mailto:example@example.com'.
+            contactUrl: 'mailto:nasa-data@lists.arc.nasa.gov',
 
-    <section class="usa-section" id = "signUp">
-        <div class = "usa-grid">
-        <h2>Generate API Key</h2>
-                <div id="apidatagov_signup" onfocusin = 'new function(){$("#headerSearch").css("display","none");}' >Loading signup form...</div>
-                <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                var apiUmbrellaSignupOptions = {
-                    // Pick a short, unique name to identify your site, like 'gsa-auctions'
-                    // in this example.
-                    registrationSource: 'web-admin',
-                
-                    // Enter the API key you signed up for and specially configured for this
-                    // API key signup embed form.
-                    apiKey: 'jfr9uihqvncOuii7lda5bDlsvOIDePcKTLWlzLte',
-                    
-                    // Provide a URL or e-mail address to be used for customer support.
-                    //
-                    // The format for e-mail addresses can be given as either
-                    // 'example@example.com' or 'mailto:example@example.com'.
-                    contactUrl: 'mailto:nasa-data@lists.arc.nasa.gov',
-    
-                    // Provide the name of your developer site. This will appear in the
-                    // subject of the welcome e-mail as "Your {{siteName}} API key".
-                    siteName: 'https://api.nasa.gov',
-                    
-                    //
-                    emailFromName: 'NASA',
-                
-                    // Provide an example URL you want to show to users after they signup.
-                    // This can be any API endpoint on your server, and you can use the
-                    // special {{api_key}} variable to automatically substitute in the API
-                    // key the user just signed up for.
-                    exampleApiUrl: 'https://api.nasa.gov/planetary/apod?api_key={{api_key}}'
-                };
-                
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function() {
-                    var apiUmbrella = document.createElement('script'); 
-                    apiUmbrella.type = 'text/javascript'; 
-                    apiUmbrella.async = true;
-                    apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
-                    asyncCall();
-                })();
-                </script>
-                <noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
-            </div>
-    </section>
-  </main>
+            // Provide the name of your developer site. This will appear in the
+            // subject of the welcome e-mail as "Your {{siteName}} API key".
+            siteName: 'https://api.nasa.gov',
+            
+            //
+            emailFromName: 'NASA',
+        
+            // Provide an example URL you want to show to users after they signup.
+            // This can be any API endpoint on your server, and you can use the
+            // special {{api_key}} variable to automatically substitute in the API
+            // key the user just signed up for.
+            exampleApiUrl: 'https://api.nasa.gov/planetary/apod?api_key={{api_key}}'
+        };
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var apiUmbrella = document.createElement('script'); 
+            apiUmbrella.type = 'text/javascript'; 
+            apiUmbrella.async = true;
+            apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+            asyncCall();
+        })();
+      </script>
+      <noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
+    </div>
+  </section>
+</main>
 <script>
   insertBlockXatY("assets/html/header.html","Body",true);
   insertBlockXatY("assets/html/overview.html","Main",true);

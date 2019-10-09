@@ -12,7 +12,6 @@ function setupPage() {
   added.appendTo(temp);
   var dio = $("#myHeader"); //you thought this variable would be named "header", but it was I, DIO
   dio.addClass("sticky");
-  console.log(dio);
   insertFooterHere("main-content");
   $("#infoPic2").on("mouseenter", function(){displayHelp(true, 'infoTab2');})
     .on("mouseout", function(){displayHelp(false, 'infoTab2');})
