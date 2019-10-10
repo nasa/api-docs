@@ -12,8 +12,17 @@ html{
 }
 
 .currentDiv{
-  background-color: #beeeff;
+  background-color: #696969;
+  border-radius: 5px;
   height: 39px;
+}
+.currentDiv span{
+  color: white;
+  border-bottom: .2rem solid #9bdaf1 !important;
+}
+.currentDiv:hover span{
+  color: #5b616b !important;
+  border-bottom: .4rem solid #105bd8 !important;
 }
 
 label{
@@ -79,7 +88,7 @@ code{
   .usa-logo-img{
     width: 44px;
     top: 0;
-    left: 0;
+    left: 20px;
   }
   .currentDiv{
     height: 38px;
