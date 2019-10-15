@@ -37,4 +37,28 @@ function setupPage() {
   window.onscroll = function(){
     highlightMenu();
   };
+
+  var isChromium = window.chrome;
+var winNav = window.navigator;
+var vendorName = winNav.vendor;
+var isOpera = typeof window.opr !== "undefined";
+var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+var isIOSChrome = winNav.userAgent.match("CriOS");
+
+if (isIOSChrome) {
+  var style = document.createElement('style');
+  document.head.appendChild(style);
+  style.sheet.insertRule('@media screen and (min-width: 1026px){.usa-nav{padding-top: 4.5rem !important;}}');
+} else if(
+  isChromium !== null &&
+  typeof isChromium !== "undefined" &&
+  vendorName === "Google Inc." &&
+  isOpera === false &&
+  isIEedge === false
+) {
+  var style = document.createElement('style');
+  document.head.appendChild(style);
+  style.sheet.insertRule('@media screen and (min-width: 1026px){.usa-nav{padding-top: 4.5rem !important;}}');
+} 
+
 };

@@ -33,8 +33,11 @@ abbr{
   border-bottom: 0px white none !important;
 }
 
-code{
+.usa-section-dark code{
   background: dimgray;
+}
+.usa-section code{
+  background: #f1f1f1;
 }
 
 .search-dropdown{
@@ -145,7 +148,7 @@ a:focus {
 
 @media screen and (min-width: 1026px){
   .usa-nav{
-    padding-top: 4.5rem !important;
+    padding-top: 0rem !important;
   }
 }
 
