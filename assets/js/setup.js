@@ -58,7 +58,7 @@ if (isIOSChrome) {
 ) {
   var style = document.createElement('style');
   document.head.appendChild(style);
-  style.sheet.insertRule('@media screen and (min-width: 1026px){.usa-nav{padding-top: 4.5rem !important;}}');
+  style.sheet.insertRule('@media screen and (min-width: 1002px){.usa-nav{padding-top: 4.5rem !important;}}');
 } 
 
 };

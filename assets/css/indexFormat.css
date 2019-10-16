@@ -144,11 +144,12 @@ a:focus {
 
 .usa-nav{
   padding-top: 4.5rem;
+  padding-left: 0;
 }
 
-@media screen and (min-width: 1026px){
+@media screen and (min-width: 1028px){
   .usa-nav{
-    padding-top: 0rem !important;
+    padding-top: 4.5rem !important;
   }
 }
 
