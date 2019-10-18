@@ -70,8 +70,7 @@ abbr{
 .usa-logo-img{
   width: 30px;
   height: auto;
-  top: 19px;
-  left: 50px;
+  top: 18px;
   position: absolute;
 }
 
@@ -91,7 +90,6 @@ abbr{
   .usa-logo-img{
     width: 44px;
     top: 0;
-    left: 20px;
   }
   .currentDiv{
     height: 38px;
