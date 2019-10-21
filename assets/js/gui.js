@@ -22,13 +22,7 @@ document.onclick = function (e) {
 //function replacing the "scrollTo" for href div calls
 function goTo(divName){
     var divTop = document.getElementById(divName).getBoundingClientRect().top;
-    var divCheck = document.getElementById("browseAPI").getBoundingClientRect().top;
-    //space buffer for Browse API div
-    if(divTop >= divCheck){
-        divTop -= 40;
-    }
-    //extra space for API Tabs
-    if(divName[0] == 'b' && divTop != divCheck){
+    if($("#" + divName).parent().is('li')){
         divTop -= 30;
     }
     //Space buffer base for Mobile vs Desktop view
