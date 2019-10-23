@@ -142,7 +142,7 @@ a:focus {
 
 .usa-nav{
   padding-top: 4.5rem;
-  padding-left: 0;
+  padding-left: 2rem;
 }
 
 @media screen and (min-width: 1028px){
@@ -169,6 +169,7 @@ a:focus {
   }
   .usa-nav{
     padding-top: 0rem;
+    padding-left: 0;
   }
 }
 .usa-accordion-content[aria-hidden = false] {

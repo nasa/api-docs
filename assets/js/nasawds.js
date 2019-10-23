@@ -1374,12 +1374,6 @@ var toggleNav = function toggleNav(active) {
     el.classList.toggle(VISIBLE_CLASS, active);
   });
 
-  if (active) {
-    focusTrap.enable();
-  } else {
-    focusTrap.release();
-  }
-
   var closeButton = body.querySelector(CLOSE_BUTTON);
   var menuButton = body.querySelector(OPENERS);
 
