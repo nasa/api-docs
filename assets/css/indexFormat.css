@@ -12,7 +12,7 @@ html{
 }
 
 .currentDiv{
-  background-color: #696969;
+  background-color: #5b616b;;
   border-radius: 5px;
   height: 39px;
 }
@@ -34,7 +34,7 @@ abbr{
 }
 
 .usa-section-dark code{
-  background: dimgray;
+  background: #5b616b;;
 }
 .usa-section code{
   background: #f1f1f1;
