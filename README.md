@@ -13,5 +13,5 @@ We only map the orginal developer's endpoint to one of our api.nasa.gov endpoint
 
 ### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a>.
 
-**NASA Official**: <a href="mailto.Brian.a.Thomas@nasa.gov">Brian Thomas/a>
+**NASA Official**: <a href="mailto.Brian.a.Thomas@nasa.gov">Brian Thomas</a>
 
