@@ -1,20 +1,17 @@
 # api-docs
 
-nasa/api-docs repository contains the front-end for http://nasa.github.io/api-docs/.  This site will be CNAME mapped to 
-api.nasa.gov. 
+### nasa/api-docs repository contains the front-end for http://api.nasa.gov/. This site is currently CNAME mapped to NASA domain, but in the event the page is down, you can access it through Github Pages here: http://nasa.github.io/api-docs/ .
 
-The code live on api.nasa.gov is from the gh-pages branch, not master branch.
+The current iteration of api.nasa.gov lives in the **gh-pages** branch, .
 
-This project will contain API developer pages for available NASA public APIs and will additionally house web components to allow NASA branded API pages to be integrated with the GSA api.data.gov system. 
-
-The live api.nasa.gov page is based on the gh-pages branch.
+This project contains API listings of available NASA public APIs and well as a GSA API key form to allow NASA branded API pages to be integrated with the GSA api.data.gov system. 
 
 For other US government agency API pages, see <a href="https://api.data.gov/">https://api.data.gov/</a>
 
-## Important: NASA does not host/develop these APIs
-We only map the orginal developer's endpoint to one of our api.nasa.gov endpoints. Basically, api.nasa.gov acts as a passthrough service. Please do not contact us with technical questions about a particular API as <b>we generally do not have access to the API production environments</b>. You can typically follow links on api.nasa.gov to more information about each API and then find contact information on those pages to people who control each API.
+## NOTICE: NASA does not host/develop these APIs
+We only map the orginal developer's endpoint to one of our api.nasa.gov endpoints. Basically, api.nasa.gov acts as a passthrough service. Please do not contact us with technical questions about a particular API as <b> we do not have access to most API production environments</b>. You can follow links on our site to get more information about each API and use the contact information on those pages to reach the people who control each API.
 
-If you are a NASA civil servant or contractor and will to add an API to api.nasa.gov, please contact nasa-data@lists.arc.nasa.gov.
+### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a>.
 
-NASA OFFICIAL:Brian.a.Thomas@nasa.gov
+**NASA Official**: Brian Thomas <a href="mailto.Brian.a.Thomas@nasa.gov">Brian.a.Thomas@nasa.gov</a>
 
