@@ -4,7 +4,7 @@
 
 The current iteration of api.nasa.gov lives in the **gh-pages** branch, .
 
-This project contains API listings of available NASA public APIs and well as a GSA API key form to allow NASA branded API pages to be integrated with the GSA api.data.gov system. 
+This project contains API listings of available NASA public APIs and well as a GSA API key form to allow NASA branded API pages to be integrated with the GSA api.data.gov system. Our listing is currently **incomplete** as we are currently displaying the more simple API's in our .json storage system.
 
 For other US government agency API pages, see <a href="https://api.data.gov/">https://api.data.gov/</a>
 
@@ -13,5 +13,5 @@ We only map the orginal developer's endpoint to one of our api.nasa.gov endpoint
 
 ### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a>.
 
-**NASA Official**: Brian Thomas <a href="mailto.Brian.a.Thomas@nasa.gov">Brian.a.Thomas@nasa.gov</a>
+**NASA Official**: <a href="mailto.Brian.a.Thomas@nasa.gov">Brian Thomas/a>
 
