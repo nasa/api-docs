@@ -2,7 +2,7 @@
 
 ### nasa/api-docs repository contains the front-end for http://api.nasa.gov/. This site is currently CNAME mapped to NASA domain, but in the event the page is down, you can access it through Github Pages here: http://nasa.github.io/api-docs/ .
 
-The current iteration of api.nasa.gov lives in the **gh-pages** branch, .
+The current iteration of api.nasa.gov lives in the **gh-pages** branch.
 
 This project contains API listings of available NASA public APIs and well as a GSA API key form to allow NASA branded API pages to be integrated with the GSA api.data.gov system. Our listing is currently **incomplete** as we are currently displaying the more simple API's in our .json storage system.
 
