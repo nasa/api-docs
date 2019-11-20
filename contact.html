@@ -1,0 +1,100 @@
+<!doctype html>
+<base href="#">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NASA Open APIs</title>
+  <link rel = "shortcut icon" href = "assets/img/favicons/favicon.ico">
+  <base href="https://nasa.github.io/api-docs-stage/"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. --> 
+  <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA" id="_fed_an_ua_tag"></script>
+</head>
+  <link rel="stylesheet" href="assets/css/nasawds.min.css">
+  <link rel="stylesheet" href="assets/css/indexFormat.css">
+<body>
+<script src="assets/js/nasawds.js"></script>
+<script src = "assets/js/jquery.min.js"></script>
+<script src="assets/js/gui.js"></script>
+<script src="assets/js/APILoader.js"></script>
+<script src="assets/js/setup.js"></script>
+<script src="assets/js/contentLoader.js"></script>
+<script src= "assets/footer/OIT-footer.js"></script>
+
+<div class="usa-overlay"></div>
+
+<main id="main-content">
+  <section class="usa-section" id = "signUp">
+    <div class = "usa-grid">
+      <h2>Contact Us</h2>
+      <p>Please email us at <a _ngcontent-c9="" href="mailto:nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a></p>
+
+      <!-- <h2>Generate API Key</h2>
+      <div id="apidatagov_signup" onfocusin = 'new function(){$("#headerSearch").css("display","none");}' >Loading signup form...</div> -->
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        // var apiUmbrellaSignupOptions = {
+        //     // Pick a short, unique name to identify your site, like 'gsa-auctions'
+        //     // in this example.
+        //     registrationSource: 'web-admin',
+        
+        //     // Enter the API key you signed up for and specially configured for this
+        //     // API key signup embed form.
+        //     apiKey: 'jfr9uihqvncOuii7lda5bDlsvOIDePcKTLWlzLte',
+            
+        //     // Provide a URL or e-mail address to be used for customer support.
+        //     //
+        //     // The format for e-mail addresses can be given as either
+        //     // 'example@example.com' or 'mailto:example@example.com'.
+        //     contactUrl: 'mailto:nasa-data@lists.arc.nasa.gov',
+
+        //     // Provide the name of your developer site. This will appear in the
+        //     // subject of the welcome e-mail as "Your {{siteName}} API key".
+        //     siteName: 'https://api.nasa.gov',
+            
+        //     //
+        //     emailFromName: 'NASA',
+        
+        //     // Provide an example URL you want to show to users after they signup.
+        //     // This can be any API endpoint on your server, and you can use the
+        //     // special {{api_key}} variable to automatically substitute in the API
+        //     // key the user just signed up for.
+        //     exampleApiUrl: 'https://api.nasa.gov/planetary/apod?api_key={{api_key}}'
+        // };
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+      //   (function() {
+      //       var apiUmbrella = document.createElement('script'); 
+      //       apiUmbrella.type = 'text/javascript'; 
+      //       apiUmbrella.async = true;
+      //       apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+      //       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+      //       asyncCall();
+      //   })();
+      // </script>
+      <noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
+    </div>
+  </section>
+</main>
+<script>
+  insertBlockXatY("assets/html/header_noButtons.html","Body",true);
+  insertBlockXatY("assets/html/overview.html","Main",true);
+  // insertBlockXatY("assets/html/authentication.html","Main");
+  // insertBlockXatY("assets/html/recoverKey.html","Main");
+  // insertBlockXatY("assets/html/browseAPI.html","Main");
+  loadContent();
+  console.log(this);
+  /*function testAllLinks(){
+    $.ajax({
+      type: 'HEAD',
+      url: 'http://yoursite.com/page.html',
+      success: function() {
+        // page exists
+      },
+      error: function() {
+        // page does not exist
+      }
+    });
+  }*/
+</script>
+</html>
