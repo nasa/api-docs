@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>NASA API Contact Page</title>
+      <meta http-equiv = "refresh" content = "0; url = mailto:nasa-data@lists.arc.nasa.gov" />
+   </head>
+   <body>
+        <h2>API.nasa.gov Contact Page</h2>
+        <p>Please email us at <a _ngcontent-c9="" href="mailto:nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a></p>
+   </body>
+</html>
