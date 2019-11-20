@@ -2,7 +2,6 @@
 <html>
    <head>
       <title>NASA API Contact Page</title>
-      <meta http-equiv = "refresh" content = "0; url = mailto:nasa-data@lists.arc.nasa.gov" />
    </head>
    <body>
         <h2>API.nasa.gov Contact Page</h2>
