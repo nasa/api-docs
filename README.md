@@ -9,7 +9,7 @@ This project contains API listings of available NASA public APIs and well as a G
 For other US government agency API pages, see <a href="https://api.data.gov/">https://api.data.gov/</a>
 
 ## NOTICE: NASA does not host/develop these APIs
-We only map the orginal developer's endpoint to one of our api.nasa.gov endpoints. Basically, api.nasa.gov acts as a passthrough service. Please do not contact us with technical questions about a particular API as <b> we do not have access to most API production environments</b>. You can follow links on our site to get more information about each API and use the contact information on those pages to reach the people who control each API.
+We only map the original developer's endpoint to one of our api.nasa.gov endpoints. Basically, api.nasa.gov acts as a passthrough service. Please do not contact us with technical questions about a particular API as <b> we do not have access to most API production environments</b>. You can follow links on our site to get more information about each API and use the contact information on those pages to reach the people who control each API.
 
 ### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a>.
 
