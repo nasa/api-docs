@@ -1,0 +1,37 @@
+// These variables override the variables set in _variables.scss to customize USWDS for NASA.
+
+// Typography
+$em-base:             10px;
+$base-font-size:      1.7rem !default;
+$small-font-size:     1.4rem !default;
+$lead-font-size:      2.2rem !default;
+$title-font-size:     5.2rem !default;
+$h1-font-size:        4.4rem !default;
+$h2-font-size:        3.4rem !default;
+$h3-font-size:        2.4rem !default;
+$h4-font-size:        1.9rem !default;
+$h5-font-size:        1.6rem !default;
+$h6-font-size:        1.3rem !default;
+$base-line-height:    1.5 !default;
+$heading-line-height: 1.2 !default;
+$lead-line-height:    1.5 !default;
+
+// Color
+$color-primary:              #105bd8 !default; // lighten($color-primary-darker, 15%)
+$color-primary-darker:       #0b3d91 !default; //#1d4893 !default; //#164493 !default;
+$color-primary-darkest:      #061f4a !default; //#112951 !default; // darken($color-primary-darker, 15%)
+
+$color-secondary:            #dd361c !default;
+$color-secondary-darkest:    #99231b !default;
+$color-secondary-dark:       #c62d1f !default;
+$color-secondary-light:      #e59892 !default; // lighten($color-secondary, 60%)
+$color-secondary-lightest:   #f9e0de !default; // lighten($color-secondary, 90%)
+
+$color-gold:                 #ff9d1e !default;
+$color-gold-light:           #f9aa43 !default;
+$color-gold-lighter:         #ffc375 !default;
+$color-gold-lightest:        #ffebd1 !default;
+
+// These variables are specific to NASAWDS
+
+$heading-letter-spacing: -.021em !default;

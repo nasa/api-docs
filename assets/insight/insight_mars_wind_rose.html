@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>InSight Mars Lander wind rose in 99 lines</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head><body>
+  <div id="nasa_api_key" ></div>
+  <div id="buttons" >Click Sol to plot its Wind Direction distribution:<br><!-- Controls (buttons) will be inside this DIV --></div>
+  <div id="wd_plot" style="width: 480px; height: 480px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="wd_most_common"><!-- Most common wind direction will be inside this DIV --></div>
+  <div id="summary"></div>
+  <pre id="json"></pre>
+
+  <script>
+  // Improved Javascript courtesy of Gemma Anible
+  const nasa_api_key = 'DEMO_KEY';   // Replace with personal NASA API key
+  const cpoints = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+  if (nasa_api_key==='DEMO_KEY') {
+    $('#nasa_api_key').html('Replace the NASA API DEMO_KEY with your own NASA API key obtained from <a href="https://api.nasa.gov/index.html#apply-for-an-api-key">here</a>.<hr>')
+  }
+  var one_sol = false;
+  //////////////////////////////////////////////////////////////////////
+  // Retrieve Mars weather data from NASA API as JSON stream
+  // - Write data for each Sol
+  // - Write JSON stream
+  //////////////////////////////////////////////////////////////////////
+  $.get(
+       `https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key=${nasa_api_key}`,
+    data => {
+      data.sol_keys.forEach(sol => write_sol_data(sol, data[sol]));
+      $("#summary").append('<hr>');
+    }
+  ).always(
+    function(data) {
+      // Write JSON stream to #json PRE
+      $("#json").text(JSON.stringify(data, null, 2));
+      if (one_sol) {
+          plot_sol_data(one_sol, data[one_sol]);
+      }
+    }
+  );
+  //////////////////////////////////////////////////////////////////////
+  // Function to write data for one Sol
+  //////////////////////////////////////////////////////////////////////
+  function write_sol_data(sol, sol_obj) {
+    // Summarize per-Sol temperature data to #summary DIV
+    $('#summary').append( `On Sol <b>${sol}</b> the temperatures ranged from <b>${Math.round(sol_obj.AT.mn)}&deg;C</b> to <b>${Math.round(sol_obj.AT.mx)}&deg;C</b> with an atmospheric pressure of <b>${Math.round(sol_obj.PRE.mn)} Pa</b> to <b>${Math.round(sol_obj.PRE.mx)} Pa</b>.<br>`);
+    one_sol = sol;
+    // Add per-Sol button to #buttons DIV
+    $('#buttons').append(
+        $('<button>')
+        .attr('id', sol)
+      .on('click', e => plot_sol_data(sol, sol_obj))
+      .text(sol)
+    );
+  }
+  //////////////////////////////////////////////////////////////////////
+  // Plot Wind Direction (WD) data for one Sol to #wd_plot DIV
+  //////////////////////////////////////////////////////////////////////
+  function plot_sol_data(Sol, sol_obj) {
+    var wd_obj = sol_obj.WD;   // Wind direction object for Sol
+    // fill compass points with sol data
+    var vals = (new Array(16)).fill(0).map((empty, idx) => wd_obj[idx] ? wd_obj[idx].ct : 0);
+    var wd_data = [{               // Load WD data as one-element array
+      r: vals,
+      t: cpoints,
+      name: `Sol ${Sol}`,
+      marker: {color: 'rgb(0,127,127)'},
+      type: 'area'
+    }];
+    var wd_layout = {              // Load WD plot layout
+      font: {size: 16},
+      title: `     Wind Direction Distribution on Sol ${Sol} at InSight Mars landing site`,
+      legend: {font: {size: 16}},
+      radialaxis: {ticksuffix: ''},
+      orientation: 270
+    };
+    Plotly.newPlot('wd_plot', wd_data, wd_layout);     // Plot wind rose
+    // Add most common wind direction
+    $('#wd_most_common').html(`Most common wind direction is ${wd_obj.most_common ? wd_obj.most_common.compass_point : 'undefined'}<hr>`)
+  }
+  </script>
+</body></html>
