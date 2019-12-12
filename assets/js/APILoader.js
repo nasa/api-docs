@@ -8,6 +8,7 @@ function loadAPIs(){
         APIButton.attr("name", "b-a" + (key+1));
         APIButton.attr("id", APIname.name.toLowerCase().replace(/\//g, "-").replace(/\s/g, "-"));
         APIButton.click(openTabs);
+        APIButton.keydown(arrowThruTabs);
         APIButton.focus(function(){overrideHREF(this);});
         var APISummary = $('<small></small>');
         APISummary.css("font-weight", "400");
@@ -28,6 +29,7 @@ function loadAPIs(){
         var addHeader = $("<div class = 'usa-width-one-whole'><a sum = '" + APIname.summary + "' class = 'search-dropdown'><span>" + APIname.name + "</span></a></div>");
         $(addHeader).find("a").attr("href", ("#" + APIname.name.toLowerCase().replace(/\//g, "-").replace(/\s/g, "-")));
         $(addHeader).find("a").attr("name", "api");
+        $(addHeader).find("a").keydown(arrowThruTabsHeader);
         addHeader.appendTo(tempHeader);
       });
     })
@@ -55,5 +57,81 @@ function loadAPIs(){
     function overrideHREF(apiButton){
       if(apiButton.id == window.location.hash.substring(1) && $(window.location.hash).attr("aria-expanded") == "false"){
         $(window.location.hash).trigger("click");
+      }
+    }
+    function arrowThruTabs(e){
+      if(e.keyCode != 38 && e.keyCode != 40){
+        return 0;
+      }
+      var prevButton = "";
+      var nextButton = "";
+      var tempArray = document.getElementById("APIList").getElementsByTagName("button");
+      var arrayB = [];
+      for(var x = 0; x < tempArray.length; x++){
+        if(tempArray[x].parentElement.style.display != "none"){
+          arrayB.push(tempArray[x]);
+        }
+      }
+      for(var y = 0; y < arrayB.length; y++){
+        if(document.activeElement.name == arrayB[y].name){
+          if(y != 0){
+            prevButton = arrayB[y-1];
+          }
+          else{
+            prevButton = document.getElementById("search-field-big");
+          }
+          if(y != arrayB.length - 1){
+            nextButton = arrayB[y+1];
+          }
+          else{
+            nextButton = arrayB[y];
+          }
+          break;
+        }
+      }
+      if(e.keyCode === 40){
+          nextButton.focus();
+      }
+      else{
+          prevButton.focus();
+      }
+    }
+
+    function arrowThruTabsHeader(e){
+      if(e.keyCode != 38 && e.keyCode != 40){
+        return 0;
+      }
+      var prevButton = "";
+      var nextButton = "";
+      var tempArray = document.getElementById("headerSearch").getElementsByTagName("a");
+      var arrayB = [];
+      for(var x = 0; x < tempArray.length; x++){
+        if(tempArray[x].parentElement.style.display != "none"){
+          arrayB.push(tempArray[x]);
+        }
+      }
+      for(var y = 0; y < arrayB.length; y++){
+        console.log(arrayB[y].href);
+        if(document.activeElement.href == arrayB[y].href){
+          if(y != 0){
+            prevButton = arrayB[y-1];
+          }
+          else{
+            prevButton = document.getElementById("basic-search-field-small");
+          }
+          if(y != arrayB.length - 1){
+            nextButton = arrayB[y+1];
+          }
+          else{
+            nextButton = arrayB[y];
+          }
+          break;
+        }
+      }
+      if(e.keyCode === 40){
+          nextButton.focus();
+      }
+      else{
+          prevButton.focus();
       }
     }

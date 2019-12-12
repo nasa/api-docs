@@ -167,8 +167,8 @@ function resolveAfterTenthSeconds() {
 }
 
 // Searches by name and summary of the APIs
-function searchFunction() {
-    var input = document.getElementById('search-field-big');
+function searchFunction() { 
+  var input = document.getElementById('search-field-big');
   var filter = input.value.toUpperCase();
   var ul = document.getElementById("APIList");
   var li = ul.children;
@@ -183,6 +183,28 @@ function searchFunction() {
       li[i].style.display = "none";
     }
   }
+}
+function toSearchResults(e){
+    if(e.keyCode === 40){
+        var arrayB = document.getElementById("APIList").getElementsByTagName("button");
+        for(var x = 0; x < arrayB.length; x++){
+          if(arrayB[x].parentElement.style.display != "none"){
+            arrayB[x].focus();
+            break;
+          }
+        }
+    } 
+}
+function toSearchResultsHeader(e){
+    if(e.keyCode === 40){
+        var arrayB = document.getElementById("headerSearch").getElementsByTagName("a");
+        for(var x = 0; x < arrayB.length; x++){
+          if(arrayB[x].parentElement.style.display != "none"){
+            arrayB[x].focus();
+            break;
+          }
+        }
+    } 
 }
 
 //Same as above, but includes the other divs on the page
@@ -209,6 +231,7 @@ function searchHeader(){
         }
     }
 }
+
 // removes periods from error submit forms 
 async function rmPeriods(){
     var result2 = await resolveAfterTenthSeconds();
