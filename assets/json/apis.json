@@ -238,7 +238,7 @@
   },
   {
     "id": "1",
-    "name": "GeneLab Search",
+    "name": "GeneLab",
     "summary": "Programmatic interface for GeneLab's public data repository website",
     "tags": [
       "tags1",
