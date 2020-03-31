@@ -198,7 +198,7 @@
       "tags3",
       "tags4"
     ],
-    "html_template": " <h1 id=\"earth\">Earth</h1> <p><b>THIS API IS CURRENTLY DONE DUE TO THE DEPRECIATION OF ANOTHER API IT DEPENDED ON!</b> We are currently investigating the best replacement. In the meantime, NASA's Earth Science Devision also has a variety of Earth imagery APIs for developers, which you can find out about in the <a href=\"https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api\">Earthdata Developer Portal</a>. Specifically, the <a href=\"https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers\">GIBS</a> (Global Imagery Browse Services) API may be of interest. The Google Earth Engine API is another option that performs similarly to the API that was in this location and serves from the same datasets.</p>"
+    "html_template": " <h1 id=\"earth\">Earth</h1> <p><b>THIS API IS CURRENTLY DONE DUE TO THE DEPRECIATION OF ANOTHER API IT DEPENDED ON!</b> We are currently investigating the best replacement. In the meantime, NASA's Earth Science Devision has a variety of Earth imagery APIs for developers, which you can find out about in the <a href=\"https://earthdata.nasa.gov/collaborate/open-data-services-and-software/api\">Earthdata Developer Portal</a>. Specifically, the <a href=\"https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers\">GIBS</a> (Global Imagery Browse Services) API may be of interest. The Google Earth Engine API is another option that performs similarly to the API that was in this location and serves from the same datasets. We're sorry for the inconvenience.</p>"
   },
   {
     "id": "1",
