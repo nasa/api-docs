@@ -141,9 +141,14 @@ footer {
     color: #212121;
     text-decoration: none;
   }
+  a.oit-footer-contact_info {
+    color: #212121;
+    text-decoration: none;
+  }
   
   .oit-footer-contact_info:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
   
   .oit-footer-return-to-top {
