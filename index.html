@@ -81,17 +81,30 @@
   insertBlockXatY("assets/html/browseAPI.html","Main");
   loadContent();
   console.log(this);
-  /*function testAllLinks(){
-    $.ajax({
-      type: 'HEAD',
-      url: 'http://yoursite.com/page.html',
-      success: function() {
-        // page exists
-      },
-      error: function() {
-        // page does not exist
-      }
-    });
-  }*/
+
 </script>
+<script>
+  // This function checks the URL address for the presence of something after the main domain like `#apod`. 
+  // If it finds it, it then triggers a click on any element with that as its ID.
+  // This allows users to share a link directly to information for a specific API.
+  function checkURL(){
+    URL_string = window.location.href
+    if (URL_string.indexOf('#') > 0){
+      heading_1_id = URL_string.replace("https://api.nasa.gov/#","").replace("http://localhost:8000/#","")
+      console.log("trying to click on element =",heading_1_id)
+      document.getElementById(heading_1_id).click();
+    }
+  }
+
+  // Due to some of the DOM being loaded via JavaScript after the initial dom load, we are waiting 1/2 second to trigger the click.
+  $(document).ready(function(){
+    setTimeout(function () {
+        checkURL()
+      },
+        500
+      );
+    })
+
+</script>
+
 </html>
