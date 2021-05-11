@@ -364,11 +364,11 @@ footer {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 32.23176%;
+      width: 30.23176%;
     }
-    .oit-width-one-third:nth-child(2n):last-child {
+/*     .oit-width-one-third:nth-child(2n):last-child {
       margin-right: 0;
-    }
+    } */
     .oit-width-one-third:nth-child(4n) {
       margin-right: 0;
     }
