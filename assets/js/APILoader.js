@@ -39,7 +39,7 @@ function loadAPIs(){
       .fail(function(jqXHR, textStatus, errorThrown) { 
         console.log( "API Info Download Unsuccesfull" );
         console.log(errorThrown);
-        alert('getJSON request failed! ' + textStatus); 
+        console.log('getJSON request failed! ' + textStatus); 
       });
 }
 // function to initiate a scroll when a API tab is extended
