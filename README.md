@@ -17,7 +17,7 @@ For other US government agency API pages, see https://api.data.gov/
 
 ## Libraries and Software
 
-api.nasa.gov utilizes the following libraries and resourses:
+api.nasa.gov utilizes the following libraries and resources:
 
 * NASA Web Design Service(CSS and JS): A style system created in order to help NASA websites have a more unified look. You can find their info here https://nasa.github.io/nasawds-site/
 * JQuery (JS): A library that simplifies the javascript coding process
