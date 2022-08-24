@@ -32,4 +32,6 @@ We only map the orginal developer's endpoint to one of our api.nasa.gov endpoint
 
 **Site Developer**: Jenna Horn, Justin Gosses
 
-**NASA Official**: <a href="mailto.Benjamin.Reist.gov">Ben Reist</a>
+**NASA Official**: <a href="mailto:&#116;&#114;&#097;&#118;&#105;&#115;&#046;&#107;&#097;&#110;&#116;&#122;&#064;&#110;&#097;&#115;&#097;&#046;&#103;&#111;&#118;">R Travis Kantz</a>
+
+Last updated: 08/24/2022
