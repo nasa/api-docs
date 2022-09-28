@@ -137,7 +137,7 @@ function resolveAfterTenthSeconds() {
             temp.append(tempChild);
         }
         var textDiv = document.getElementById("apidatagov_signup_form").children[3]
-        textDiv.children[0].innerHTML = "Application URL<img src='assets/img/alerts/info.svg' height = '20px' width = '20px' class = 'infoDiv' tabindex = '0' onclick = 'displayHelpClick(this.id, \"infoTab\")' id = 'infoPic'>(optional):";
+        textDiv.children[0].innerHTML = "Application URL<img src='assets/img/alerts/info.svg' alt='Info I icon' height = '20px' width = '20px' class = 'infoDiv' tabindex = '0' onclick = 'displayHelpClick(this.id, \"infoTab\")' id = 'infoPic'>(optional):";
         $("#infoPic").on("mouseenter", function(){displayHelp(true, 'infoTab');})
         .on("mouseout", function(){displayHelp(false, 'infoTab');})
         .on("focusin", function(){displayHelp(true, 'infoTab')})
