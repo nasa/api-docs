@@ -116,8 +116,10 @@ abbr{
   line-height: 6rem;
 }
 .usa-logo-text{
+  position: relative;
   font-size: 2.3rem;
   padding-left: 2rem;
+  white-space: nowrap;
 }
 .usa-menu-btn{
   height: 6rem;
@@ -160,7 +162,6 @@ a:focus {
     line-height: 7.8rem;
   }
   .usa-logo-text{
-    white-space:nowrap;
     font-size: 3rem !important;
     margin-bottom: 30px;
   }
