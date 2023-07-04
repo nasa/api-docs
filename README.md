@@ -22,7 +22,7 @@ api.nasa.gov utilizes the following libraries and resources:
 * NASA Web Design Service(CSS and JS): A style system created in order to help NASA websites have a more unified look. You can find their info here https://nasa.github.io/nasawds-site/
 * JQuery (JS): A library that simplifies the javascript coding process
 
-The API information that our site hosts is currently archived in our *apis.json* folder which is then read and generated into the page dynamically.
+The API information that our site hosts is currently archived in our <a href="https://github.com/nasa/api-docs/blob/gh-pages/assets/json/apis.json">apis.json</a> file which is then read and generated into the page dynamically.
 
 ## NOTICE: NASA does not host/develop these APIs
 We only map the orginal developer's endpoint to one of our api.nasa.gov endpoints. Basically, api.nasa.gov acts as a passthrough service. Please do not contact us with technical questions about a particular API as <b> we do not have access to most API production environments</b>. You can follow links on our site to get more information about each API and use the contact information on those pages to reach the people who control each API.
