@@ -25,5 +25,5 @@ jobs:
       run: |
         echo "Current commit message: $COMMIT_MESSAGE"
         echo "Repo Name: $REPO_NAME"
-        # chmod +x ./release-tracker.sh
-        # ./release-tracker.sh
+        chmod +x ./release-tracker.sh
+        ./release-tracker.sh
