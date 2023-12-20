@@ -20,7 +20,7 @@ jobs:
 
     - name: Run Bash Script
       env:
-        COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
+        COMMIT_MESSAGE: ${{ steps.commit-message.outputs }}
       run: |
         echo "$COMMIT_MESSAGE in script"
       # run: |
