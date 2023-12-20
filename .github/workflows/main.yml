@@ -15,12 +15,12 @@ jobs:
 
     - name: Get Commit Message
       id: commit-message
-      run: echo "commit-message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+      run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
       
 
     - name: Run Bash Script
       env:
-        COMMIT_MESSAGE: ${{ steps.commit-message.outputs }}
+        COMMIT_MESSAGE: ${{ steps.commit-message.outputs.* }}
       run: |
         echo "$COMMIT_MESSAGE in script"
       # run: |
