@@ -1,4 +1,4 @@
-name: Run Script on Commit
+name: Run Release Tracker
 
 on:
   push:
@@ -15,7 +15,8 @@ jobs:
 
     - name: Get Commit Message
       id: commit-message
-      run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
+      run: echo "{commit-message}={$(git log -1 --pretty=%B)}" >> $GITHUB_OUTPUT
+      
 
     - name: Run Bash Script
       env:
