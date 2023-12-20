@@ -1,0 +1,27 @@
+name: Run Script on Commit
+
+on:
+  push:
+    branches:
+      - actions-test
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Get Commit Message
+      id: commit-message
+      run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
+
+    - name: Run Bash Script
+      env:
+        COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
+      run: |
+        echo "$COMMIT_MESSAGE in script"
+      # run: |
+      #   chmod +x ./path/to/your-script.sh
+      #   ./path/to/your-script.sh "$COMMIT_MESSAGE"
