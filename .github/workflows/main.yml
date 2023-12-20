@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout
+      uses: actions/checkout@v4.1.1
 
     - name: Get Commit Message
       id: commit-message
