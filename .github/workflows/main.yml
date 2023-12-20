@@ -17,12 +17,13 @@ jobs:
       id: commit-message
       run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
       
-
     - name: Run Bash Script
       env:
         COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
       run: |
         echo "$COMMIT_MESSAGE in script"
+        chmod +x ./release-tracker.sh
+        ./release-tracker.sh
       # run: |
       #   chmod +x ./path/to/your-script.sh
       #   ./path/to/your-script.sh "$COMMIT_MESSAGE"
