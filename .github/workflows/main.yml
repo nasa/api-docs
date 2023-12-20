@@ -21,7 +21,7 @@ jobs:
       env:
         COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
       run: |
-        echo "$COMMIT_MESSAGE in script"
+        echo "Current commit message: $COMMIT_MESSAGE"
         chmod +x ./release-tracker.sh
         ./release-tracker.sh
       # run: |
