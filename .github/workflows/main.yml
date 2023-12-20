@@ -3,7 +3,7 @@ name: Run Release Tracker
 on:
   push:
     branches:
-      - actions-test
+      - gh-pages
 
 jobs:
   run-script:
@@ -15,14 +15,15 @@ jobs:
 
     - name: Get Commit Message
       id: commit-message
-      run: echo "{commit-message}={$(git log -1 --pretty=%B)}" >> $GITHUB_OUTPUT
+      run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
       
-
     - name: Run Bash Script
       env:
         COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
+        REPO_NAME: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       run: |
-        echo "$COMMIT_MESSAGE in script"
-      # run: |
-      #   chmod +x ./path/to/your-script.sh
-      #   ./path/to/your-script.sh "$COMMIT_MESSAGE"
+        echo "Current commit message: $COMMIT_MESSAGE"
+        echo "Repo Name: $REPO_NAME"
+        chmod +x ./release-tracker-github.sh
+        ./release-tracker-github.sh
