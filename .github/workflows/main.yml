@@ -26,4 +26,4 @@ jobs:
         echo "Current commit message: $COMMIT_MESSAGE"
         echo "Repo Name: $REPO_NAME"
         chmod +x ./release-tracker-github.sh
-        ./release-tracker.sh
+        ./release-tracker-github.sh
