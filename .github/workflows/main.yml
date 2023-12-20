@@ -15,7 +15,7 @@ jobs:
 
     - name: Get Commit Message
       id: commit-message
-      run: echo "{commit-message}={$(git log -1 --pretty=%B)}" >> $GITHUB_OUTPUT
+      run: echo "commit-message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
       
 
     - name: Run Bash Script
