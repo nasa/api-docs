@@ -21,6 +21,7 @@ jobs:
       env:
         COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
         REPO_NAME: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       run: |
         echo "Current commit message: $COMMIT_MESSAGE"
         echo "Repo Name: $REPO_NAME"
