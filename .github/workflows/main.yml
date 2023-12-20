@@ -20,10 +20,9 @@ jobs:
     - name: Run Bash Script
       env:
         COMMIT_MESSAGE: ${{ steps.commit-message.outputs.message }}
+        REPO_NAME: ${{ github.repository }}
       run: |
         echo "Current commit message: $COMMIT_MESSAGE"
-        chmod +x ./release-tracker.sh
-        ./release-tracker.sh
-      # run: |
-      #   chmod +x ./path/to/your-script.sh
-      #   ./path/to/your-script.sh "$COMMIT_MESSAGE"
+        echo "Repo Name: $REPO_NAME"
+        # chmod +x ./release-tracker.sh
+        # ./release-tracker.sh
