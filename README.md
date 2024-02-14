@@ -30,8 +30,8 @@ We only map the orginal developer's endpoint to one of our api.nasa.gov endpoint
 ### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a>. 
 #### If you are behind the NASA firewall, you can find additional details on https://developer.nasa.gov/pages/OpenInnovation/Table_of_Contents_Public/2021/05/14/API-NASA-GOV.html
 
-**Site Developer**: Jenna Horn, Justin Gosses
+**Site Developer**: Darith Yim, Daniel Rendon, Jeffery Rubio, Tessa Brazda
 
 **NASA Official**: <a href="mailto:&#116;&#114;&#097;&#118;&#105;&#115;&#046;&#107;&#097;&#110;&#116;&#122;&#064;&#110;&#097;&#115;&#097;&#046;&#103;&#111;&#118;">R Travis Kantz</a>
 
-Last updated: 08/24/2022
+Last updated: 02/14/2024
