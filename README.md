@@ -27,7 +27,7 @@ The API information that our site hosts is currently archived in our *apis.json*
 ## NOTICE: NASA does not host/develop these APIs
 We only map the orginal developer's endpoint to one of our api.nasa.gov endpoints. Basically, api.nasa.gov acts as a passthrough service. Please do not contact us with technical questions about a particular API as <b> we do not have access to most API production environments</b>. You can follow links on our site to get more information about each API and use the contact information on those pages to reach the people who control each API.
 
-### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a>. 
+### If you are a NASA civil servant or contractor and wish to add an API to api.nasa.gov, please contact <a href="mailto.hq-open-innovation@mail.nasa.gov">hq-open-innovation@mail.nasa.gov</a>. 
 #### If you are behind the NASA firewall, you can find additional details on https://developer.nasa.gov/pages/OpenInnovation/Table_of_Contents_Public/2021/05/14/API-NASA-GOV.html
 
 **Site Developer**: Darith Yim, Daniel Rendon, Jeffery Rubio, Tessa Brazda
