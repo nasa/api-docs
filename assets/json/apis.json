@@ -325,7 +325,7 @@
       "tags3",
       "tags4"
     ],
-    "html_template": "<h1 id=\"techporDev\">Techport</h1> <p> TechPort is NASA’s technology inventory, showcasing the NASA portfolio of active and completed technology projects. TechPort makes available technology information from across the Agency in order to facilitate opportunities for collaboration and partnerships, analyses of how the Agency is meeting mission needs, and data visualizations of technology drivers that enable key decisions. </p><p> The NASA TechPort system provides a RESTful web services API to make technology project data available to other systems and services. This API can be used to export TechPort data into JSON format, which can be further processed and analyzed. </p><p> For complete API documentation please visit the <a href=\"https://techport.nasa.gov/help/articles/api\">TechPort</a> website. </p>",
+    "html_template": "<h1 id=\"techporDev\">Techport</h1> <p> TechPort is NASA’s technology inventory, showcasing the NASA portfolio of active and completed technology projects. TechPort makes available technology information from across the Agency in order to facilitate opportunities for collaboration and partnerships, analyses of how the Agency is meeting mission needs, and data visualizations of technology drivers that enable key decisions. </p><p> The NASA TechPort system provides a RESTful web services API to make technology project data available to other systems and services. This API can be used to export TechPort data into JSON format, which can be further processed and analyzed. </p><p> For complete API documentation please visit the <a href=\"https://techport.nasa.gov/\">TechPort</a> website. </p>",
     "swagger_data": {
       "swagger": "2.0",
       "info": {
