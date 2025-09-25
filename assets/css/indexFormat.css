@@ -189,6 +189,18 @@ a:focus {
 
 }
 
+.alert-error {
+  padding: 20px;
+  border-left: .5rem solid;
+  background-color: #f4e3db; /* red */
+  border-left-color: #d54309;
+  color: black;
+  margin-bottom: 15px;
+}
+.alert-error.a{
+
+}
+
 
 /* The close button */
 .closebtn {
