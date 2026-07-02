@@ -32,6 +32,6 @@ We only map the orginal developer's endpoint to one of our api.nasa.gov endpoint
 
 **Site Developer**: Darith Yim, Daniel Rendon, Tessa Brazda
 
-**NASA Official**: <a href="mailto:jeremy.j.yagle@nasa.gov?subject=api.nasa.gov">Jeremy Yagle</a>
+**NASA Official**: <a href="mailto:jennifer.c.wei@nasa.gov?subject=api.nasa.gov"Jennifer Wei</a>
 
-Last updated: 06/1/2026
+Last updated: 07/02/2026
