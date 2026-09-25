@@ -1,0 +1,881 @@
+openapi: 3.1.0
+info:
+  title: NASA MCP Server API
+  description: |
+    NASA MCP Server provides access to various NASA APIs including astronomy images, 
+    Mars rover photos, near-earth objects, Earth imagery, and satellite data.
+    
+    This OpenAPI specification documents the NASA API endpoints that wrap around
+    official NASA public APIs including APOD, Mars Rover Photos, NeoWs, EPIC,
+    GIBS, and more.
+  version: 0.1.18
+  contact:
+    name: Adithya
+    email: adithyasn7@gmail.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://api.nasa.gov/
+
+servers:
+  - url: https://api.nasa.gov
+    description: NASA API Base URL
+  - url: http://localhost:8000
+    description: Local development server
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /apod:
+    get:
+      summary: Get Astronomy Picture of the Day
+      description: |
+        Retrieve NASA's Astronomy Picture of the Day (APOD). Can fetch a single image
+        by date, a range of images, or a random selection of images.
+      operationId: getApod
+      tags:
+        - Astronomy
+      parameters:
+        - name: date
+          in: query
+          description: |
+            The date of the APOD image to retrieve in YYYY-MM-DD format.
+            Cannot be used with start_date, end_date, or count.
+          schema:
+            type: string
+            format: date
+            example: "2023-12-01"
+        - name: start_date
+          in: query
+          description: |
+            The start of a date range in YYYY-MM-DD format.
+            Must be used with end_date. Cannot be used with date or count.
+          schema:
+            type: string
+            format: date
+            example: "2023-12-01"
+        - name: end_date
+          in: query
+          description: |
+            The end of a date range in YYYY-MM-DD format.
+            Must be used with start_date. Cannot be used with date or count.
+          schema:
+            type: string
+            format: date
+            example: "2023-12-07"
+        - name: count
+          in: query
+          description: |
+            Number of randomly chosen images to return.
+            Cannot be used with date, start_date, or end_date.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            example: 5
+        - name: api_key
+          in: query
+          description: NASA API key for increased rate limits
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response with APOD data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApodResponse'
+              examples:
+                single_image:
+                  summary: Single APOD image
+                  value:
+                    description: |
+                      NASA Astronomy Picture of the Day
+                      Date: 2023-12-01
+                      Title: Sample APOD Title
+                      Explanation: Sample explanation of the astronomical image...
+                    resource:
+                      type: image
+                      uri: "https://apod.nasa.gov/apod/image/2312/sample.jpg"
+                      mimeType: "image/jpeg"
+                      name: "APOD_2023-12-01_Sample_APOD_Title"
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /mars-photos:
+    get:
+      summary: Get Mars Rover Photos
+      description: |
+        Fetch images from NASA's Mars rovers. Each rover has its own set of photos
+        stored in the database, which can be queried by Earth date, sol (Martian day),
+        and camera type.
+      operationId: getMarsPhotos
+      tags:
+        - Mars
+      parameters:
+        - name: earth_date
+          in: query
+          description: |
+            Earth date when the photo was taken in YYYY-MM-DD format.
+            Cannot be used with sol parameter.
+          schema:
+            type: string
+            format: date
+            example: "2023-12-01"
+        - name: sol
+          in: query
+          description: |
+            Martian sol (day) of the rover's mission. 
+            Cannot be used with earth_date parameter.
+          schema:
+            type: integer
+            minimum: 0
+            default: 1000
+            example: 1000
+        - name: camera
+          in: query
+          description: Camera type for filtering images
+          schema:
+            type: string
+            enum:
+              - FHAZ
+              - RHAZ
+              - MAST
+              - CHEMCAM
+              - MAHLI
+              - MARDI
+              - NAVCAM
+              - PANCAM
+              - MINITES
+            example: "MAST"
+        - name: page
+          in: query
+          description: Page number for pagination
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: api_key
+          in: query
+          description: NASA API key for increased rate limits
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response with Mars rover photos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarsPhotosResponse'
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /neo-feed:
+    get:
+      summary: Get Near Earth Objects Feed
+      description: |
+        Retrieve a list of asteroids based on their closest approach date to Earth.
+        Maximum date range is 7 days. If no dates provided, returns next 7 days.
+      operationId: getNeoFeed
+      tags:
+        - Near Earth Objects
+      parameters:
+        - name: start_date
+          in: query
+          description: Starting date for asteroid search in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+            example: "2023-12-01"
+        - name: end_date
+          in: query
+          description: Ending date for asteroid search in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+            example: "2023-12-07"
+        - name: limit_per_day
+          in: query
+          description: Maximum number of asteroids to show per day
+          schema:
+            type: integer
+            minimum: 1
+            default: 2
+            example: 5
+        - name: api_key
+          in: query
+          description: NASA API key for increased rate limits
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response with NEO data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NeoFeedResponse'
+        '400':
+          description: Bad request - date range exceeds 7 days or invalid format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /neo-lookup/{asteroid_id}:
+    get:
+      summary: Get Asteroid Details by ID
+      description: |
+        Retrieve detailed information about a specific asteroid by its ID.
+        This endpoint is referenced in the requirements but not currently implemented.
+      operationId: getAsteroidById
+      tags:
+        - Near Earth Objects
+      parameters:
+        - name: asteroid_id
+          in: path
+          required: true
+          description: Unique identifier for the asteroid
+          schema:
+            type: string
+            example: "54016"
+        - name: api_key
+          in: query
+          description: NASA API key for increased rate limits
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Detailed asteroid information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsteroidDetails'
+        '404':
+          description: Asteroid not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /earth:
+    get:
+      summary: Get Earth Imagery
+      description: |
+        Fetch satellite images of Earth from NASA's DSCOVR satellite using the
+        Earth Polychromatic Imaging Camera (EPIC) API.
+      operationId: getEarthImage
+      tags:
+        - Earth Imagery
+      parameters:
+        - name: earth_date
+          in: query
+          description: Date when the photo was taken in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+            example: "2023-12-01"
+        - name: type
+          in: query
+          description: Type of image to retrieve
+          schema:
+            type: string
+            enum:
+              - natural
+              - enhanced
+              - aerosol
+              - cloud
+            default: natural
+            example: "natural"
+        - name: limit
+          in: query
+          description: Number of images to retrieve
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+            default: 1
+            example: 1
+      responses:
+        '200':
+          description: Successful response with Earth imagery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EarthImageResponse'
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /gibs:
+    get:
+      summary: Get GIBS Satellite Imagery
+      description: |
+        Fetch satellite imagery from NASA's Global Imagery Browse Services (GIBS).
+        Provides access to various Earth observation layers and datasets.
+      operationId: getGibsImage
+      tags:
+        - Earth Imagery
+        - Satellite Data
+      parameters:
+        - name: layer
+          in: query
+          description: The imagery layer to fetch
+          schema:
+            type: string
+            default: "MODIS_Terra_CorrectedReflectance_TrueColor"
+            example: "MODIS_Terra_CorrectedReflectance_TrueColor"
+        - name: bbox
+          in: query
+          description: Bounding box as "min_lon,min_lat,max_lon,max_lat"
+          schema:
+            type: string
+            default: "-180,-90,180,90"
+            example: "-125,25,-65,50"
+        - name: date
+          in: query
+          description: Date for the imagery in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+            example: "2023-12-01"
+        - name: width
+          in: query
+          description: Image width in pixels
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2048
+            default: 512
+            example: 512
+        - name: height
+          in: query
+          description: Image height in pixels
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2048
+            default: 512
+            example: 512
+        - name: format
+          in: query
+          description: Image format
+          schema:
+            type: string
+            enum:
+              - "image/png"
+              - "image/jpeg"
+            default: "image/png"
+            example: "image/png"
+        - name: projection
+          in: query
+          description: Coordinate system
+          schema:
+            type: string
+            enum:
+              - epsg4326
+              - epsg3857
+            default: "epsg4326"
+            example: "epsg4326"
+      responses:
+        '200':
+          description: Successful response with GIBS imagery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GibsImageResponse'
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /gibs/layers:
+    get:
+      summary: Get Available GIBS Layers
+      description: |
+        Get information about available GIBS layers and their capabilities.
+        Includes layer names, categories, and usage information.
+      operationId: getGibsLayers
+      tags:
+        - Earth Imagery
+        - Satellite Data
+      responses:
+        '200':
+          description: List of available GIBS layers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GibsLayersResponse'
+
+  /analyze-image:
+    post:
+      summary: Analyze Image from URL
+      description: |
+        Fetch an image from a URL and convert it to base64 for analysis.
+        Supports various image formats and provides metadata about the image.
+      operationId: analyzeImage
+      tags:
+        - Image Analysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - image_url
+              properties:
+                image_url:
+                  type: string
+                  format: uri
+                  description: URL of the image to analyze
+                  example: "https://apod.nasa.gov/apod/image/2312/sample.jpg"
+      responses:
+        '200':
+          description: Successful image analysis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageAnalysisResponse'
+        '400':
+          description: Bad request - invalid URL or unsupported format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # Additional endpoints mentioned in requirements but not implemented
+  /tech-transfer:
+    get:
+      summary: Get Technology Transfer Data
+      description: |
+        NASA Technology Transfer program data.
+        This endpoint is mentioned in requirements but not currently implemented.
+      operationId: getTechTransfer
+      tags:
+        - Technology Transfer
+      parameters:
+        - name: api_key
+          in: query
+          description: NASA API key
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /insight-weather:
+    get:
+      summary: Get Mars Weather Data from InSight
+      description: |
+        Mars weather data from NASA's InSight lander.
+        This endpoint is mentioned in requirements but not currently implemented.
+      operationId: getInsightWeather
+      tags:
+        - Mars
+      parameters:
+        - name: api_key
+          in: query
+          description: NASA API key
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /donki/cme:
+    get:
+      summary: Get Coronal Mass Ejection Data
+      description: |
+        Coronal Mass Ejection data from NASA's DONKI (Database of Notifications, Knowledge, Information).
+        This endpoint is mentioned in requirements but not currently implemented.
+      operationId: getDonkiCme
+      tags:
+        - Solar Activity
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for CME data
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for CME data
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          description: NASA API key
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /donki/notifications:
+    get:
+      summary: Get Solar Activity Notifications
+      description: |
+        Solar activity notifications from NASA's DONKI system.
+        This endpoint is mentioned in requirements but not currently implemented.
+      operationId: getDonkiNotifications
+      tags:
+        - Solar Activity
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for notifications
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for notifications
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          description: NASA API key
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /eonet-events:
+    get:
+      summary: Get Natural Disaster Event Tracking
+      description: |
+        Natural disaster event tracking from NASA's EONET (Earth Observatory Natural Event Tracker).
+        This endpoint is mentioned in requirements but not currently implemented.
+      operationId: getEonetEvents
+      tags:
+        - Natural Events
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for events
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for events
+          schema:
+            type: string
+            format: date
+        - name: category
+          in: query
+          description: Event category filter
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          description: NASA API key
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /eonet-categories:
+    get:
+      summary: Get EONET Categories
+      description: |
+        Categories used in NASA's EONET (Earth Observatory Natural Event Tracker).
+        This endpoint is mentioned in requirements but not currently implemented.
+      operationId: getEonetCategories
+      tags:
+        - Natural Events
+      responses:
+        '501':
+          description: Not implemented yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: NASA API key. Get your free key at https://api.nasa.gov/
+
+  schemas:
+    ApodResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Detailed description of the APOD including date, title, and explanation
+        resource:
+          $ref: '#/components/schemas/ImageResource'
+
+    MarsPhotosResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: |
+            Description of the Mars rover image including camera info, 
+            Earth date, sol, and total photos available
+        resource:
+          $ref: '#/components/schemas/ImageResource'
+
+    NeoFeedResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: |
+            Detailed information about Near Earth Objects including asteroid details,
+            hazard status, approach data, and orbital information
+        resource:
+          type: object
+          properties:
+            type:
+              type: string
+              example: "image"
+            uri:
+              type: string
+              format: uri
+              description: API URL used for the request
+            mimeType:
+              type: string
+              example: "application/json"
+            name:
+              type: string
+              description: Identifier for the NEO feed data
+
+    EarthImageResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: |
+            Description of Earth image including type, date, caption,
+            and number of images available
+        resource:
+          $ref: '#/components/schemas/ImageResource'
+
+    GibsImageResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: |
+            Description of GIBS image including layer, date, bounding box,
+            coverage area, image size, format, and projection
+        resource:
+          $ref: '#/components/schemas/ImageResource'
+
+    GibsLayersResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: |
+            Information about available GIBS layers organized by category,
+            including popular bounding boxes and usage tips
+        resource:
+          type: object
+          properties:
+            uri:
+              type: string
+              format: uri
+              example: "https://gibs.earthdata.nasa.gov/"
+            mimeType:
+              type: string
+              example: "text/html"
+            name:
+              type: string
+              example: "GIBS_Layers_Documentation"
+
+    ImageAnalysisResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: "image"
+        data:
+          type: string
+          description: Base64 encoded image data
+        mimeType:
+          type: string
+          description: MIME type of the processed image
+        original_url:
+          type: string
+          format: uri
+          description: Original URL of the image
+        dimensions:
+          type: string
+          description: Processed image dimensions
+        original_size:
+          type: string
+          description: Original image size in bytes
+        compressed_size:
+          type: string
+          description: Compressed image size in bytes
+        compression_ratio:
+          type: string
+          description: Compression ratio percentage
+
+    ImageResource:
+      type: object
+      properties:
+        type:
+          type: string
+          example: "image"
+        uri:
+          type: string
+          format: uri
+          description: URL of the image
+        mimeType:
+          type: string
+          description: MIME type of the image
+          example: "image/jpeg"
+        name:
+          type: string
+          description: Descriptive name for the image
+
+    AsteroidDetails:
+      type: object
+      description: Detailed information about a specific asteroid
+      properties:
+        id:
+          type: string
+          description: Asteroid ID
+        name:
+          type: string
+          description: Asteroid name
+        absolute_magnitude_h:
+          type: number
+          description: Absolute magnitude
+        estimated_diameter:
+          type: object
+          properties:
+            kilometers:
+              type: object
+              properties:
+                estimated_diameter_min:
+                  type: number
+                estimated_diameter_max:
+                  type: number
+        is_potentially_hazardous_asteroid:
+          type: boolean
+          description: Whether the asteroid is potentially hazardous
+        close_approach_data:
+          type: array
+          items:
+            type: object
+            properties:
+              close_approach_date:
+                type: string
+                format: date
+              relative_velocity:
+                type: object
+                properties:
+                  kilometers_per_hour:
+                    type: string
+              miss_distance:
+                type: object
+                properties:
+                  kilometers:
+                    type: string
+                  lunar:
+                    type: string
+        nasa_jpl_url:
+          type: string
+          format: uri
+          description: NASA JPL URL for more details
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        details:
+          type: string
+          description: Additional error details
+      required:
+        - error
+
+tags:
+  - name: Astronomy
+    description: Astronomy related endpoints including APOD
+  - name: Mars
+    description: Mars rover images and weather data
+  - name: Near Earth Objects
+    description: Asteroid and Near Earth Object data
+  - name: Earth Imagery
+    description: Earth satellite imagery and observations
+  - name: Satellite Data
+    description: Satellite data and imagery services
+  - name: Image Analysis
+    description: Image processing and analysis tools
+  - name: Technology Transfer
+    description: NASA Technology Transfer program
+  - name: Solar Activity
+    description: Solar activity and space weather data
+  - name: Natural Events
+    description: Natural disaster and event tracking
