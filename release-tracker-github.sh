@@ -16,7 +16,7 @@ point_release_number=$(echo $commit_message | grep -oP "$pattern" | grep -oP '[0
 # Check if a point release number was found
 if [ -z "$point_release_number" ]; then
     echo "No point release number found in the commit message. Exiting script."
-    exit 1
+    exit 0
 else
     echo "Point Release Number: $point_release_number"
 fi
